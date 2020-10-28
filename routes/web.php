@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('page-login', [TeacherController::class, 'page_login']);
 
 
 Route::group(['prefix' => 'admin'], function () {
