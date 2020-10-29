@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//Trang đăng nhập
 Route::get('page-login', [TeacherController::class, 'page_login']);
+
+//Trang chủ giáo viên
+Route::get('page-home-teacher', [TeacherController::class, 'page_home_teacher']);
 
