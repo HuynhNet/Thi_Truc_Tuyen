@@ -18,3 +18,8 @@ Route::get('page-login', [TeacherController::class, 'page_login']);
 //Trang chủ giáo viên
 Route::get('page-home-teacher', [TeacherController::class, 'page_home_teacher']);
 
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
