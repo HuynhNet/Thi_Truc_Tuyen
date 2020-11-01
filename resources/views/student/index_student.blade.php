@@ -1,88 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords"
-          content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 4 admin,
-          bootstrap 4, css3 dashboard, bootstrap 4 dashboard, maruti admin bootstrap 4 dashboard, frontend,
-          responsive bootstrap 4 admin template, maruti design, maruti dashboard bootstrap 4 dashboard template">
-    <meta name="description"
-          content="Maruti is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
-    <meta name="robots" content="noindex,nofollow">
-    <title>Student</title>
-    <link rel="canonical" href="https://www.wrappixel.com/templates/maruti-admin/" />
-    <link rel="stylesheet" href="{{ asset('public/student/css/bootstrap.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('public/student/css/bootstrap-responsive.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('public/student/css/fullcalendar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('public/student/css/maruti-style.css') }}" />
-    <link rel="stylesheet" href="{{ asset('public/student/css/maruti-media.css') }}" class="skin-color" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('public/student/img/favicon.png') }}">
-    <link rel="stylesheet" href="{{ asset('public/student/css/student.css') }}">
-</head>
-
-<body>
-
-<!--Header-part-->
-<div id="header">
-    <h1><a href="">Hệ Thống Quản Lý</a></h1>
-</div>
-<!--close-Header-part-->
-
-<!--top-Header-messaages-->
-<div class="btn-group rightzero">
-    <a class="top_message tip-left" title="Manage Files">
-        <i class="icon-file"></i>
-    </a>
-    <a class="top_message tip-bottom" title="Manage Users">
-        <i class="icon-user"></i>
-    </a>
-    <a class="top_message tip-bottom" title="Manage Comments">
-        <i class="icon-comment"></i>
-        <span class="label label-important">5</span>
-    </a>
-    <a class="top_message tip-bottom" title="Manage Orders">
-        <i class="icon-shopping-cart"></i>
-    </a>
-</div>
-<!--close-top-Header-messaages-->
-
-<!--top-Header-menu-->
-<div id="user-nav" class="navbar navbar-inverse">
-    <ul class="nav">
-        <li class="">
-            <a title="" href="#">
-                <i class="icon icon-user"></i>
-                <span class="text">Thông tin</span>
-            </a>
-        </li>
-        <li class="">
-            <a title="" href="">
-                <i class="icon icon-share-alt"></i>
-                <span class="text">Đăng xuất</span>
-            </a>
-        </li>
-    </ul>
-</div>
-<!--close-top-Header-menu-->
-
-<div id="sidebar">
-    <a href="#" class="visible-phone"><i class="icon icon-home"></i> Trang chủ</a>
-    <ul>
-        <li class="active"><a href=""><i class="icon icon-home"></i> <span>Trang chủ</span></a> </li>
-        <li> <a href=""><i class="icon icon-signal"></i> <span>Thi trực tuyến</span></a> </li>
-        <li> <a href=""><i class="icon icon-inbox"></i> <span>Học Phần</span></a> </li>
-        <li><a href=""><i class="icon icon-th"></i> <span>Kết quả học</span></a></li>
-        <li><a href=""><i class="icon icon-fullscreen"></i> <span>Phòng học</span></a></li>
-    </ul>
-</div>
-<div id="content">
-    <div id="content-header">
-        <div id="breadcrumb">
-        </div>
-    </div>
+@extends('student.layout.master')
+@section('title', 'Student')
+@section('content')
 
     <div class="container-fluid">
 
@@ -133,53 +51,7 @@
                 </ul>
             </div>
         </div>
-
     </div>
-</div>
-</div>
-</div>
-<div class="row-fluid">
-    <div id="footer" class="span12"> 2020 &copy; Hệ thống quản lý sinh viên
-        <a href=""></a>
-    </div>
-</div>
-<script src="{{ asset('public/student/js/excanvas.min.js') }}"></script>
-<script src="{{ asset('public/student/js/jquery.min.js') }}"></script>
-<script src="{{ asset('public/student/js/jquery.ui.custom.js') }}"></script>
-<script src="{{ asset('public/student/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('public/student/js/jquery.flot.min.js') }}"></script>
-<script src="{{ asset('public/student/js/jquery.flot.resize.min.js') }}"></script>
-<script src="{{ asset('public/student/js/jquery.peity.min.js') }}"></script>
-<script src="{{ asset('public/student/js/fullcalendar.min.js') }}"></script>
-<script src="{{ asset('public/student/js/maruti.js') }}"></script>
-<script src="{{ asset('public/student/js/maruti.dashboard.js') }}"></script>
-<script src="{{ asset('public/student/js/maruti.chat.js') }}"></script>
+@endsection
 
 
-<script type="text/javascript">
-    // This function is called from the pop-up menus to transfer to
-    // a different page. Ignore if the value returned is a null string:
-    function goPage(newURL) {
-
-        // if url is empty, skip the menu dividers and reset the menu selection to default
-        if (newURL != "") {
-
-            // if url is "-", it is this page -- reset the menu:
-            if (newURL == "-") {
-                resetMenu();
-            }
-            // else, send page to designated URL
-            else {
-                document.location.href = newURL;
-            }
-        }
-    }
-
-    // resets the menu selection upon entry to this page:
-    function resetMenu() {
-        document.gomenu.selector.selectedIndex = 2;
-    }
-</script>
-</body>
-
-</html>
