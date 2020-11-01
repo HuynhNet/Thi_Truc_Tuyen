@@ -11,8 +11,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2295e35e-14d1-4659-b7df-072f84f87448" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/student/css/student.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/index_student.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/exam_online.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/layout/header_student.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/layout/master.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/index.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/login.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/register.blade.php" afterDir="false" />
@@ -21,6 +22,9 @@
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/master.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../demo/.idea/demo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/student/css/maruti-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/student/css/maruti-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/index_student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/index_student.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
     </list>
@@ -177,7 +181,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ThucPhamChucNang" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -201,7 +205,7 @@
       <workItem from="1604065181322" duration="8718000" />
       <workItem from="1604152718295" duration="10324000" />
       <workItem from="1604164340333" duration="1666000" />
-      <workItem from="1604204519952" duration="2367000" />
+      <workItem from="1604204519952" duration="12373000" />
     </task>
     <servers />
   </component>
@@ -221,10 +225,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604156149385">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604218825998">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604156149385" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604218825998" />
     <state x="184" y="9" key="SettingsEditor" timestamp="1604165042165">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

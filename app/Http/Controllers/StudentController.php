@@ -12,9 +12,8 @@ class StudentController extends Controller
     }
 
 
-    public function create()
-    {
-        //
+    public function examOnline(){
+        return view('student.exam_online');
     }
 
 
