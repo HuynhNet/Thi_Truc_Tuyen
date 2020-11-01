@@ -11,12 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2295e35e-14d1-4659-b7df-072f84f87448" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/Test_VNPT.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Test_VNPT/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/student/css/student.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/index_student.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/index.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/login.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/register.blade.php" afterDir="false" />
@@ -25,6 +21,7 @@
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/master.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../demo/.idea/demo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +165,9 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1jQGDnfoZbH5vxTJvAHSwcc3PGS" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -178,8 +177,9 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../demo" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -198,7 +198,10 @@
       <updated>1603728785171</updated>
       <workItem from="1603728786308" duration="1946000" />
       <workItem from="1603989026428" duration="318000" />
-      <workItem from="1604065181322" duration="6401000" />
+      <workItem from="1604065181322" duration="8718000" />
+      <workItem from="1604152718295" duration="10324000" />
+      <workItem from="1604164340333" duration="1666000" />
+      <workItem from="1604204519952" duration="2367000" />
     </task>
     <servers />
   </component>
@@ -218,10 +221,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1603985061220">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604156149385">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1603985061220" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604156149385" />
+    <state x="184" y="9" key="SettingsEditor" timestamp="1604165042165">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604165042165" />
+    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1604157872423">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1604157872423" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1604164168953">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1604164168953" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
