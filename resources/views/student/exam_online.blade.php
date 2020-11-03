@@ -24,7 +24,7 @@
                     <hr style="border-bottom: 1px solid black;">
 
                     <h5><strogn>- Thi cuối kỳ</strogn></h5>
-                    <span><a href="">Bắt đầu thi</a></span>
+                    <span><a href="{{ url('/check-account') }}">Bắt đầu thi</a></span>
                     <hr style="border-bottom: 1px solid black;">
 
                     <h5><strogn>- Thông báo đổi phòng học</strogn></h5>
