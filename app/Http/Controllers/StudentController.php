@@ -18,7 +18,7 @@ class StudentController extends Controller
 
 
     public function checkAccount(Request $request){
-
+        return view('student.check_account');
     }
 
 
