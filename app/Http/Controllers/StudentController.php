@@ -17,9 +17,8 @@ class StudentController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
-        //
+    public function checkAccount(Request $request){
+
     }
 
 
