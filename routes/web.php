@@ -13,11 +13,11 @@ Route::get('page-home-teacher', [TeacherController::class, 'page_home_teacher'])
 
 
 
-
 //Trang chủ học sinh
 Route::get('student', [StudentController::class, 'studentHome']);
 Route::get('/exam-online', [StudentController::class, 'examOnline']);
 Route::get('/check-account', [StudentController::class, 'checkAccount']);
+Route::get('/task', [StudentController::class, 'task']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

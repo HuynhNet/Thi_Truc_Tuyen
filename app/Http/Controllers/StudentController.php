@@ -22,9 +22,9 @@ class StudentController extends Controller
     }
 
 
-    public function show($id)
-    {
-        //
+    public function task(){
+
+        return view('student.task');
     }
 
     public function edit($id)
