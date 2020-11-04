@@ -11,7 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="856ad58a-a23d-4a88-b265-f6ffd7da89b2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/student/task.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/check_account.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/index.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/login.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/register.blade.php" afterDir="false" />
@@ -21,6 +21,7 @@
       <change afterPath="$PROJECT_DIR$/../demo/.idea/demo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
     </list>
@@ -177,7 +178,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mekongprogram.vn" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -205,6 +206,9 @@
       <workItem from="1604248920522" duration="39000" />
       <workItem from="1604280563549" duration="10000" />
       <workItem from="1604500856570" duration="3021000" />
+      <workItem from="1604416799871" duration="1414000" />
+      <workItem from="1604466483544" duration="19000" />
+      <workItem from="1604502362735" duration="403000" />
     </task>
     <servers />
   </component>
@@ -224,10 +228,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604280571742">
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604466502096">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604280571742" />
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604466502096" />
     <state x="184" y="9" key="SettingsEditor" timestamp="1604165042165">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
