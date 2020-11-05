@@ -13,6 +13,21 @@
     <list default="true" id="2295e35e-14d1-4659-b7df-072f84f87448" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/student/check_account.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/.idea/demo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +114,6 @@
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/hamcrest/hamcrest-php" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
@@ -157,6 +171,7 @@
       <path value="$PROJECT_DIR$/vendor/arrilot/laravel-widgets" />
       <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
       <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jQGDnfoZbH5vxTJvAHSwcc3PGS" />
@@ -186,7 +201,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2295e35e-14d1-4659-b7df-072f84f87448" name="Default Changelist" comment="" />
+      <changelist id="856ad58a-a23d-4a88-b265-f6ffd7da89b2" name="Default Changelist" comment="" />
       <created>1603728785171</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -197,8 +212,17 @@
       <workItem from="1604152718295" duration="10324000" />
       <workItem from="1604164340333" duration="1666000" />
       <workItem from="1604204519952" duration="12975000" />
+<<<<<<< HEAD
       <workItem from="1604559300733" duration="20000" />
       <workItem from="1604596055272" duration="1718000" />
+=======
+      <workItem from="1604248920522" duration="39000" />
+      <workItem from="1604280563549" duration="10000" />
+      <workItem from="1604500856570" duration="3021000" />
+      <workItem from="1604416799871" duration="1414000" />
+      <workItem from="1604466483544" duration="19000" />
+      <workItem from="1604502362735" duration="403000" />
+>>>>>>> 453ff784ec957e64dd37cff42fcd3c5e5cafc526
     </task>
     <servers />
   </component>
@@ -218,10 +242,17 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604559317967">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604559317967" />
+=======
+    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604466502096">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604466502096" />
+>>>>>>> 453ff784ec957e64dd37cff42fcd3c5e5cafc526
     <state x="184" y="9" key="SettingsEditor" timestamp="1604165042165">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -17,15 +17,14 @@ class StudentController extends Controller
     }
 
 
-    public function store(Request $request)
-    {
-        //
+    public function checkAccount(Request $request){
+        return view('student.check_account');
     }
 
 
-    public function show($id)
-    {
-        //
+    public function task(){
+
+        return view('student.task');
     }
 
     public function edit($id)
