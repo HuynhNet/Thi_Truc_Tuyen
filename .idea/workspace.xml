@@ -11,22 +11,76 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2295e35e-14d1-4659-b7df-072f84f87448" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/student/check_account.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/voyager/users/add_student.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/vendor/voyager/users/browse.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/index.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/login.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/register.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/footer.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/header.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TraCuuDuocLieu/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TraCuuDuocLieu/.idea/phpunit.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../demo/.idea/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../freshfoodshop/public/home/css/css/rating.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post1-cropped.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post1-medium.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post1-small.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post2-cropped.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post2-medium.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post2-small.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post3-cropped.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post3-medium.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post3-small.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post4-cropped.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post4-medium.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post4-small.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/posts/post4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/storage/users/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/doc/03-cli.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/doc/03-cli.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/doc/06-config.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/doc/06-config.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/doc/07-runtime.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/doc/07-runtime.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/doc/articles/custom-installers.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/doc/articles/custom-installers.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/res/composer-schema.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/res/composer-schema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Autoload/AutoloadGenerator.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Autoload/AutoloadGenerator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Command/CheckPlatformReqsCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Command/CheckPlatformReqsCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Command/ConfigCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Command/ConfigCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Command/DiagnoseCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Command/DiagnoseCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Compiler.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Compiler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Composer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Composer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Downloader/ArchiveDownloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Downloader/ArchiveDownloader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Downloader/FileDownloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Downloader/FileDownloader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Downloader/PathDownloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Downloader/PathDownloader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Installer.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Installer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Installer/InstallerInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Installer/InstallerInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Package/Archiver/ZipArchiver.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Package/Archiver/ZipArchiver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Package/Locker.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Package/Locker.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/FilesystemRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/FilesystemRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/Vcs/BitbucketDriver.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/Vcs/BitbucketDriver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/Vcs/GitBitbucketDriver.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/Vcs/GitBitbucketDriver.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/WritableArrayRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/WritableArrayRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/WritableRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Repository/WritableRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Util/Filesystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Util/Filesystem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Util/Http/CurlDownloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Util/Http/CurlDownloader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Util/HttpDownloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Util/HttpDownloader.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Util/RemoteFilesystem.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/composer/src/Composer/Util/RemoteFilesystem.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/opis/closure/.github/workflows/tests.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/opis/closure/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/opis/closure/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/opis/closure/src/ReflectionClosure.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/opis/closure/src/ReflectionClosure.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/opis/closure/src/SerializableClosure.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/opis/closure/src/SerializableClosure.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -187,7 +241,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TraCuuDuocLieu" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -201,7 +255,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="856ad58a-a23d-4a88-b265-f6ffd7da89b2" name="Default Changelist" comment="" />
+      <changelist id="2295e35e-14d1-4659-b7df-072f84f87448" name="Default Changelist" comment="" />
       <created>1603728785171</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -212,17 +266,13 @@
       <workItem from="1604152718295" duration="10324000" />
       <workItem from="1604164340333" duration="1666000" />
       <workItem from="1604204519952" duration="12975000" />
-<<<<<<< HEAD
-      <workItem from="1604559300733" duration="20000" />
-      <workItem from="1604596055272" duration="1718000" />
-=======
       <workItem from="1604248920522" duration="39000" />
       <workItem from="1604280563549" duration="10000" />
       <workItem from="1604500856570" duration="3021000" />
       <workItem from="1604416799871" duration="1414000" />
       <workItem from="1604466483544" duration="19000" />
       <workItem from="1604502362735" duration="403000" />
->>>>>>> 453ff784ec957e64dd37cff42fcd3c5e5cafc526
+      <workItem from="1604719174635" duration="13065000" />
     </task>
     <servers />
   </component>
@@ -242,17 +292,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-<<<<<<< HEAD
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604559317967">
+    <state x="182" y="120" key="FileChooserDialogImpl" timestamp="1604755905108">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604559317967" />
-=======
-    <state x="463" y="119" key="FileChooserDialogImpl" timestamp="1604466502096">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="119" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604466502096" />
->>>>>>> 453ff784ec957e64dd37cff42fcd3c5e5cafc526
+    <state x="182" y="120" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1604755905108" />
     <state x="184" y="9" key="SettingsEditor" timestamp="1604165042165">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -261,10 +304,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1604157872423" />
-    <state x="339" y="162" key="run.anything.popup" timestamp="1604164168953">
+    <state x="339" y="162" key="run.anything.popup" timestamp="1604762965060">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1604164168953" />
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1604762965060" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

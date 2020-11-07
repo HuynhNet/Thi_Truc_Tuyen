@@ -14,7 +14,6 @@ namespace Composer\Downloader;
 
 use Composer\Config;
 use Composer\Cache;
-use Composer\Factory;
 use Composer\IO\IOInterface;
 use Composer\IO\NullIO;
 use Composer\Package\Comparer\Comparer;
@@ -22,7 +21,6 @@ use Composer\DependencyResolver\Operation\UpdateOperation;
 use Composer\DependencyResolver\Operation\InstallOperation;
 use Composer\DependencyResolver\Operation\UninstallOperation;
 use Composer\Package\PackageInterface;
-use Composer\Package\Version\VersionParser;
 use Composer\Plugin\PluginEvents;
 use Composer\Plugin\PostFileDownloadEvent;
 use Composer\Plugin\PreFileDownloadEvent;
@@ -247,7 +245,7 @@ class FileDownloader implements DownloaderInterface, ChangeReportInterface
                 if ($io->isDebug()) {
                     $io->writeError('    Failed downloading '.$package->getName().': ['.get_class($e).'] '.$e->getCode().': '.$e->getMessage());
                     $io->writeError('    Trying the next URL for '.$package->getName());
-                } elseif (count($urls)) {
+                } else {
                     $io->writeError('    Failed downloading '.$package->getName().', trying the next URL ('.$e->getCode().': '.$e->getMessage().')');
                 }
 
@@ -293,7 +291,7 @@ class FileDownloader implements DownloaderInterface, ChangeReportInterface
         }
 
         foreach ($dirsToCleanUp as $dir) {
-            if (is_dir($dir) && $this->filesystem->isDirEmpty($dir)) {
+            if (is_dir($dir) && $this->filesystem->isDirEmpty($dir) && realpath($dir) !== getcwd()) {
                 $this->filesystem->removeDirectory($dir);
             }
         }
@@ -310,7 +308,7 @@ class FileDownloader implements DownloaderInterface, ChangeReportInterface
 
         $this->filesystem->emptyDirectory($path);
         $this->filesystem->ensureDirectoryExists($path);
-        $this->filesystem->rename($this->getFileName($package, $path), $path . pathinfo(parse_url($package->getDistUrl(), PHP_URL_PATH), PATHINFO_BASENAME));
+        $this->filesystem->rename($this->getFileName($package, $path), $path . '/' . pathinfo(parse_url($package->getDistUrl(), PHP_URL_PATH), PATHINFO_BASENAME));
     }
 
     /**
@@ -429,6 +427,7 @@ class FileDownloader implements DownloaderInterface, ChangeReportInterface
         $e = null;
         $output = '';
 
+        $targetDir = Filesystem::trimTrailingSlash($targetDir);
         try {
             if (is_dir($targetDir.'_compare')) {
                 $this->filesystem->removeDirectory($targetDir.'_compare');
