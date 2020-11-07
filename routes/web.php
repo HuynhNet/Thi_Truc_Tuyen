@@ -21,4 +21,7 @@ Route::get('/task', [StudentController::class, 'task']);
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    Route::get('add-student', [StudentController::class, 'addStudent']);
+    Route::post('post-add-student', [StudentController::class, 'postAddStudent'])->name('postAddStudent');
 });
