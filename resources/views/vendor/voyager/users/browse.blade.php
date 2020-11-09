@@ -25,7 +25,7 @@
         <div class="row">
             <div class="col-md-12">
                 <a href="{{ url('/admin/add-student') }}" class="btn btn-primary">Thêm HS</a>
-                <a href="" class="btn btn-success">Thêm GV</a>
+                <a href="{{ url('/admin/add-teacher') }}" class="btn btn-success">Thêm GV</a>
                 <a href="" class="btn btn-danger">Xóa</a>
             </div>
         </div>
@@ -103,69 +103,71 @@
                 <div class="table-responsive">
                     <table class="table-hover">
                         <thead>
-                        <tr>
-                            <th scope="col">STT</th>
-                            <th scope="col">Họ và tên</th>
-                            <th scope="col">Mã GV</th>
-                            <th scope="col">Giới tính</th>
-                            <th scope="col">Ngày sinh</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Điện thoại</th>
-                            <th scope="col">Địa chỉ</th>
-                            <th scope="col" colspan="2">Tùy chọn</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">STT</th>
+                                <th scope="col">Họ và tên</th>
+                                <th scope="col">Mã GV</th>
+                                <th scope="col">Giới tính</th>
+                                <th scope="col">Ngày sinh</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Điện thoại</th>
+                                <th scope="col">Địa chỉ</th>
+                                <th scope="col" colspan="2">Tùy chọn</th>
+                            </tr>
                         </thead>
                         <tbody id="users-crud">
+                        @php( $gv = DB::table('users')->where('role_id', 3)->get())
+                        @foreach($gv as $key => $gv)
+                            <tr id="tr_{{ $gv->id }}">
 
-                                <tr id="user_id_1">
+                                <td data-label="STT">
+                                    {{ $key + 1 }}
+                                </td>
 
-                                    <td data-label="STT">
-                                        1
-                                    </td>
+                                <td data-label="Họ và tên">
+                                    {{ $gv->name }}
+                                </td>
 
-                                    <td data-label="Họ và tên">
-                                        Nguyễn Văn A
-                                    </td>
+                                <td data-label="Mã GV">
+                                    {{ $gv->ma_gv }}
+                                </td>
 
-                                    <td data-label="Mã GV">
-                                        GV1457369
-                                    </td>
+                                <td data-label="Giới tính">
+                                    {{ $gv->gioi_tinh }}
+                                </td>
 
-                                    <td data-label="Giới tính">
-                                        Nam
-                                    </td>
+                                <td data-label="Ngày sinh">
+                                    {{ $gv->ngay_sinh }}
+                                </td>
 
-                                    <td data-label="Ngày sinh">
-                                        10-09-1980
-                                    </td>
+                                <td data-label="Email">
+                                    {{ $gv->email }}
+                                </td>
 
-                                    <td data-label="Email">
-                                        nguyena@gmail.com
-                                    </td>
+                                <td data-label="Điện thoại">
+                                    {{ $gv->sdt }}
+                                </td>
 
-                                    <td data-label="Điện thoại">
-                                        0964736846
-                                    </td>
+                                <td data-label="Địa chỉ">
+                                    {{ $gv->dia_chi }}
+                                </td>
 
-                                    <td data-label="Địa chỉ">
-                                        Cần Thơ, Việt Nam
-                                    </td>
+                                <td data-label="Tùy chọn">
+                                    <a class="btn btn-primary" role="button" title="Thay đổi quyền" href="">
+                                        <i class="fa fa-exchange" aria-hidden="true"></i>
+                                    </a>
+                                </td>
 
-                                    <td data-label="Tùy chọn">
-                                        <a class="btn btn-primary" role="button" title="Thay đổi quyền" href="">
-                                            <i class="fa fa-exchange" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
+                                <td data-label="Tùy chọn">
+                                    <a class="btn btn-danger" role="button" title="Xóa"
+                                       onclick="return confirm('Bạn có chắc không?');"
+                                       href="">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                </td>
 
-                                    <td data-label="Tùy chọn">
-                                        <a class="btn btn-danger" role="button" title="Xóa"
-                                           onclick="return confirm('Bạn có chắc không?');"
-                                           href="">
-                                            <i class="fa fa-trash" aria-hidden="true"></i>
-                                        </a>
-                                    </td>
-
-                                </tr>
+                            </tr>
+                        @endforeach
 
                         </tbody>
                     </table>
@@ -191,57 +193,58 @@
                         </tr>
                         </thead>
                         <tbody id="users-crud">
+                        @php( $hs = DB::table('users')->where('role_id', 4)->get())
+                        @foreach($hs as $key => $hs)
+                            <tr id="tr_{{ $hs->id }}">
 
-                        <tr id="user_id_1">
+                                <td data-label="STT">
+                                    {{ $key + 1 }}
+                                </td>
 
-                            <td data-label="STT">
-                                1
-                            </td>
+                                <td data-label="Họ và tên">
+                                    {{ $hs->name }}
+                                </td>
 
-                            <td data-label="Họ và tên">
-                                Nguyễn Văn An
-                            </td>
+                                <td data-label="Mã GV">
+                                    {{ $hs->ma_hs }}
+                                </td>
 
-                            <td data-label="Mã GV">
-                                HS145736
-                            </td>
+                                <td data-label="Giới tính">
+                                    {{ $hs->gioi_tinh }}
+                                </td>
 
-                            <td data-label="Giới tính">
-                                Nam
-                            </td>
+                                <td data-label="Ngày sinh">
+                                    {{ $hs->ngay_sinh }}
+                                </td>
 
-                            <td data-label="Ngày sinh">
-                                10-09-1998
-                            </td>
+                                <td data-label="Email">
+                                    {{ $hs->email }}
+                                </td>
 
-                            <td data-label="Email">
-                                an@gmail.com
-                            </td>
+                                <td data-label="Điện thoại">
+                                    {{ $hs->sdt }}
+                                </td>
 
-                            <td data-label="Điện thoại">
-                                0964736547
-                            </td>
+                                <td data-label="Địa chỉ">
+                                    {{ $hs->dia_chi }}
+                                </td>
 
-                            <td data-label="Địa chỉ">
-                                Cần Thơ, Việt Nam
-                            </td>
+                                <td data-label="Tùy chọn">
+                                    <a class="btn btn-primary" role="button" title="Thay đổi quyền" href="">
+                                        <i class="fa fa-exchange" aria-hidden="true"></i>
+                                    </a>
+                                </td>
 
-                            <td data-label="Tùy chọn">
-                                <a class="btn btn-primary" role="button" title="Thay đổi quyền" href="">
-                                    <i class="fa fa-exchange" aria-hidden="true"></i>
-                                </a>
-                            </td>
+                                <td data-label="Tùy chọn">
+                                    <a class="btn btn-danger" role="button" title="Xóa"
+                                       onclick="return confirm('Bạn có chắc không?');"
+                                       href="">
+                                        <i class="fa fa-trash" aria-hidden="true"></i>
+                                    </a>
+                                </td>
 
-                            <td data-label="Tùy chọn">
-                                <a class="btn btn-danger" role="button" title="Xóa"
-                                   onclick="return confirm('Bạn có chắc không?');"
-                                   href="">
-                                    <i class="fa fa-trash" aria-hidden="true"></i>
-                                </a>
-                            </td>
-
-                        </tr>
-
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -262,5 +265,17 @@
                 position: 'top-end',
             });
         }
+
+        var msg1 = '{{Session::get('create_teacher')}}';
+        var exist1 = '{{Session::has('create_teacher')}}';
+        if(exist1){
+            swal({
+                title: "Đã thêm giáo viên thành công.",
+                text: "",
+                type: "success",
+                timer: 1200,
+                showConfirmButton: false,
+                position: 'top-end',
+
     </script>
 @stop
