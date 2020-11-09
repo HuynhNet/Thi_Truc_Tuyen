@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\HocSinh;
 use App\Models\User;
 use Illuminate\Http\Request;
 use validate;
@@ -39,6 +40,7 @@ class StudentController extends Controller
     public function postAddStudent(Request $request){
 
         $student = new User;
+        $tbl_student = new HocSinh;
         $student->role_id = 4;
         $student->name = $request->input('name');
         $student->ma_hs = $request->input('code');
@@ -49,6 +51,9 @@ class StudentController extends Controller
         $student->ngay_sinh = $request->input('date');
         $student->dia_chi = $request->input('address');
         $student->save();
+
+        $tbl_student->ma_hs = $request->input('code');
+        $tbl_student->save();
 
         $create_student = Session::get('create_student');
         Session::put('create_student');
