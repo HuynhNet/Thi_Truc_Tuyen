@@ -9,6 +9,21 @@ Route::get('page-login', [TeacherController::class, 'page_login']);
 
 //Trang chủ giáo viên
 Route::get('page-home-teacher', [TeacherController::class, 'page_home_teacher']);
+
+//Trang thông tin hồ sơ
+Route::get('page-profile-teacher', [TeacherController::class, 'page_profile_teacher']);
+
+//Trang môn học
+Route::get('page-subject', [TeacherController::class, 'page_subject']);
+
+//Trang chỉnh sửa môn học
+Route::get('edit-subject', [TeacherController::class, 'edit_subject']);
+
+//Trang xem câu hỏi môn học môn học
+Route::get('view-question-subject', [TeacherController::class, 'view_question_subject']);
+
+//Trang chỉnh sửa câu hỏi môn học
+Route::get('edit-question-subject', [TeacherController::class, 'edit_question_subject']);
 //================================================================
 
 
