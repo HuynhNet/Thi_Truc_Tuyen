@@ -45,45 +45,47 @@
                 </div>
             </div>
 
-            <div class="span8" style="border: 1px solid black; padding: 10px 10px; border-radius: 5px;">
-                <strong>Câu 1:</strong>
-                <span>Giá cả sản xuất tư bản chủ nghĩa bao gồm những bộ phận nào?</span>
-                <div class="form-check" style="padding-left: 10px;">
-                    <label class="form-check-label" style="margin-top: 10px;">
+            <div class="span8" id="cauhoi" style="border: 1px solid black;padding: 10px 10px;border-radius: 5px;">
+                <strong style="color: black; font-size: 17px;">Câu 1:</strong>
+                <strong style="color: black; font-size: 17px;">Giá cả sản xuất tư bản chủ nghĩa bao gồm những bộ phận nào?</strong>
+                <div class="form-check" style="padding-left: 10px; font-size: 16px;">
+                    <label class="form-check-label" style="margin-top: 10px; font-size: 16px;">
                         <input style="margin-right: 5px; margin-bottom: 5px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                         A: Chi phí sản xuất cộng với lợi nhuận bình quân
                     </label>
-                    <label class="form-check-label" style="margin-top: 10px;">
-                        <input style="margin-right: 5px; margin-bottom: 5px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+                    <label class="form-check-label" style="margin-top: 10px; font-size: 16px;">
+                        <input style="margin-right: 5px; margin-bottom: 5px; font-size: 16px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                         B: Toàn bộ chi phí bỏ ra trong quá trình sản xuất.
                     </label>
-                    <label class="form-check-label" style="margin-top: 10px;">
-                        <input style="margin-right: 5px; margin-bottom: 5px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+                    <label class="form-check-label" style="margin-top: 10px; font-size: 16px;">
+                        <input style="margin-right: 5px; margin-bottom: 5px; font-size: 16px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                         C: Giá cả thị trường trừ đi lợi nhuận của nhà tư bản công nghiệp.
                     </label>
-                    <label class="form-check-label" style="margin-top: 10px;">
-                        <input style="margin-right: 5px; margin-bottom: 5px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
+                    <label class="form-check-label" style="margin-top: 10px; font-size: 16px;">
+                        <input style="margin-right: 5px; margin-bottom: 5px; font-size: 16px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                         D: Giá trị của hàng hoá cộng với lợi nhuận của nhà tư bản công nghiệp.
                     </label>
                 </div>
                 <br>
-                <strong>Câu 2:</strong>
-                <span>Ý nghĩa của việc phân chia tư bản thành tư bản bất biến và tư bản khả biến?</span>
+                <strong style="color: black; font-size: 17px;">Câu 2:</strong>
+                <strong style="color: black; font-size: 17px;">
+                    Ý nghĩa của việc phân chia tư bản thành tư bản bất biến và tư bản khả biến?
+                </strong>
                 <div class="form-check" style="padding-left: 10px;">
-                    <label class="form-check-label" style="margin-top: 10px;">
+                    <label class="form-check-label" style="margin-top: 10px; font-size: 16px;">
                         <input style="margin-right: 5px; margin-bottom: 5px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                         A: Để cải tiến quản lý tư bản.
                     </label>
-                    <label class="form-check-label" style="margin-top: 10px;">
+                    <label class="form-check-label" style="margin-top: 10px; font-size: 16px;">
                         <input style="margin-right: 5px; margin-bottom: 5px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                         B: Để tăng cường bóc lột công nhân làm thuê.
                     </label>
-                    <label class="form-check-label" style="margin-top: 10px;">
+                    <label class="form-check-label" style="margin-top: 10px; font-size: 16px;">
                         <input style="margin-right: 5px; margin-bottom: 5px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                         C: Để xác định vai trò của mỗi loại tư bản đối với việc sản xuất ra giá trị thặng dư và phê
                             phán quan điểm máy móc, tư bản tạo ra giá trị thặng dư cho chủ sở hữu nó.
                     </label>
-                    <label class="form-check-label" style="margin-top: 10px;">
+                    <label class="form-check-label" style="margin-top: 10px; font-size: 16px;">
                         <input style="margin-right: 5px; margin-bottom: 5px;" type="checkbox" class="form-check-input" name="" id="" value="checkedValue">
                         D: Để tìm ra cơ cấu của mỗi loại tư bản.
                     </label>
