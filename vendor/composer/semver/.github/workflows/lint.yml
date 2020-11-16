@@ -1,8 +1,8 @@
 name: "PHP Lint"
 
 on:
-  push:
-  pull_request:
+  - push
+  - pull_request
 
 jobs:
   tests:
@@ -24,8 +24,6 @@ jobs:
         uses: "shivammathur/setup-php@v2"
         with:
           coverage: "none"
-          extensions: "intl"
-          ini-values: "memory_limit=-1"
           php-version: "${{ matrix.php-version }}"
 
       - name: "Lint PHP files"

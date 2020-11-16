@@ -37,7 +37,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="ion ion-clipboard mr-1"></i>
-                                MÔN <b>[ BIÊN PHÒNG CƠ BẢN 1 ]</b>
+                                CÂU HỎI MÔN <b>[ BIÊN PHÒNG CƠ BẢN 1 ]</b>
                             </h3>
                             <div class="card-tools">
                                 <a class="btn btn-success btn-xs" href="#" role="button" data-toggle="modal" data-target="#modelId">
