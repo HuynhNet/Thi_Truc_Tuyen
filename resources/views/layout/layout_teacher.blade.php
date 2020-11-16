@@ -110,14 +110,16 @@
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Right navbar links -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Messages Dropdown Menu -->
-            <li class="nav-item">
-                <a class="nav-link text-danger font-weight-bold" href="#" role="button">
-                    <i class="fa fa-sign-out"></i> Đăng xuất
-                </a>
-            </li>
-        </ul>
+        @if(Auth::check())
+            <ul class="navbar-nav ml-auto">
+                <!-- Messages Dropdown Menu -->
+                <li class="nav-item">
+                    <a class="nav-link text-danger font-weight-bold" href="#" role="button">
+                        <i class="fa fa-sign-out"></i> Đăng xuất
+                    </a>
+                </li>
+            </ul>
+        @endif
     </nav>
     <!-- /.navbar -->
 
@@ -134,12 +136,14 @@
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                <div class="image">
-                    <img src="{{ url('public/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
-                </div>
-                <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
-                </div>
+                @if(Auth::check())
+                    <div class="image">
+                        <img src="{{ url('public/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                    </div>
+                @endif
             </div>
 
             <!-- Sidebar Menu -->

@@ -70,7 +70,7 @@ class TeacherController extends Controller
         $tbl_teacher = new GiaoVien;
         $teacher->role_id = 3;
         $teacher->name = $request->input('name');
-        $teacher->ma_hs = $request->input('code');
+        $teacher->ma_gv = $request->input('code');
         $teacher->email = $request->input('email');
         $teacher->password = Hash::make($request->input('password'));
         $teacher->gioi_tinh = $request->input('gioiTinh');
