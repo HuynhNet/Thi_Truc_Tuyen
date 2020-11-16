@@ -53,6 +53,13 @@ class TeacherController extends Controller
         return view('teacher.page.view_question_subject');
     }
 
+    //Trang loại kiểm tra thi cử
+    protected function page_type_test()
+    {
+        return view('teacher.page.page_type_test');
+    }
+    //=====================================================================
+
     public function addTeacher(){
         return view('vendor.voyager.users.add_teacher');
     }
@@ -78,7 +85,7 @@ class TeacherController extends Controller
         $create_teacher = Session::get('create_teacher');
         Session::put('create_teacher');
 
-        return redirect('/admin/users')->with('create_teacher', 'Đã thêm học sinh thành công    ');
+        return redirect('/admin/users')->with('create_teacher', 'Đã thêm học sinh thành công');
 
     }
 }

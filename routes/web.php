@@ -24,6 +24,9 @@ Route::get('view-question-subject', [TeacherController::class, 'view_question_su
 
 //Trang chỉnh sửa câu hỏi môn học
 Route::get('edit-question-subject', [TeacherController::class, 'edit_question_subject']);
+
+//Trang loại kiểm tra thi cử
+Route::get('page-type-test', [TeacherController::class, 'page_type_test']);
 //================================================================
 
 

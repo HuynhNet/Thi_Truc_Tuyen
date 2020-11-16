@@ -54,12 +54,12 @@ use Composer\Package\PackageInterface;
 use Composer\Package\RootPackageInterface;
 use Composer\Repository\CompositeRepository;
 use Composer\Repository\InstalledArrayRepository;
+use Composer\Repository\InstalledRepositoryInterface;
 use Composer\Repository\InstalledRepository;
 use Composer\Repository\RootPackageRepository;
 use Composer\Repository\PlatformRepository;
 use Composer\Repository\RepositoryInterface;
 use Composer\Repository\RepositoryManager;
-use Composer\Repository\WritableRepositoryInterface;
 use Composer\Script\ScriptEvents;
 
 /**
@@ -353,15 +353,24 @@ class Installer
         return 0;
     }
 
-    protected function doUpdate(RepositoryInterface $localRepo, $doInstall)
+    protected function doUpdate(InstalledRepositoryInterface $localRepo, $doInstall)
     {
         $platformRepo = $this->createPlatformRepo(true);
         $aliases = $this->getRootAliases(true);
 
         $lockedRepository = null;
 
-        if ($this->locker->isLocked()) {
-            $lockedRepository = $this->locker->getLockedRepository(true);
+        try {
+            if ($this->locker->isLocked()) {
+                $lockedRepository = $this->locker->getLockedRepository(true);
+            }
+        } catch (\Seld\JsonLint\ParsingException $e) {
+            if ($this->updateAllowList || $this->updateMirrors) {
+                // in case we are doing a partial update or updating mirrors, the lock file is needed so we error
+                throw $e;
+            }
+            // otherwise, ignoring parse errors as the lock file will be regenerated from scratch when
+            // doing a full update
         }
 
         if ($this->updateAllowList) {
@@ -386,8 +395,6 @@ class Installer
 
         $request = $this->createRequest($this->fixedRootPackage, $platformRepo, $lockedRepository);
 
-        $this->io->writeError('<info>Updating dependencies</info>');
-
         // if we're updating mirrors we want to keep exactly the same versions installed which are in the lock file, but we want current remote metadata
         if ($this->updateMirrors && $lockedRepository) {
             foreach ($lockedRepository->getPackages() as $lockedPackage) {
@@ -410,6 +417,8 @@ class Installer
         }
 
         $pool = $repositorySet->createPool($request, $this->io, $this->eventDispatcher);
+
+        $this->io->writeError('<info>Updating dependencies</info>');
 
         // solve dependencies
         $solver = new Solver($policy, $pool, $this->io);
@@ -603,11 +612,11 @@ class Installer
     }
 
     /**
-     * @param RepositoryInterface $localRepo
+     * @param InstalledRepositoryInterface $localRepo
      * @param bool $alreadySolved Whether the function is called as part of an update command or independently
      * @return int exit code
      */
-    protected function doInstall(RepositoryInterface $localRepo, $alreadySolved = false)
+    protected function doInstall(InstalledRepositoryInterface $localRepo, $alreadySolved = false)
     {
         $this->io->writeError('<info>Installing dependencies from lock file'.($this->devMode ? ' (including require-dev)' : '').'</info>');
 
@@ -708,9 +717,7 @@ class Installer
         }
 
         if ($this->executeOperations) {
-            if ($localRepo instanceof WritableRepositoryInterface) {
-                $localRepo->setDevPackageNames($this->locker->getDevPackageNames());
-            }
+            $localRepo->setDevPackageNames($this->locker->getDevPackageNames());
             $this->installationManager->execute($localRepo, $localRepoTransaction->getOperations(), $this->devMode, $this->runScripts);
         } else {
             foreach ($localRepoTransaction->getOperations() as $operation) {
