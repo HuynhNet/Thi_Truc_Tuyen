@@ -2,13 +2,15 @@
 use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\AdminController;
 //================================================================
 /*TRANG GIÁO VIÊN*/
 //Trang đăng nhập
 Route::get('page-login', [TeacherController::class, 'page_login']);
+Route::post('check-login', [AdminController::class, 'checkLogin'])->name('checkLogin');
 
 //Trang chủ giáo viên
-Route::get('page-home-teacher', [TeacherController::class, 'page_home_teacher']);
+Route::get('page-home-teacher', [TeacherController::class, 'page_home_teacher'])->name('homeTeacher');
 
 //Trang thông tin hồ sơ
 Route::get('page-profile-teacher', [TeacherController::class, 'page_profile_teacher']);
@@ -32,7 +34,7 @@ Route::get('page-type-test', [TeacherController::class, 'page_type_test']);
 
 
 //Trang chủ học sinh
-Route::get('student', [StudentController::class, 'studentHome']);
+Route::get('student', [StudentController::class, 'studentHome'])->name('homeStudent');
 Route::get('/exam-online', [StudentController::class, 'examOnline']);
 Route::get('/check-account', [StudentController::class, 'checkAccount']);
 Route::get('/task', [StudentController::class, 'task']);
