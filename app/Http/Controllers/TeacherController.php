@@ -58,6 +58,18 @@ class TeacherController extends Controller
     {
         return view('teacher.page.page_type_test');
     }
+
+    //Trang mức độ kiểm tra thi cử
+    protected function page_level_test()
+    {
+        return view('teacher.page.page_level_test');
+    }
+
+    //Trang học kỳ năm học
+    protected function page_semester_year()
+    {
+        return view('teacher.page.page_semester_year');
+    }
     //=====================================================================
 
     public function addTeacher(){
