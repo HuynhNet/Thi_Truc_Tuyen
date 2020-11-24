@@ -186,15 +186,15 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/UI/buttons.html" class="nav-link">
+                                <a href="{{ url('page-level-test') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Mức độ kiểm tra</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="pages/UI/sliders.html" class="nav-link">
+                                <a href="{{ url('page-semester-year') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Năm học</p>
+                                    <p>Học kỳ - Năm học</p>
                                 </a>
                             </li>
 
