@@ -79,6 +79,19 @@
             document.gomenu.selector.selectedIndex = 2;
         }
     </script>
+
+    <script>
+        function checkLogout(e){
+            if(confirm('Bạn có chắc muốn đăng xuất?')){
+                $.ajax({
+                    url: '{{ route('studentLogout') }}',
+                    method: "get",
+                });
+            }else{
+                e.preventDefault();
+            }
+        }
+    </script>
 </body>
 
 </html>

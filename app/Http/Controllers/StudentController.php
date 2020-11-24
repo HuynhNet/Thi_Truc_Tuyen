@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\HocSinh;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use validate;
 use DB;
 use Illuminate\Support\Facades\Session;
@@ -62,8 +63,8 @@ class StudentController extends Controller
 
     }
 
-    public function destroy($id)
-    {
-        //
+    public function studentLogout(){
+        Auth::logout();
+        return redirect()->route('homeStudent');
     }
 }
