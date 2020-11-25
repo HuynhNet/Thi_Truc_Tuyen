@@ -36,12 +36,12 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="">Nhập năm học</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="Nhập tên mức độ kiểm tra">
+                        <label for="">Năm học</label>
+                        <input type="text" name="" id="" class="form-control" placeholder="Nhập năm học">
                     </div>
                     <div class="form-group">
-                        <label for="">Nhập học kỳ</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="Nhập tên mức độ kiểm tra">
+                        <label for="">Học kỳ</label>
+                        <input type="text" name="" id="" class="form-control" placeholder="Nhập học kỳ">
                     </div>
                 </div>
                 <div class="modal-footer">

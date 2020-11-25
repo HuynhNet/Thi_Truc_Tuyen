@@ -136,14 +136,14 @@
         <div class="sidebar">
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                @if(Auth::check())
+                {{--@if(Auth::check())--}}
                     <div class="image">
                         <img src="{{ url('public/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                        <a href="#" class="d-block">{{--{{ Auth::user()->name }}--}}Văn Tú</a>
                     </div>
-                @endif
+                {{--@endif--}}
             </div>
 
             <!-- Sidebar Menu -->
@@ -201,7 +201,7 @@
                         </ul>
                     </li>
                     <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
+                        <a href="{{ url('page-test-subject') }}" class="nav-link">
                             <i class="nav-icon fa fa-check-square-o"></i>
                             <p>
                                 Đề thi kiểm tra

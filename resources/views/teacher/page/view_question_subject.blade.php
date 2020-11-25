@@ -37,7 +37,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="ion ion-clipboard mr-1"></i>
-                                CÂU HỎI MÔN <b>[ BIÊN PHÒNG CƠ BẢN 1 ]</b>
+                                CÂU HỎI MÔN <b style="text-transform: uppercase;">[ {{ $view_subject->ten_mon_hoc }} ]</b>
                             </h3>
                             <div class="card-tools">
                                 <a class="btn btn-success btn-xs" href="#" role="button" data-toggle="modal" data-target="#modelId">
@@ -127,14 +127,15 @@
     <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="" class="needs-validation" novalidate>
+                <form action="{{ url('import-file-excel') }}" class="needs-validation" novalidate method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-header">
                         <h6 class="modal-title"><b>NHẬP TỆP FILE EXCEL</b></h6>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="">Chọn file Excel</label> <br>
-                            <input type="file" id="file" required/>
+                            <input type="file" required name="fileExcel"/>
                         </div>
                     </div>
                     <div class="modal-footer">

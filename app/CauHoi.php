@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class CauHoi extends Model
 {
-    
+    protected $table = 'cau_hois';
+    protected $primaryKey = 'id';
+    public $timestamps = true;
+    protected $fillable = [
+        'id', 'dap_an_dung', 'mon_hoc', 'noi_dung', 'hinh_anh', 'a', 'b', 'c', 'd'
+    ];
+
+    //Câu hỏi thuộc môn học
+    public function MonHoc()
+    {
+        return $this->belongsTo('App\MonHoc');
+    }
 }
