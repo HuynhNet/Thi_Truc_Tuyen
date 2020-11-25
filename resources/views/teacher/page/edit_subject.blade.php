@@ -44,25 +44,30 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" class="needs-validation" novalidate>
+                            <form action="{{ url('update-subject/'.$edit_subject->id) }}" class="needs-validation" novalidate
+                            method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="">Mã môn học</label>
-                                    <input type="text" name="" class="form-control" placeholder="Nhập mã môn học" required>
+                                    <input type="text" name="inputSubjectCode" class="form-control" value="{{ $edit_subject->ma_mon_hoc }}">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Tên môn học</label>
-                                    <input type="text" name="" class="form-control" placeholder="Nhập tên môn học" required>
+                                    <input type="text" name="inputSubjectName" class="form-control" value="{{ $edit_subject->ten_mon_hoc }}"
+                                    placeholder="Nhập tên môn học" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Hình ảnh cũ</label><br>
-                                    <img src="{{ url('public/images/qpan.jpg') }}"
+                                    <img src="{{ url('public/image_subject/'.$edit_subject->hinh_anh) }}"
                                     style="max-width:100%;height:90px;border-radius:5px;">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="">Hình ảnh</label> <br>
                                     <!-- File input field -->
-                                    <input type="file" id="file" onchange="return fileValidation()"/>
+                                    <input type="file" id="file" onchange="return fileValidation()" value="{{ $edit_subject->hinh_anh }}"
+                                    name="inputFileImage"/>
                                     <!-- Image preview -->
                                     <div id="imagePreview"></div>
                                 </div>
