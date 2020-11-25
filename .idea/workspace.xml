@@ -23,14 +23,8 @@
       <change afterPath="$PROJECT_DIR$/../freshfoodshop/app/SendMail.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../freshfoodshop/public/home/css/css/rating.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../freshfoodshop/resources/views/home/email.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/index_student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/index_student.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/layout/header_student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/layout/header_student.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/layout/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/session.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -232,6 +226,8 @@
       <workItem from="1605717735108" duration="16000" />
       <workItem from="1606138487223" duration="7635000" />
       <workItem from="1606225027759" duration="6075000" />
+      <workItem from="1606235629867" duration="339000" />
+      <workItem from="1606314235798" duration="3389000" />
     </task>
     <servers />
   </component>
@@ -263,14 +259,18 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="184" y="9" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604165042165" />
-    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1604824241834">
+    <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1606316299560">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1604824241834" />
+    <state x="390" y="97" width="585" height="534" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1606316299560" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1604822623484">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1604822623484" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1606315755671">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606315755671" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
