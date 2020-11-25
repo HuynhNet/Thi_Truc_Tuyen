@@ -37,8 +37,9 @@
                 <a style="margin-bottom: 5px;" href="" class="btn btn-default">29</a>
                 <a style="margin-bottom: 5px;" href="" class="btn btn-default">30</a>
                 <br><br>
-                <span><strong>Thời gian: </strong><span style="color: red; font-weight: bold;">29:35</span> phút</span>
-
+                <span><strong>Thời gian: </strong>
+                    <span style="color: red; font-weight: bold;" id="demo"><span id="minus"></span>:<span id="seconds"></span></span> phút</span>
+                <input type="hidden" name="time" id="time" value="30">
                 <div style="float: right">
                     <a href="" class="btn btn-info">Lưu câu trả lời</a>
                     <a href="" class="btn btn-success">Nộp bài</a>
@@ -93,4 +94,59 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var timeout = null;
+        var time = parseInt(document.getElementById('time').value);
+
+        if(time == 45){
+            var minus = 44;
+        }
+
+        if(time == 30){
+            var minus = 29;
+        }else{
+            var minus = 14;
+        }
+
+        var seconds = 59;
+        var m = null;
+        var s = null;
+
+        function start(){
+
+            if(m == null){
+                m = minus;
+                s = seconds;
+            }
+
+            if(s == -1){
+                m -= 1;
+                s = 59;
+            }
+
+            if(m == -1){
+                clearTimeout(timeout);
+                alert('Hết giờ');
+                return false;
+            }
+
+            document.getElementById('minus').innerText = m;
+            if(s < 10){
+                document.getElementById('seconds').innerText = '0' + s;
+            }else{
+                document.getElementById('seconds').innerText = s;
+            }
+
+            timeout = setTimeout(function (){
+                s -= 1;
+                start();
+            },1000);
+        }
+
+        window.onload = function(){
+            start();
+        }
+
+    </script>
 @endsection

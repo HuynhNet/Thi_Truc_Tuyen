@@ -37,6 +37,29 @@
       <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/platform_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/platform_check.php" afterDir="false" />
+
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TraCuuDuocLieu/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TraCuuDuocLieu/.idea/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/.idea/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../freshfoodshop/app/SendMail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../freshfoodshop/public/home/css/css/rating.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../freshfoodshop/resources/views/home/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/index_student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/index_student.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/layout/header_student.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/layout/header_student.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/layout/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
