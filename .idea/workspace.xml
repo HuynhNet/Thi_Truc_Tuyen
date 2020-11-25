@@ -11,6 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2295e35e-14d1-4659-b7df-072f84f87448" name="Default Changelist" comment="">
+
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/index.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/login.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/register.blade.php" afterDir="false" />
@@ -26,6 +27,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/session.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/session.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
+
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +187,7 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ThucPhamChucNang" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="vue.rearranger.settings.migration" value="true" />

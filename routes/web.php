@@ -29,6 +29,12 @@ Route::get('edit-question-subject', [TeacherController::class, 'edit_question_su
 
 //Trang loại kiểm tra thi cử
 Route::get('page-type-test', [TeacherController::class, 'page_type_test']);
+
+//Trang mức độ kiểm tra thi cử
+Route::get('page-level-test', [TeacherController::class, 'page_level_test']);
+
+//Trang học kỳ năm học
+Route::get('page-semester-year', [TeacherController::class, 'page_semester_year']);
 //================================================================
 
 
