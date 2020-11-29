@@ -95,6 +95,9 @@ Route::middleware([CheckLogin::class])->group(function(){
 
     //Trang đề kiểm tra
     Route::get('page-test-subject', [TeacherController::class, 'page_test_subject']);
+
+    //Thêm đề kiểm tra
+    Route::post('post-add-test-subject', [TeacherController::class, 'post_add_test_subject']);
     //================================================================
 
 });

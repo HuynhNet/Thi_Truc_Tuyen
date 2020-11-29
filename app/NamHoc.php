@@ -13,4 +13,10 @@ class NamHoc extends Model
     protected $fillable = [
         'id', 'nam'
     ];
+
+    //Năm học có nhiều đề kiểm tra
+    public function DeKiemTra()
+    {
+        return $this->hasMany('App\DeKiemTra');
+    }
 }

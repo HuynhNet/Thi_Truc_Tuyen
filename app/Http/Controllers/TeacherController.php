@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CauHoi;
+use App\DeKiemTra;
 use App\GiaoVien;
 use App\Http\Controllers\Controller;
 use App\LoaiKiemTra;
@@ -326,10 +327,35 @@ class TeacherController extends Controller
     //Trang đề kiểm tra
     protected function page_test_subject()
     {
-        return view('teacher.page.test_subject');
+        $show_test_subjecs = DeKiemTra::where('ma_gv', Auth::id())->latest()->paginate(5);
+        return view('teacher.page.test_subject',['show_test_subjecs'=>$show_test_subjecs]);
+    }
+
+    //Thêm đề kiểm tra
+    protected function post_add_test_subject(Request $request)
+    {
+        $add_test_subject = new DeKiemTra();
+        $add_test_subject->ma_gv = Auth::id();
+        $add_test_subject->muc_kiem_tra = $request->input('inputLevelTestId');
+        $add_test_subject->nam_hoc = $request->input('inputYearId');
+        $add_test_subject->mon_hoc = $request->input('inputSubjectId');
+        $add_test_subject->loai_kiem_tra = $request->input('inputTypeTestId');
+        $add_test_subject->thoi_gian = $request->input('inputTime');
+        $add_test_subject->so_cau = $request->input('inputNumberQuestion');
+        $add_test_subject->trang_thai = 0; //Chưa kích hoạt đề thi
+        $add_test_subject->save();
+
+        return redirect()->back()->with('success', 'Đã Thêm đề kiểm tra');
     }
     //=====================================================================
 
+
+
+
+
+
+
+    //=====================================================================
     public function addTeacher(){
         return view('vendor.voyager.users.add_teacher');
     }

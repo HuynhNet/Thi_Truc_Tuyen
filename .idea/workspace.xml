@@ -11,10 +11,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2295e35e-14d1-4659-b7df-072f84f87448" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/dist/css/search_select.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/dist/js/search_select.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/DeKiemTra.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DeKiemTra.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/GiaoVien.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/GiaoVien.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/LoaiKiemTra.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/LoaiKiemTra.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MonHoc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MonHoc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MucKiemTra.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MucKiemTra.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/NamHoc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/NamHoc.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/AdminLTELogo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/avatar04.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/avatar2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/avatar3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/avatar5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/boxed-bg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/boxed-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/credit/american-express.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/credit/cirrus.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/credit/mastercard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/credit/mestro.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/credit/paypal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/credit/paypal2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/credit/visa.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/default-150x150.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/icons.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/photo1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/photo2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/photo3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/photo4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/prod-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/prod-2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/prod-3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/prod-4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/prod-5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/user1-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/user2-160x160.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/user3-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/user4-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/user5-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/user6-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/user7-128x128.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/dist/img/user8-128x128.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/teacher/page/test_subject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/page/test_subject.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/InstalledVersions.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterDir="false" />
@@ -297,7 +338,7 @@
       <workItem from="1606542506855" duration="31000" />
       <workItem from="1606572576857" duration="11300000" />
       <workItem from="1606634632415" duration="139000" />
-      <workItem from="1606647419569" duration="9480000" />
+      <workItem from="1606647419569" duration="17573000" />
     </task>
     <servers />
   </component>
