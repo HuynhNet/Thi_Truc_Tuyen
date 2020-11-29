@@ -107,6 +107,22 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" style="font-family: 'Mulish', sans-serif;">
 <div class="wrapper">
+
+    <!-- Modal -->
+    <div class="modal fade" id="modelLogout" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h4>Bạn có muốn đăng xuất không ?</h4>
+                </div>
+                <div class="modal-footer p-2">
+                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Đóng</button>
+                    <a href="{{ url('logout') }}" class="btn btn-primary btn-sm"><i class="fa fa-sign-out"></i> Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Right navbar links -->
@@ -114,7 +130,7 @@
             <ul class="navbar-nav ml-auto">
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item">
-                    <a class="nav-link text-danger font-weight-bold" href="#" role="button">
+                    <a class="nav-link text-danger font-weight-bold" href="#" role="button" data-toggle="modal" data-target="#modelLogout">
                         <i class="fa fa-sign-out"></i> Đăng xuất
                     </a>
                 </li>

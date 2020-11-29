@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\CauHoi;
 use App\GiaoVien;
 use App\Http\Controllers\Controller;
-use App\Imports\CauHoiImport;
 use App\LoaiKiemTra;
 use App\Models\User;
 use App\MonHoc;
@@ -13,6 +12,7 @@ use App\MucKiemTra;
 use App\NamHoc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -26,10 +26,21 @@ class TeacherController extends Controller
         return view('page.login');
     }
 
+    //Dăng xuất
+    protected function logout()
+    {
+        Auth::logout();
+        return redirect('page-login');
+    }
+
     //Trang chủ giáo viên
     protected function page_home_teacher()
     {
-        return view('teacher.index_teacher');
+        if (Auth::check() && Auth::user()->role_id == 3) {
+            return view('teacher.index_teacher');
+        }else{
+            return redirect('page-login');
+        }
     }
 
     //Trang thông tin giáo viên
