@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 23, 2020 at 04:07 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Nov 29, 2020 at 05:43 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -45,7 +44,7 @@ CREATE TABLE `bai_lams` (
 CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `parent_id` int(10) UNSIGNED DEFAULT NULL,
-  `order` int(11) NOT NULL DEFAULT '1',
+  `order` int(11) NOT NULL DEFAULT 1,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -68,17 +67,25 @@ INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_a
 
 CREATE TABLE `cau_hois` (
   `id` int(10) UNSIGNED NOT NULL,
-  `dap_an_dung` int(11) DEFAULT NULL,
+  `dap_an_dung` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `mon_hoc` int(11) DEFAULT NULL,
-  `noi_dung` mediumtext COLLATE utf8_unicode_ci,
-  `hinh_anh` mediumtext COLLATE utf8_unicode_ci,
-  `a` mediumtext COLLATE utf8_unicode_ci,
-  `b` mediumtext COLLATE utf8_unicode_ci,
-  `c` mediumtext COLLATE utf8_unicode_ci,
-  `d` mediumtext COLLATE utf8_unicode_ci,
+  `noi_dung` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hinh_anh` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `a` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `b` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `d` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `cau_hois`
+--
+
+INSERT INTO `cau_hois` (`id`, `dap_an_dung`, `mon_hoc`, `noi_dung`, `hinh_anh`, `a`, `b`, `c`, `d`, `created_at`, `updated_at`) VALUES
+(24, 'A', 5, 'Giá cả sản xuất tư bản chủ nghĩa bao gồm những bộ phận nào?', NULL, 'Chi phí sản xuất cộng với lợi nhuận bình quân.  ', 'Toàn bộ chi phí bỏ ra trong quá trình sản xuất.', 'Giá cả thị trường trừ đi lợi nhuận của nhà tư bản công nghiệp.', 'Giá trị của hàng hoá cộng với lợi nhuận của nhà tư bản công nghiệp.  ', '2020-11-29 03:58:42', '2020-11-29 03:58:42'),
+(25, 'C', 5, 'Ý nghĩa của việc phân chia tư bản thành tư bản bất biến và tư bản khả biến?', '1606648673-logo-hoc-tap.jpg', 'Để cải tiến quản lý tư bản.', 'Để tăng cường bóc lột công nhân làm thuê.', 'Để xác định vai trò của mỗi loại tư bản đối với việc sản xuất ra giá trị thặng dư và phê phán quan điểm máy móc, tư bản tạo ra giá trị thặng dư cho chủ sở hữu nó', 'Để tìm ra cơ cấu của mỗi loại tư bản.', '2020-11-29 03:58:42', '2020-11-29 04:18:13');
 
 -- --------------------------------------------------------
 
@@ -88,11 +95,11 @@ CREATE TABLE `cau_hois` (
 
 CREATE TABLE `chi_tiet_cau_hois` (
   `id` int(10) UNSIGNED NOT NULL,
-  `a` mediumtext COLLATE utf8_unicode_ci,
-  `b` mediumtext COLLATE utf8_unicode_ci,
-  `c` mediumtext COLLATE utf8_unicode_ci,
-  `d` mediumtext COLLATE utf8_unicode_ci,
-  `dap_an` mediumtext COLLATE utf8_unicode_ci,
+  `a` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `b` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `c` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `d` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dap_an` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `chi_tiet_de` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -138,14 +145,14 @@ CREATE TABLE `data_rows` (
   `field` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `display_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `required` tinyint(1) NOT NULL DEFAULT '0',
-  `browse` tinyint(1) NOT NULL DEFAULT '1',
-  `read` tinyint(1) NOT NULL DEFAULT '1',
-  `edit` tinyint(1) NOT NULL DEFAULT '1',
-  `add` tinyint(1) NOT NULL DEFAULT '1',
-  `delete` tinyint(1) NOT NULL DEFAULT '1',
-  `details` text COLLATE utf8_unicode_ci,
-  `order` int(11) NOT NULL DEFAULT '1'
+  `required` tinyint(1) NOT NULL DEFAULT 0,
+  `browse` tinyint(1) NOT NULL DEFAULT 1,
+  `read` tinyint(1) NOT NULL DEFAULT 1,
+  `edit` tinyint(1) NOT NULL DEFAULT 1,
+  `add` tinyint(1) NOT NULL DEFAULT 1,
+  `delete` tinyint(1) NOT NULL DEFAULT 1,
+  `details` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `order` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -353,9 +360,9 @@ CREATE TABLE `data_types` (
   `policy_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `controller` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `generate_permissions` tinyint(1) NOT NULL DEFAULT '0',
-  `server_side` tinyint(4) NOT NULL DEFAULT '0',
-  `details` text COLLATE utf8_unicode_ci,
+  `generate_permissions` tinyint(1) NOT NULL DEFAULT 0,
+  `server_side` tinyint(4) NOT NULL DEFAULT 0,
+  `details` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -405,9 +412,17 @@ CREATE TABLE `de_kiem_tras` (
   `trang_thai` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `ten_de` mediumtext COLLATE utf8_unicode_ci,
+  `ten_de` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `mat_khau` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `de_kiem_tras`
+--
+
+INSERT INTO `de_kiem_tras` (`id`, `ma_gv`, `muc_kiem_tra`, `nam_hoc`, `mon_hoc`, `loai_kiem_tra`, `thoi_gian`, `so_cau`, `trang_thai`, `created_at`, `updated_at`, `ten_de`, `mat_khau`) VALUES
+(1, 9, 3, 2, 5, 3, 15, 30, 0, '2020-11-29 09:25:32', '2020-11-29 09:25:32', NULL, NULL),
+(2, 9, 4, 2, 5, 4, 60, 50, 0, '2020-11-29 09:40:08', '2020-11-29 09:40:08', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -422,7 +437,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -496,10 +511,18 @@ CREATE TABLE `ket_quas` (
 CREATE TABLE `loai_kiem_tras` (
   `id` int(10) UNSIGNED NOT NULL,
   `ten_loai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `thoi_gian` int(20) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `thoi_gian` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `loai_kiem_tras`
+--
+
+INSERT INTO `loai_kiem_tras` (`id`, `ten_loai`, `thoi_gian`, `created_at`, `updated_at`) VALUES
+(3, 'Kiểm tra 15 phút', 15, '2020-11-29 05:16:10', '2020-11-29 05:16:10'),
+(4, 'Kiểm tra 1 tiết', 60, '2020-11-29 05:16:16', '2020-11-29 05:16:16');
 
 -- --------------------------------------------------------
 
@@ -570,7 +593,7 @@ CREATE TABLE `menu_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `route` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `parameters` text COLLATE utf8_unicode_ci
+  `parameters` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -663,8 +686,8 @@ CREATE TABLE `mon_hocs` (
   `id` int(10) UNSIGNED NOT NULL,
   `ma_mon_hoc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten_mon_hoc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `hinh_anh` mediumtext COLLATE utf8_unicode_ci,
-  `trang_thai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `hinh_anh` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `trang_thai` int(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -674,7 +697,7 @@ CREATE TABLE `mon_hocs` (
 --
 
 INSERT INTO `mon_hocs` (`id`, `ma_mon_hoc`, `ten_mon_hoc`, `hinh_anh`, `trang_thai`, `created_at`, `updated_at`) VALUES
-(1, 'NH2020', 'Kinh tế Chính trị Mác - Lênin', NULL, NULL, '2020-11-06 10:12:14', '2020-11-06 10:12:14');
+(5, 'BP-030', 'Biên phòng đại cương 1', '1606573879-qpan.jpg', 0, '2020-11-25 06:31:28', '2020-11-29 04:24:15');
 
 -- --------------------------------------------------------
 
@@ -689,6 +712,15 @@ CREATE TABLE `muc_kiem_tras` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `muc_kiem_tras`
+--
+
+INSERT INTO `muc_kiem_tras` (`id`, `ten_muc`, `created_at`, `updated_at`) VALUES
+(2, 'Mức độ khó', '2020-11-29 05:34:07', '2020-11-29 05:34:07'),
+(3, 'Mức độ dễ', '2020-11-29 05:34:16', '2020-11-29 05:34:16'),
+(4, 'Mức độ trung bình', '2020-11-29 05:34:27', '2020-11-29 05:34:27');
+
 -- --------------------------------------------------------
 
 --
@@ -702,6 +734,14 @@ CREATE TABLE `nam_hocs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `nam_hocs`
+--
+
+INSERT INTO `nam_hocs` (`id`, `nam`, `created_at`, `updated_at`) VALUES
+(2, '2020 - 2021', '2020-11-29 05:50:48', '2020-11-29 05:50:48'),
+(3, '2021 - 2022', '2020-11-29 05:51:04', '2020-11-29 05:51:04');
+
 -- --------------------------------------------------------
 
 --
@@ -712,12 +752,12 @@ CREATE TABLE `pages` (
   `id` int(10) UNSIGNED NOT NULL,
   `author_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `excerpt` text COLLATE utf8_unicode_ci,
-  `body` text COLLATE utf8_unicode_ci,
+  `excerpt` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `body` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci,
-  `meta_keywords` text COLLATE utf8_unicode_ci,
+  `meta_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_keywords` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` enum('ACTIVE','INACTIVE') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'INACTIVE',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -1077,14 +1117,14 @@ CREATE TABLE `posts` (
   `category_id` int(11) DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `seo_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `excerpt` text COLLATE utf8_unicode_ci,
+  `excerpt` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `body` text COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci,
-  `meta_keywords` text COLLATE utf8_unicode_ci,
+  `meta_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_keywords` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `status` enum('PUBLISHED','DRAFT','PENDING') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'DRAFT',
-  `featured` tinyint(1) NOT NULL DEFAULT '0',
+  `featured` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1133,10 +1173,10 @@ CREATE TABLE `settings` (
   `id` int(10) UNSIGNED NOT NULL,
   `key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `display_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `value` text COLLATE utf8_unicode_ci,
-  `details` text COLLATE utf8_unicode_ci,
+  `value` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `details` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `order` int(11) NOT NULL DEFAULT '1',
+  `order` int(11) NOT NULL DEFAULT 1,
   `group` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1224,11 +1264,11 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `status` text COLLATE utf8_unicode_ci,
+  `status` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `gioi_tinh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sdt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngay_sinh` date DEFAULT NULL,
-  `dia_chi` mediumtext COLLATE utf8_unicode_ci,
+  `dia_chi` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `ma_gv` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1496,7 +1536,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `cau_hois`
 --
 ALTER TABLE `cau_hois`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `chi_tiet_cau_hois`
@@ -1532,7 +1572,7 @@ ALTER TABLE `data_types`
 -- AUTO_INCREMENT for table `de_kiem_tras`
 --
 ALTER TABLE `de_kiem_tras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1562,7 +1602,7 @@ ALTER TABLE `ket_quas`
 -- AUTO_INCREMENT for table `loai_kiem_tras`
 --
 ALTER TABLE `loai_kiem_tras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `lops`
@@ -1598,19 +1638,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `mon_hocs`
 --
 ALTER TABLE `mon_hocs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `muc_kiem_tras`
 --
 ALTER TABLE `muc_kiem_tras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `nam_hocs`
 --
 ALTER TABLE `nam_hocs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pages`

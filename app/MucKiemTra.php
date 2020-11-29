@@ -13,4 +13,10 @@ class MucKiemTra extends Model
     protected $fillable = [
         'id', 'ten_muc'
     ];
+
+    //Mức kiểm tra có nhiều đề kiểm tra
+    public function DeKiemTra()
+    {
+        return $this->hasMany('App\DeKiemTra');
+    }
 }
