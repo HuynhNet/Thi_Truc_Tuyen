@@ -37,23 +37,50 @@ Route::get('inactive-subject/{id_subject}', [TeacherController::class, 'inactive
 
 
 /*----------------------------------------------------------------------------------------------*/
-//Trang xem câu hỏi môn học môn học
+//Trang xem câu hỏi môn học
 Route::get('view-question-subject/{id_subject}', [TeacherController::class, 'view_question_subject']);
 
+//Xóa câu hỏi môn học
+Route::get('delete-question-subject/{id_question}', [TeacherController::class, 'delete_question_subject']);
+
+//Thêm câu hỏi môn học
+Route::post('post-add-question-subject/{id_subject}', [TeacherController::class, 'post_add_question_subject']);
+
 //Nhập file Excel vào câu hỏi môn học
-Route::post('import-file-excel', [TeacherController::class, 'import_file_excel']);
+Route::post('import-file-excel/{id_subject}', [TeacherController::class, 'import_file_excel']);
 
 //Trang chỉnh sửa câu hỏi môn học
-Route::get('edit-question-subject', [TeacherController::class, 'edit_question_subject']);
+Route::get('edit-question-subject/{id_subject}/{id_question}', [TeacherController::class, 'edit_question_subject']);
+
+//Cập nhật câu hỏi môn học
+Route::put('update-question-subject/{id_subject}/{id_question}', [TeacherController::class, 'update_question_subject']);
 
 //Trang loại kiểm tra thi cử
 Route::get('page-type-test', [TeacherController::class, 'page_type_test']);
 
+//Xóa loại kiểm tra thi cử
+Route::get('delete-type-test/{id_type_test}', [TeacherController::class, 'delete_type_test']);
+
+//Thêm loại kiểm tra thi cử
+Route::post('post-add-type-test', [TeacherController::class, 'post_add_type_test']);
+
 //Trang mức độ kiểm tra thi cử
 Route::get('page-level-test', [TeacherController::class, 'page_level_test']);
 
+//Xóa mức độ kiểm tra thi cử
+Route::get('delete-level-test/{id_level_test}', [TeacherController::class, 'delete_level_test']);
+
+//Thêm mức độ kiểm tra thi cử
+Route::post('post-add-level-test', [TeacherController::class, 'post_add_level_test']);
+
 //Trang học kỳ năm học
 Route::get('page-semester-year', [TeacherController::class, 'page_semester_year']);
+
+//Xóa học kỳ năm học
+Route::get('delete-year/{id_year}', [TeacherController::class, 'delete_year']);
+
+//Thêm học kỳ năm học CSDL
+Route::post('post-add-semester-year', [TeacherController::class, 'post_add_semester_year']);
 /*----------------------------------------------------------------------------------------------*/
 
 

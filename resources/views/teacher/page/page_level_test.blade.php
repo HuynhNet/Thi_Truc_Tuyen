@@ -30,29 +30,54 @@
     <!-- Modal -->
     <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"><b>THÊM MỨC ĐỘ KIỂM TRA</b></h5>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label for="">Tên mức độ</label>
-                        <input type="text" name="" id="" class="form-control" placeholder="Nhập tên mức độ kiểm tra">
+            <form action="{{ url('post-add-level-test') }}" method="post" class="needs-validation" novalidate>
+                @csrf
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title"><b>THÊM MỨC ĐỘ KIỂM TRA</b></h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Tên mức độ</label>
+                            <input type="text" name="inputLevelTestName" class="form-control"
+                            placeholder="Nhập tên mức độ kiểm tra" required>
+                            <small>{{ $errors->first('inputLevelTestName') }}</small>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Đóng</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Thêm</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-primary btn-sm">Thêm</button>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
+    <!-- /Modal -->
+
 
     <section class="content">
         <div class="container-fluid">
             <!-- Main row -->
             <div class="row">
                 <section class="col-lg-6 offset-lg-3">
+
+                    <!-- errors -->
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger" role="alert">
+                            <strong>{{ $errors->first('inputLevelTestName') }}</strong>
+                        </div>
+                    @endif
+                    <!-- /errors -->
+
+                    <!-- /success -->
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                    <!-- /success -->
+
                     <!-- card -->
                     <div class="card">
                         <div class="card-header">
@@ -78,18 +103,26 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td data-label="STT">1</td>
-                                        <td data-label="Tên loại kiểm tra">
-                                            <b>Mức khó</b>
-                                        </td>
-                                        <td data-label="Chọn">
-                                            <a class="btn btn-danger btn-xs"
-                                               href="{{ url('/') }}" role="button" title="Xóa">
-                                                <i class="fa fa-trash"></i> Xóa
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @forelse($show_level_tests as $key => $show_level_test)
+                                        <tr>
+                                            <td data-label="STT"><b>{{ ++$key }}</b></td>
+                                            <td data-label="Tên loại kiểm tra">
+                                                <b>{{ $show_level_test->ten_muc }}</b>
+                                            </td>
+                                            <td data-label="Chọn">
+                                                <a class="btn btn-danger btn-xs" onclick="return confirm('Bạn có chắc chắn không ?')"
+                                                   href="{{ url('delete-level-test/'.$show_level_test->id) }}" role="button" title="Xóa">
+                                                    <i class="fa fa-trash"></i> Xóa
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="3">
+                                                <b class="text-danger">Không có dữ liệu</b>
+                                            </td>
+                                        </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -102,44 +135,6 @@
         </div>
         <!-- /.container-fluid -->
     </section>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form action="" class="needs-validation" novalidate>
-                    <div class="modal-header">
-                        <h6 class="modal-title"><b>THÊM MÔN HỌC</b></h6>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="">Mã môn học</label>
-                            <input type="text" name="" class="form-control" placeholder="Nhập mã môn học" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Tên môn học</label>
-                            <input type="text" name="" class="form-control" placeholder="Nhập tên môn học" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Hình ảnh</label> <br>
-                            <!-- File input field -->
-                            <input type="file" id="file" onchange="return fileValidation()"/>
-                            <!-- Image preview -->
-                            <div id="imagePreview"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">
-                            <i class="fa fa-close"></i> Đóng</button>
-                        <button type="submit" class="btn btn-primary btn-xs">Thêm</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 
     <script>
         // Disable form submissions if there are invalid fields
@@ -160,26 +155,6 @@
                 });
             }, false);
         })();
-
-        function fileValidation(){
-            var fileInput = document.getElementById('file');
-            var filePath = fileInput.value;
-            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-            if(!allowedExtensions.exec(filePath)){
-                alert('Hình ảnh bắt buộc đuôi .jpeg/.jpg/.png/.gif only.');
-                fileInput.value = '';
-                return false;
-            }else{
-                //Image preview
-                if (fileInput.files && fileInput.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'" style="max-width:100%;height:50px;margin-top:5px;"/>';
-                    };
-                    reader.readAsDataURL(fileInput.files[0]);
-                }
-            }
-        }
     </script>
 
 @endsection

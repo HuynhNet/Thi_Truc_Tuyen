@@ -26,6 +26,17 @@
 {{--Nội dung chính--}}
 @section('content')
 
+    <style>
+        #text-danger:hover{
+            color: white;
+            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+        #text-success:hover{
+            color: white;
+            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+    </style>
+
     <section class="content">
         <div class="container-fluid">
             <!-- Main row -->
@@ -90,13 +101,11 @@
                                             <td data-label="Trạng thái">
                                                 @if ($show_subject->trang_thai == 0 )
                                                     <a href="{{ url('active-subject/'.$show_subject->id) }}" title="Nhấp để Kích hoạt">
-                                                        <b class="text-danger">
-                                                            Chưa kích hoạt
-                                                        </b>
+                                                        <b class="text-danger" id="text-danger">Chưa kích hoạt</b>
                                                     </a>
                                                 @else
                                                     <a href="{{ url('inactive-subject/'.$show_subject->id) }}" title="Nhấp để Hủy kích hoạt">
-                                                        <b class="text-success">Đã kích hoạt</b>
+                                                        <b class="text-success" id="text-success">Đã kích hoạt</b>
                                                     </a>
                                                 @endif
                                             </td>
