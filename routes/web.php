@@ -120,6 +120,9 @@ Route::get('/task', [StudentController::class, 'task']);
 
 
 
+Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
+
+
 
 
 
