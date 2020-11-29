@@ -96,6 +96,7 @@ Route::get('student', [StudentController::class, 'studentHome'])->name('homeStud
 Route::get('/exam-online', [StudentController::class, 'examOnline']);
 Route::get('/check-account', [StudentController::class, 'checkAccount']);
 Route::get('/task', [StudentController::class, 'task']);
+Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

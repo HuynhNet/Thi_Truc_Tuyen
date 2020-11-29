@@ -33,7 +33,7 @@
                 </a>
             </li>
             <li class="">
-                <a title="" href="">
+                <a title="" href="" onclick="checkLogout()">
                     <i class="icon icon-share-alt"></i>
                     <span class="text">Đăng xuất</span>
                 </a>
