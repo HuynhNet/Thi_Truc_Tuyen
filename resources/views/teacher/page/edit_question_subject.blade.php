@@ -13,7 +13,7 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Bảng điều khiển</a></li>
                         <li class="breadcrumb-item"><a href="{{ url('page-subject') }}">Môn học</a></li>
-                        <li class="breadcrumb-item"><a href="{{ url('view-question-subject') }}">Câu hỏi môn học</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url('view-question-subject/'.$subject_ids->id) }}">Câu hỏi môn học</a></li>
                         <li class="breadcrumb-item active">Chỉnh sửa câu hỏi môn học</li>
                     </ol>
                 </div><!-- /.col -->
@@ -45,35 +45,51 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="" class="needs-validation" novalidate>
+                            <form action="{{ url('update-question-subject/'.$subject_ids->id.'/'.$edit_question->id) }}"
+                            class="needs-validation" novalidate method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
                                 <div class="form-group">
                                     <label for="">Nội dung</label>
-                                    <textarea name="" rows="3" class="form-control" placeholder="Nhập nội dung câu hỏi"></textarea>
+                                    <textarea name="inputContent" rows="3" class="form-control"
+                                    placeholder="Nhập nội dung câu hỏi">{{ $edit_question->noi_dung }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Hình ảnh</label> <br>
-                                    <input type="file" id="file" required/>
-                                    <img src="{{ url('public/images/qpan.jpg') }}" style="max-width:100%;height:60px;border-radius:5px;">
+                                    <input type="file" id="file" name="inputFileImage"/>
+                                    @if ($edit_question->hinh_anh != null)
+                                        <img src="{{ url('public/image_question_subject/'.$edit_question->hinh_anh) }}"
+                                        style="max-width:100%;height:60px;border-radius:5px;"/>
+                                    @endif
                                 </div>
                                 <div class="form-group">
                                     <label for="">Đáp án A</label>
-                                    <textarea name="" rows="2" class="form-control" placeholder="Nhập nội dung đáp án"></textarea>
+                                    <textarea name="inputA" rows="2" class="form-control" placeholder="Nhập nội dung đáp án A">{{ $edit_question->a }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Đáp án B</label>
-                                    <textarea name="" rows="2" class="form-control" placeholder="Nhập nội dung đáp án"></textarea>
+                                    <textarea name="inputB" rows="2" class="form-control" placeholder="Nhập nội dung đáp án B">{{ $edit_question->b }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Đáp án C</label>
-                                    <textarea name="" rows="2" class="form-control" placeholder="Nhập nội dung đáp án"></textarea>
+                                    <textarea name="inputC" rows="2" class="form-control" placeholder="Nhập nội dung đáp án C">{{ $edit_question->c }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Đáp án D</label>
-                                    <textarea name="" rows="2" class="form-control" placeholder="Nhập nội dung đáp án"></textarea>
+                                    <textarea name="inputD" rows="2" class="form-control" placeholder="Nhập nội dung đáp án D">{{ $edit_question->d }}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Chọn đáp án Đúng</label>
-                                    <input name="" type="text" class="form-control" placeholder="Nhập đáp án đúng VD: A">
+                                    <select name="inputCorrect" class="form-control">
+
+                                        <option value="{{ $edit_question->dap_an_dung }}">Đáp án {{ $edit_question->dap_an_dung }}</option>
+
+                                        <option value="">- - Chọn Đáp án - -</option>
+                                        <option value="A">Đáp án A</option>
+                                        <option value="B">Đáp án B</option>
+                                        <option value="C">Đáp án C</option>
+                                        <option value="D">Đáp án D</option>
+                                    </select>
                                 </div>
 
                                 <div class="form-group text-right">

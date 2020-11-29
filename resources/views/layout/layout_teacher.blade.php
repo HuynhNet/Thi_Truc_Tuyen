@@ -194,7 +194,7 @@
                             <li class="nav-item">
                                 <a href="{{ url('page-semester-year') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Học kỳ - Năm học</p>
+                                    <p>Năm học</p>
                                 </a>
                             </li>
 
