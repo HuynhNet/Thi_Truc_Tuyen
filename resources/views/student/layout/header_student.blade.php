@@ -47,7 +47,12 @@
     <a href="{{ url('/student') }}" class="visible-phone"><i class="icon icon-home"></i> Trang chủ</a>
     <ul>
         <li class="active"><a href="{{ url('/student') }}"><i class="icon icon-home"></i> <span>Trang chủ</span></a> </li>
-        <li> <a href="{{ url('/exam-online') }}"><i class="icon icon-signal"></i> <span>Thi trực tuyến</span></a> </li>
+        @if(Auth::check())
+            <li>
+                <a href="{{ url('/exam-online', Auth::user()->ma_hs ) }}"><i class="icon icon-signal"></i>
+                    <span>Thi trực tuyến</span></a>
+            </li>
+        @endif
         <li> <a href=""><i class="icon icon-inbox"></i> <span>Học Phần</span></a> </li>
         <li><a href=""><i class="icon icon-th"></i> <span>Kết quả học</span></a></li>
         <li><a href=""><i class="icon icon-fullscreen"></i> <span>Phòng học</span></a></li>

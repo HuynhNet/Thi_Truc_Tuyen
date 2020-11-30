@@ -66,10 +66,16 @@ Route::get('page-test-subject', [TeacherController::class, 'page_test_subject'])
 
 //Trang chủ học sinh
 Route::get('student', [StudentController::class, 'studentHome'])->name('homeStudent');
-Route::get('/exam-online', [StudentController::class, 'examOnline']);
-Route::get('/check-account', [StudentController::class, 'checkAccount']);
-Route::get('/task', [StudentController::class, 'task']);
+Route::get('/exam-online/{studentCode}', [StudentController::class, 'examOnline']);
+
+Route::get('/check-account/{deKiemTraId}', [StudentController::class, 'checkAccount']);
+Route::post('/post-check-account', [StudentController::class, 'postCheckAccount'])->name('postCheckAccount');
+
+Route::get('/task', [StudentController::class, 'task'])->name('task');
 Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
+
+Route::get('/get-question', [StudentController::class, 'getQuestion'])->name('getQuestion');
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

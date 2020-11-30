@@ -14,14 +14,29 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Nhập mật khẩu bài thi</h4>
-                        <form action="" method="post">
+
+                        @if(session()->has('message'))
+                            <div class="alert alert-success">
+                                {{ session()->get('message') }}
+                            </div>
+                        @endif
+
+                        <form action="{{ url('/post-check-account') }}" method="post">
+                            @csrf
+
+                            @foreach($deKiemTra as $deKiemTra)
+                                <input type="hidden" name="deKiemTraId" value="{{ $deKiemTra->id }}">
+                            @endforeach
+
                             <div class="form-group">
                                 <label for=""></label>
-                                <input type="password" class="form-control" name="" id="" aria-describedby="helpId"
+                                <input type="password" class="form-control" name="password" id="password"
+                                       aria-describedby="helpId"
                                        placeholder="">
                                 {{--<small id="helpId" class="form-text text-muted">Help text</small>--}}
                             </div>
-                            <a type="submit" href="" class="btn btn-primary">Xác nhận</a>
+
+                            <button type="submit" class="btn btn-primary">Xác nhận</button>
                         </form>
                     </div>
                 </div>
