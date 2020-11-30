@@ -26,11 +26,33 @@
 {{--Nội dung chính--}}
 @section('content')
 
+    <style>
+        #text-danger:hover{
+            color: white;
+            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+        #text-success:hover{
+            color: white;
+            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+    </style>
+
     <section class="content">
         <div class="container-fluid">
             <!-- Main row -->
             <div class="row">
                 <section class="col-lg-12">
+
+                    <!-- Message -->
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                    <!-- /Message -->
+
+
                     <!-- card -->
                     <div class="card">
                         <div class="card-header">
@@ -50,47 +72,63 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col">STT</th>
-                                        <th scope="col">Mã môn học</th>
-                                        <th scope="col">Tên môn học</th>
-                                        <th scope="col">Hình ảnh</th>
-                                        <th scope="col">Trạng thái</th>
-                                        <th scope="col" colspan="2">Chọn</th>
+                                        <th scope="col" style="width:5%;">STT</th>
+                                        <th scope="col" style="width:10%;">Mã môn học</th>
+                                        <th scope="col" style="width:30%;">Tên môn học</th>
+                                        <th scope="col" style="width:25%;">Hình ảnh</th>
+                                        <th scope="col" style="width:15%;">Trạng thái</th>
+                                        <th scope="col" colspan="2" style="width:15%;">Chọn</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td data-label="STT">1</td>
-                                        <td data-label="Mã môn học">
-                                            <b>BP-345</b>
-                                        </td>
-                                        <td data-label="Tên môn học">
-                                            <a href="{{ url('view-question-subject') }}">
-                                                <b>Biên phòng cơ bản 1</b>
-                                            </a>
-                                        </td>
-                                        <td data-label="Hình ảnh">
-                                            <a href="{{ url('public/images/qpan.jpg') }}">
-                                                <img src="{{ url('public/images/qpan.jpg') }}" class="img-fluid rounded-top"
-                                                     style="max-width:100%;height:60px;">
-                                            </a>
-                                        </td>
-                                        <td data-label="Trạng thái">
-                                            <b class="text-success">Đang dạy</b>
-                                        </td>
-                                        <td data-label="Chọn">
-                                            <a class="btn btn-primary btn-xs"
-                                            href="{{ url('edit-subject') }}" role="button" title="Chỉnh sửa">
-                                                <i class="fa fa-edit"></i> Sửa
-                                            </a>
-                                        </td>
-                                        <td data-label="Chọn">
-                                            <a class="btn btn-success btn-xs"
-                                            href="{{ url('view-question-subject') }}" role="button" title="Xem câu hỏi">
-                                                <i class="fa fa-eye"></i> Xem
-                                            </a>
-                                        </td>
-                                    </tr>
+                                    @forelse($show_subjects as $key => $show_subject)
+                                        <tr>
+                                            <td data-label="STT"><b>{{ ++$key }}</b></td>
+                                            <td data-label="Mã môn học">
+                                                <b>{{ $show_subject->ma_mon_hoc }}</b>
+                                            </td>
+                                            <td data-label="Tên môn học">
+                                                <a href="{{ url('view-question-subject') }}">
+                                                    <b>{{ $show_subject->ten_mon_hoc }}</b>
+                                                </a>
+                                            </td>
+                                            <td data-label="Hình ảnh">
+                                                <a href="{{ url('public/image_subject/'.$show_subject->hinh_anh) }}">
+                                                    <img src="{{ url('public/image_subject/'.$show_subject->hinh_anh) }}" class="img-fluid rounded-top"
+                                                    style="max-width:100%;height:60px;">
+                                                </a>
+                                            </td>
+                                            <td data-label="Trạng thái">
+                                                @if ($show_subject->trang_thai == 0 )
+                                                    <a href="{{ url('active-subject/'.$show_subject->id) }}" title="Nhấp để Kích hoạt">
+                                                        <b class="text-danger" id="text-danger">Chưa kích hoạt</b>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ url('inactive-subject/'.$show_subject->id) }}" title="Nhấp để Hủy kích hoạt">
+                                                        <b class="text-success" id="text-success">Đã kích hoạt</b>
+                                                    </a>
+                                                @endif
+                                            </td>
+                                            <td data-label="Chọn">
+                                                <a class="btn btn-primary btn-xs"
+                                                href="{{ url('edit-subject/'.$show_subject->id) }}" role="button" title="Chỉnh sửa">
+                                                    <i class="fa fa-edit"></i> Sửa
+                                                </a>
+                                            </td>
+                                            <td data-label="Chọn">
+                                                <a class="btn btn-success btn-xs"
+                                                href="{{ url('view-question-subject/'.$show_subject->id) }}" role="button" title="Xem câu hỏi">
+                                                    <i class="fa fa-eye"></i> Xem
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7">
+                                                <b class="text-danger">Không có dữ liệu</b>
+                                            </td>
+                                        </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -109,37 +147,40 @@
     <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="" class="needs-validation" novalidate>
+                <form action="{{ url('post-add-subject') }}" class="needs-validation" novalidate name="myForm" method="POST"
+                enctype="multipart/form-data" onsubmit="return validateForm()">
+                    @csrf
                     <div class="modal-header">
                         <h6 class="modal-title"><b>THÊM MÔN HỌC</b></h6>
-                        </button>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="">Mã môn học</label>
-                            <input type="text" name="" class="form-control" placeholder="Nhập mã môn học" required>
+                            <input type="text" name="inputSubjectCode" class="form-control" placeholder="Nhập mã môn học" required>
                         </div>
                         <div class="form-group">
                             <label for="">Tên môn học</label>
-                            <input type="text" name="" class="form-control" placeholder="Nhập tên môn học" required>
+                            <input type="text" name="inputSubjectName" class="form-control" placeholder="Nhập tên môn học" required>
                         </div>
                         <div class="form-group">
                             <label for="">Hình ảnh</label> <br>
                             <!-- File input field -->
-                            <input type="file" id="file" onchange="return fileValidation()"/>
+                            <input type="file" id="file" onchange="return fileValidation()" name="inputFileImage"/>
                             <!-- Image preview -->
                             <div id="imagePreview"></div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">
-                        <i class="fa fa-close"></i> Đóng</button>
-                    <button type="submit" class="btn btn-primary btn-xs">Thêm</button>
-                </div>
+                        <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">
+                            <i class="fa fa-close"></i> Đóng
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-xs">Thêm</button>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
+
 
 
     <script>
@@ -179,6 +220,14 @@
                     };
                     reader.readAsDataURL(fileInput.files[0]);
                 }
+            }
+        }
+
+        function validateForm() {
+            var x = document.forms["myForm"]["inputFileImage"].value;
+            if (x == "") {
+                alert("Chưa chọn tệp file hình ảnh !");
+                return false;
             }
         }
     </script>

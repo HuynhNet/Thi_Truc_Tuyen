@@ -24,25 +24,22 @@
 
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
-    <ul class="nav">
-        <li class="">
-            {{--<a title="" href="#">
-                <i class="icon icon-user"></i>
-                <span class="text">Thông tin</span>
-            </a>--}}
-
-            <a title="" href="#">
-                <i class="icon icon-user"></i>
-                <span class="text">Nguyễn Văn A - B1234567</span>
-            </a>
-        </li>
-        <li class="">
-            <a title="" href="">
-                <i class="icon icon-share-alt"></i>
-                <span class="text">Đăng xuất</span>
-            </a>
-        </li>
-    </ul>
+    @if(Auth::check())
+        <ul class="nav">
+            <li class="">
+                <a title="" href="#">
+                    <i class="icon icon-user"></i>
+                    <span class="text">{{ Auth::user()->name }} - {{ Auth::user()->ma_hs }}</span>
+                </a>
+            </li>
+            <li class="">
+                <a title="" href="" onclick="checkLogout()">
+                    <i class="icon icon-share-alt"></i>
+                    <span class="text">Đăng xuất</span>
+                </a>
+            </li>
+        </ul>
+    @endif
 </div>
 <!--close-top-Header-menu-->
 

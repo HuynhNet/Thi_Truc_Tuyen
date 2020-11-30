@@ -104,25 +104,26 @@
                 </div>
             </div>
             <div class="d-flex justify-content-center form_container">
-                <form>
+                <form action="{{ route('checkLogin') }}" method="post">
+                    @csrf
+                    @if(session()->has('message'))
+                        <div class="alert alert-success input-group mb-3">
+                            <span style="font-size: 13px;">{{ session('message') }}</span>
+                        </div>
+                    @endif
                     <div class="input-group mb-3">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" name="" class="form-control input_user" value="" placeholder="Tài khoản">
+                        <input type="text" name="username" class="form-control input_user" placeholder="Tài khoản">
                     </div>
                     <div class="input-group mb-2">
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" name="" class="form-control input_pass" value="" placeholder="Mật khẩu">
+                        <input type="password" name="password" class="form-control input_pass" placeholder="Mật khẩu">
                     </div>
-                    <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customControlInline">
-                            <label class="custom-control-label" for="customControlInline">Ghi nhớ tôi</label>
-                        </div>
-                    </div>
+
                     <div class="d-flex justify-content-center mt-3 login_container">
                         <button type="submit" name="button" class="btn login_btn"><b>Đăng nhập</b></button>
                     </div>
