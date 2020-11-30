@@ -31,6 +31,16 @@
             <!-- Main row -->
             <div class="row">
                 <section class="col-lg-6">
+
+                    <!-- Message -->
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success alert-block">
+                            <button type="button" class="close" data-dismiss="alert">×</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
+                    <!-- /Message -->
+
                     <!-- card -->
                     <div class="card">
                         <div class="card-header">
@@ -42,15 +52,17 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-2">
-                            <form action="" method="post">
+                            <form action="{{ url('post-add-type-test') }}" method="POST" class="needs-validation" novalidate>
+                                @csrf
                                 <div class="form-group row">
                                     <div class="col-6">
                                         <label for="">Tên loại kiểm tra</label>
-                                        <input type="text" name="" id="" class="form-control" placeholder="Nhập tên loại kiểm tra">
+                                        <input type="text" name="inputTypeTestName" required class="form-control" placeholder="Nhập tên loại kiểm tra">
+                                        <small class="text-danger">{{ $errors->first('inputTypeTestName') }}</small>
                                     </div>
                                     <div class="col-6">
                                         <label for="">Số phút kiểm tra</label>
-                                        <input type="number" name="" class="form-control" placeholder="Nhập số phút kiểm tra">
+                                        <input type="number" name="inputTypeTestMinute" required class="form-control" placeholder="Nhập số phút kiểm tra">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -88,21 +100,29 @@
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @forelse($show_type_tests as $key => $show_type_test)
                                     <tr>
-                                        <td data-label="STT">1</td>
+                                        <td data-label="STT">{{ ++$key }}</td>
                                         <td data-label="Tên loại kiểm tra">
-                                            <b>Kiểm tra 15 phút</b>
+                                            <b>{{ $show_type_test->ten_loai }}</b>
                                         </td>
                                         <td data-label="Số phút kiểm tra">
-                                            <h6><b>15</b> phút</h6>
+                                            <h6><b>{{ $show_type_test->thoi_gian }}</b> phút</h6>
                                         </td>
                                         <td data-label="Chọn">
-                                            <a class="btn btn-danger btn-xs"
-                                               href="{{ url('/') }}" role="button" title="Xóa">
+                                            <a class="btn btn-danger btn-xs" onclick="return confirm('Bạn có chắc chắn không ?')"
+                                            href="{{ url('delete-type-test/'.$show_type_test->id) }}" role="button" title="Xóa">
                                                 <i class="fa fa-trash"></i> Xóa
                                             </a>
                                         </td>
                                     </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="4">
+                                                <b class="text-danger">Không có dữ liệu</b>
+                                            </td>
+                                        </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
                             </div>
@@ -115,44 +135,6 @@
         </div>
         <!-- /.container-fluid -->
     </section>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form action="" class="needs-validation" novalidate>
-                    <div class="modal-header">
-                        <h6 class="modal-title"><b>THÊM MÔN HỌC</b></h6>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="">Mã môn học</label>
-                            <input type="text" name="" class="form-control" placeholder="Nhập mã môn học" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Tên môn học</label>
-                            <input type="text" name="" class="form-control" placeholder="Nhập tên môn học" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Hình ảnh</label> <br>
-                            <!-- File input field -->
-                            <input type="file" id="file" onchange="return fileValidation()"/>
-                            <!-- Image preview -->
-                            <div id="imagePreview"></div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-xs" data-dismiss="modal">
-                            <i class="fa fa-close"></i> Đóng</button>
-                        <button type="submit" class="btn btn-primary btn-xs">Thêm</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
 
     <script>
         // Disable form submissions if there are invalid fields
@@ -173,26 +155,6 @@
                 });
             }, false);
         })();
-
-        function fileValidation(){
-            var fileInput = document.getElementById('file');
-            var filePath = fileInput.value;
-            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif)$/i;
-            if(!allowedExtensions.exec(filePath)){
-                alert('Hình ảnh bắt buộc đuôi .jpeg/.jpg/.png/.gif only.');
-                fileInput.value = '';
-                return false;
-            }else{
-                //Image preview
-                if (fileInput.files && fileInput.files[0]) {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        document.getElementById('imagePreview').innerHTML = '<img src="'+e.target.result+'" style="max-width:100%;height:50px;margin-top:5px;"/>';
-                    };
-                    reader.readAsDataURL(fileInput.files[0]);
-                }
-            }
-        }
     </script>
 
 @endsection

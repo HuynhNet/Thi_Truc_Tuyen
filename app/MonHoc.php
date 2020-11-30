@@ -19,4 +19,10 @@ class MonHoc extends Model
     {
         return $this->hasMany('App\CauHoi');
     }
+
+    //Môn học có nhiều đề kiểm tra
+    public function DeKiemTra()
+    {
+        return $this->hasMany('App\DeKiemTra');
+    }
 }
