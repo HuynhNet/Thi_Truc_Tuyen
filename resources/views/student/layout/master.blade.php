@@ -11,6 +11,7 @@
     <meta name="description"
           content="Maruti is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <link rel="icon" type="image/png" href="{{ url('public/images/logo-quan-su.png') }}">
     <link rel="stylesheet" href="{{ asset('public/student/css/bootstrap.min.css') }}" />
