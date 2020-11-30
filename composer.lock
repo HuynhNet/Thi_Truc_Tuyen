@@ -5936,12 +5936,9 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-<<<<<<< HEAD
-=======
             "support": {
                 "source": "https://github.com/symfony/process/tree/v5.1.9"
             },
->>>>>>> main
             "funding": [
                 {
                     "url": "https://symfony.com/sponsor",
