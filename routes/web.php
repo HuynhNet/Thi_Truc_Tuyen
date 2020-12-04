@@ -118,30 +118,27 @@ Route::middleware([CheckLogin::class])->group(function(){
 
 
 
-
-
-
-
-
 //================================================================
 //Trang chủ học sinh
 Route::get('student', [StudentController::class, 'studentHome'])->name('homeStudent');
-Route::get('/exam-online', [StudentController::class, 'examOnline']);
-Route::get('/check-account', [StudentController::class, 'checkAccount']);
-Route::get('/task', [StudentController::class, 'task']);
+
+Route::get('/exam-online/{studentCode}', [StudentController::class, 'examOnline']);
+
+Route::get('/check-account/{deKiemTraId}', [StudentController::class, 'checkAccount']);
+Route::post('/post-check-account', [StudentController::class, 'postCheckAccount'])->name('postCheckAccount');
+
+Route::get('/task', [StudentController::class, 'task'])->name('task');
+Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
+
+Route::get('/get-question', [StudentController::class, 'getQuestion'])->name('getQuestion');
+
+
+Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
+
+
+
 //================================================================
 
-
-
-
-
-
-
-
-
-
-
-//================================================================
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 

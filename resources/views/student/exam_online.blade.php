@@ -7,11 +7,11 @@
                 <h4>Danh sách môn học</h4>
                 <hr>
                 <ul>
-                    <li><a href="">Giáo dụng quốc phòng an ninh</a></li>
-                    <li><a href="">Giáo dụng quốc phòng an ninh</a></li>
-                    <li><a href="">Giáo dụng quốc phòng an ninh</a></li>
-                    <li><a href="">Giáo dụng quốc phòng an ninh</a></li>
-                    <li><a href="">Giáo dụng quốc phòng an ninh</a></li>
+                    @foreach($monHoc as $monHoc)
+                        <li>
+                            <a href="">{{ $monHoc->ten_mon_hoc }}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -19,16 +19,16 @@
                 <h4>Thông tin môn học</h4>
                 <hr>
                 <div style="border: 1px solid #1a1a1a; border-radius: 5px; padding-left: 10px; padding-right: 10px;">
-                    <h5><strogn>- Thông báo đổi phòng học</strogn></h5>
+                    <h5><strong>- Thông báo đổi phòng học</strong></h5>
                     <span>01/11/2020 - Thay đổi sang phòng 105</span>
                     <hr style="border-bottom: 1px solid black;">
 
-                    <h5><strogn>- Thi cuối kỳ</strogn></h5>
-                    <span><a href="{{ url('/check-account') }}">Bắt đầu thi</a></span>
+                    <h5><strong>- Thông báo đổi phòng học</strong></h5>
+                    <span>01/12/2020 - Thay đổi sang phòng 109</span>
                     <hr style="border-bottom: 1px solid black;">
 
-                    <h5><strogn>- Thông báo đổi phòng học</strogn></h5>
-                    <span>01/11/2020 - Thay đổi sang phòng 105</span>
+                    <h5><strong>- Thi cuối kỳ</strong></h5>
+                    <span><a target="_blank" href="{{ url('/check-account', 1) }}">Bắt đầu thi</a></span>
                     <hr style="border-bottom: 1px solid black;">
                 </div>
 

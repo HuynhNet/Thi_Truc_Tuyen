@@ -11,6 +11,7 @@
     <meta name="description"
           content="Maruti is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <link rel="icon" type="image/png" href="{{ url('public/images/logo-quan-su.png') }}">
     <link rel="stylesheet" href="{{ asset('public/student/css/bootstrap.min.css') }}" />
@@ -77,6 +78,19 @@
         // resets the menu selection upon entry to this page:
         function resetMenu() {
             document.gomenu.selector.selectedIndex = 2;
+        }
+    </script>
+
+    <script>
+        function checkLogout(e){
+            if(confirm('Bạn có chắc muốn đăng xuất?')){
+                $.ajax({
+                    url: '{{ route('studentLogout') }}',
+                    method: "get",
+                });
+            }else{
+                e.preventDefault();
+            }
         }
     </script>
 </body>

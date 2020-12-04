@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\HocSinh;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use validate;
 use DB;
 use Illuminate\Support\Facades\Session;
@@ -18,15 +19,67 @@ class StudentController extends Controller
     }
 
 
-    public function examOnline(){
-        return view('student.exam_online');
+    public function examOnline($studentCode){
+
+        $monHoc = DB::table('hoc_sinhs')
+                    ->join('lops', 'hoc_sinhs.id_lop', '=', 'lops.id')
+                    ->join('lop_monhocs', 'lop_monhocs.lop', '=', 'lops.id')
+                    ->join('mon_hocs', 'mon_hocs.id', '=', 'lop_monhocs.mon_hoc')
+                    ->where('hoc_sinhs.ma_hs', $studentCode)
+                    ->select('mon_hocs.*')
+                    ->get();
+
+//        echo $monHoc;
+        return view('student.exam_online')->with([
+            'monHoc' => $monHoc
+        ]);
     }
 
 
-    public function checkAccount(Request $request){
-        return view('student.check_account');
+    public function checkAccount(Request $request, $deKiemTraId){
+        $deKiemTra = DB::table('de_kiem_tras')->where('id', $deKiemTraId)->get();
+        return view('student.check_account')->with([
+            'deKiemTra' => $deKiemTra
+        ]);
     }
 
+    public function postCheckAccount(Request $request){
+        $deKiemTraId = $request->input('deKiemTraId');
+        $pass = $request->input('password');
+        $passDe = DB::table('de_kiem_tras')->where('id', '=', $deKiemTraId)->select('mat_khau','thoi_gian')->get();
+
+        $cauHois = DB::table('chi_tiet_des')
+            ->join('chi_tiet_cau_hois', 'chi_tiet_cau_hois.chi_tiet_de', '=', 'chi_tiet_des.id')
+            ->where('chi_tiet_des.de_kiem_tra', $deKiemTraId)
+            ->select('chi_tiet_cau_hois.*')
+            ->get();
+
+        $showCauHoi = DB::table('chi_tiet_des')
+            ->join('chi_tiet_cau_hois', 'chi_tiet_cau_hois.chi_tiet_de', '=', 'chi_tiet_des.id')
+            ->where('chi_tiet_des.de_kiem_tra', $deKiemTraId)
+            ->select('chi_tiet_cau_hois.*')
+            ->take(2)
+            ->get();
+
+        if($pass == $passDe[0]->mat_khau){
+            return view('student.task')->with([
+                    'cauHois' => $cauHois,
+                    'thoiGian' => $passDe[0]->thoi_gian,
+                    'deKiemTraId' => $deKiemTraId,
+                    'showCauHoi' => $showCauHoi
+                ]);
+        }else{
+            return redirect()->back()->with('message', 'Mật khẩu không chính xác');
+        }
+
+    }
+
+    public function getAnswer(Request $request){
+        $key = $request->key;
+        $deKiemTraId = $request->deKiemTraId;
+        $chiTietCauHoiId = $request->chiTietCauHoiId;
+
+    }
 
     public function task(){
 
@@ -62,8 +115,8 @@ class StudentController extends Controller
 
     }
 
-    public function destroy($id)
-    {
-        //
+    public function studentLogout(){
+        Auth::logout();
+        return redirect()->route('homeStudent');
     }
 }

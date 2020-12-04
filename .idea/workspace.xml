@@ -147,6 +147,19 @@
       <change beforePath="$PROJECT_DIR$/vendor/symfony/var-dumper/Dumper/CliDumper.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/symfony/var-dumper/Dumper/CliDumper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/symfony/var-dumper/Dumper/HtmlDumper.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/symfony/var-dumper/Dumper/HtmlDumper.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/vendor/symfony/var-dumper/VarDumper.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/symfony/var-dumper/VarDumper.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/login.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/footer.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/layouts/master.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TraCuuDuocLieu/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../TraCuuDuocLieu/.idea/phpunit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../demo/.idea/demo.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../freshfoodshop/app/SendMail.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../freshfoodshop/public/home/css/css/rating.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../freshfoodshop/resources/views/home/email.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,16 +307,16 @@
       <path value="$PROJECT_DIR$/vendor/seld/phar-utils" />
       <path value="$PROJECT_DIR$/vendor/seld/jsonlint" />
       <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
+      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
+      <path value="$PROJECT_DIR$/vendor/rap2hpoutre/fast-excel" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpexcel" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
       <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
       <path value="$PROJECT_DIR$/vendor/myclabs/php-enum" />
-      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
-      <path value="$PROJECT_DIR$/vendor/maatwebsite/excel" />
-      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
-      <path value="$PROJECT_DIR$/vendor/maennchen/zipstream-php" />
-      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
-      <path value="$PROJECT_DIR$/vendor/rap2hpoutre/fast-excel" />
       <path value="$PROJECT_DIR$/vendor/box/spout" />
-      <path value="$PROJECT_DIR$/vendor/phpoffice/phpexcel" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jQGDnfoZbH5vxTJvAHSwcc3PGS" />
@@ -436,9 +449,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1606576657890" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1606582896344">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1606754978966">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606582896344" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606754978966" />
   </component>
 </project>
