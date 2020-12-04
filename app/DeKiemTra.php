@@ -11,7 +11,7 @@ class DeKiemTra extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     protected $fillable = [
-        'id', 'ma_gv', 'muc_kiem_tra', 'nam_hoc', 'mon_hoc', 'loai_kiem_tra', 'thoi_gian', 'so_cau', 'trang_thai'
+        'id', 'ten_de', 'mat_khau', 'ma_gv', 'muc_kiem_tra', 'nam_hoc', 'mon_hoc', 'loai_kiem_tra', 'thoi_gian', 'so_cau', 'trang_thai'
     ];
 
     //Đề kiểm tra thuộc giáo viên
@@ -42,5 +42,11 @@ class DeKiemTra extends Model
     public function LoaiKiemTra()
     {
         return $this->belongsTo('App\LoaiKiemTra');
+    }
+
+    //Đề kiểm tra có nhiều trong chi tiết đề kiểm tra
+    public function ChiTietDe()
+    {
+        return $this->hasMany('App\ChiTietDe');
     }
 }

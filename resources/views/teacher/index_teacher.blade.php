@@ -25,6 +25,18 @@
 {{--=============================================================--}}
 {{--Nội dung chính--}}
 @section('content')
+
+    <style>
+        #text-danger:hover{
+            color: white;
+            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+        #text-success:hover{
+            color: white;
+            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+    </style>
+
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
@@ -33,7 +45,10 @@
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>15</h3>
+                            <h3>
+                                @php($count_subject = DB::table('mon_hocs')->count())
+                                {{ $count_subject }}
+                            </h3>
                             <p>Môn học</p>
                         </div>
                         <div class="icon">
@@ -46,7 +61,10 @@
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>5</h3>
+                            <h3>
+                                @php($count_test = DB::table('de_kiem_tras')->count())
+                                {{ $count_test }}
+                            </h3>
                             <p>Đề kiểm tra</p>
                         </div>
                         <div class="icon">
@@ -59,7 +77,10 @@
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>200</h3>
+                            <h3>
+                                @php($count_question = DB::table('cau_hois')->count())
+                                {{ $count_question }}
+                            </h3>
                             <p>Câu hỏi</p>
                         </div>
                         <div class="icon">
@@ -80,7 +101,7 @@
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="ion ion-clipboard mr-1"></i>
-                                <b>MÔN HỌC</b>
+                                <b>MÔN HỌC MỚI ĐANG DẠY</b>
                             </h3>
                             <div class="card-tools"></div>
                         </div>
@@ -90,38 +111,64 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col">STT</th>
-                                        <th scope="col">Mã môn học</th>
-                                        <th scope="col">Tên môn học</th>
-                                        <th scope="col">Hình ảnh</th>
-                                        <th scope="col">Trạng thái</th>
-                                        <th scope="col">Chọn</th>
+                                        <th scope="col" style="width:5%;">STT</th>
+                                        <th scope="col" style="width:10%;">Mã môn học</th>
+                                        <th scope="col" style="width:30%;">Tên môn học</th>
+                                        <th scope="col" style="width:25%;">Hình ảnh</th>
+                                        <th scope="col" style="width:15%;">Trạng thái</th>
+                                        <th scope="col" colspan="2" style="width:15%;">Chọn</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+                                    @php($show_subjects = DB::table('mon_hocs')->where('trang_thai',1)->latest()->take(5)->get())
+                                    @forelse($show_subjects as $key => $show_subject)
                                         <tr>
-                                            <td data-label="STT">1</td>
-                                            <td data-label="Mã môn học" class="p-1">
-                                                BP-345
+                                            <td data-label="STT"><b>{{ ++$key }}</b></td>
+                                            <td data-label="Mã môn học">
+                                                <b>{{ $show_subject->ma_mon_hoc }}</b>
                                             </td>
                                             <td data-label="Tên môn học">
-                                                Biên phòng cơ bản 1
+                                                <a href="{{ url('view-question-subject') }}">
+                                                    <b>{{ $show_subject->ten_mon_hoc }}</b>
+                                                </a>
                                             </td>
                                             <td data-label="Hình ảnh">
-                                                <a href="{{ url('public/images/qpan.jpg') }}">
-                                                    <img src="{{ url('public/images/qpan.jpg') }}" class="img-fluid rounded-top"
-                                                    style="max-width:100%;height:60px;">
+                                                <a href="{{ url('public/image_subject/'.$show_subject->hinh_anh) }}">
+                                                    <img src="{{ url('public/image_subject/'.$show_subject->hinh_anh) }}" class="img-fluid rounded-top"
+                                                         style="max-width:100%;height:60px;">
                                                 </a>
                                             </td>
                                             <td data-label="Trạng thái">
-                                              <b class="text-success">Đang dạy</b>
+                                                @if ($show_subject->trang_thai == 0 )
+                                                    <a href="{{ url('active-subject/'.$show_subject->id) }}" title="Nhấp để Kích hoạt">
+                                                        <b class="text-danger" id="text-danger">Chưa kích hoạt</b>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ url('inactive-subject/'.$show_subject->id) }}" title="Nhấp để Hủy kích hoạt">
+                                                        <b class="text-success" id="text-success">Đã kích hoạt</b>
+                                                    </a>
+                                                @endif
                                             </td>
                                             <td data-label="Chọn">
-                                                <a name="" id="" class="btn btn-outline-success btn-xs" href="#" role="button">
-                                                    <i class="fa fa-eye"></i> Xem câu hỏi
+                                                <a class="btn btn-primary btn-xs"
+                                                   href="{{ url('edit-subject/'.$show_subject->id) }}" role="button" title="Chỉnh sửa">
+                                                    <i class="fa fa-edit"></i> Sửa
+                                                </a>
+                                            </td>
+                                            <td data-label="Chọn">
+                                                <a class="btn btn-success btn-xs"
+                                                   href="{{ url('view-question-subject/'.$show_subject->id) }}" role="button" title="Xem câu hỏi">
+                                                    <i class="fa fa-eye"></i> Xem
                                                 </a>
                                             </td>
                                         </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="7">
+                                                <b class="text-danger">Không có dữ liệu</b>
+                                            </td>
+                                        </tr>
+                                    @endforelse
                                     </tbody>
                                 </table>
                             </div>

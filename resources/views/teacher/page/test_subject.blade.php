@@ -26,8 +26,18 @@
 {{--Nội dung chính--}}
 @section('content')
 
+    <style>
+        #text-danger:hover{
+            color: white;
+            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+        #text-success:hover{
+            color: white;
+            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
+        }
+    </style>
 
-    <!-- Modal -->
+    <!-- Modal Test Subject-->
     <div class="modal fade" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <form action="{{ url('post-add-test-subject') }}" method="post" class="needs-validation" novalidate>
@@ -37,6 +47,14 @@
                         <h5 class="modal-title"><b>TẠO ĐỀ KIỂM TRA</b></h5>
                     </div>
                     <div class="modal-body">
+                        <div class="form-group">
+                            <label for="">Tên đề kiểm tra</label>
+                            <input type="text" class="form-control" name="inputTestName" required placeholder="Nhập tên đề kiểm tra">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Mật khẩu đề kiểm tra</label>
+                            <input type="text" class="form-control" name="inputTestPassword" required placeholder="Nhập mật khẩu đề kiểm tra">
+                        </div>
                         <div class="form-group">
                             <label for="">Môn học</label>
                             <select class="form-control" name="inputSubjectId" required>
@@ -104,6 +122,7 @@
             </form>
         </div>
     </div>
+    <!-- /Modal Test Subject-->
 
     <section class="content">
         <div class="container-fluid">
@@ -128,7 +147,7 @@
                                 <b>ĐỀ KIỂM TRA</b>
                             </h3>
                             <div class="card-tools">
-                                <a class="btn btn-primary btn-sm" href="#" role="button" data-toggle="modal" data-target="#modelId">
+                                <a class="btn btn-primary btn-xs" href="#" role="button" data-toggle="modal" data-target="#modelId">
                                     <i class="fa fa-plus"></i> Tạo đề thi
                                 </a>
                             </div>
@@ -139,22 +158,24 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col">STT</th>
-                                        <th scope="col">GV khởi tạo</th>
-                                        <th scope="col">Môn học</th>
-                                        <th scope="col">Độ khó</th>
-                                        <th scope="col">Năm học</th>
-                                        <th scope="col">Loại kiểm tra</th>
-                                        <th scope="col">Thời gian</th>
-                                        <th scope="col">Số câu hỏi</th>
-                                        <th scope="col">Trạng thái</th>
-                                        <th scope="col" colspan="2">Chọn</th>
+                                        <th scope="col" style="width:2%;">STT</th>
+                                        <th scope="col" style="width:13%;">Mật khẩu</th>
+                                        <th scope="col" style="width:15%;">Tên đề</th>
+                                        <th scope="col" style="width:11%;">GV khởi tạo</th>
+                                        <th scope="col" style="width:11%;">Môn học</th>
+                                        <th scope="col" style="width:11%;">Năm học</th>
+                                        <th scope="col" style="width:11%;">Loại kiểm tra</th>
+                                        <th scope="col" style="width:11%;">Số câu hỏi</th>
+                                        <th scope="col" style="width:11%;">Trạng thái</th>
+                                        <th scope="col" style="width:5%;" colspan="2">Chọn</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @forelse($show_test_subjecs as $key => $show_test_subjec)
                                     <tr>
                                         <td data-label="STT"><b>{{ ++$key }}</b></td>
+                                        <td data-label="Mật khẩu đề"><b>{{ $show_test_subjec->mat_khau }}</b></td>
+                                        <td data-label="Tên đề"><b>{{ $show_test_subjec->ten_de }}</b></td>
                                         <td data-label="GV khởi tạo">
                                             @php($users = DB::table('users')->where('id',$show_test_subjec->ma_gv)->get())
                                             @foreach($users as $user)
@@ -165,12 +186,6 @@
                                             @php($subjects = DB::table('mon_hocs')->where('id',$show_test_subjec->mon_hoc)->get())
                                             @foreach($subjects as $subject)
                                                 <b>{{ $subject->ten_mon_hoc }}</b>
-                                            @endforeach
-                                        </td>
-                                        <td data-label="Độ khó">
-                                            @php($level_tests = DB::table('muc_kiem_tras')->where('id',$show_test_subjec->muc_kiem_tra)->get())
-                                            @foreach($level_tests as $level_test)
-                                                {{ $level_test->ten_muc }}
                                             @endforeach
                                         </td>
                                         <td data-label="Năm học">
@@ -185,29 +200,29 @@
                                                 {{ $type_test->ten_loai }}
                                             @endforeach
                                         </td>
-                                        <td data-label="Thời gian">
-                                            {{ $show_test_subjec->thoi_gian }} phút
-                                        </td>
                                         <td data-label="Số câu hỏi">
                                             {{ $show_test_subjec->so_cau }} câu
                                         </td>
                                         <td data-label="Trạng thái">
-                                            @if ($show_test_subjec->trang_thai == 0)
-                                                <b class="text-danger">Đã khóa</b>
+                                            @if ($show_test_subjec->trang_thai == 0 )
+                                                <a href="{{ url('active-test-subject/'.$show_test_subjec->id) }}" title="Nhấp để Kích hoạt">
+                                                    <b class="text-danger" id="text-danger">Chưa kích hoạt</b>
+                                                </a>
                                             @else
-                                                <b class="text-success">Đã mở</b>
+                                                <a href="{{ url('inactive-test-subject/'.$show_test_subjec->id) }}" title="Nhấp để Hủy kích hoạt">
+                                                    <b class="text-success" id="text-success">Đã kích hoạt</b>
+                                                </a>
                                             @endif
-
                                         </td>
                                         <td data-label="Chọn">
-                                            <a class="btn btn-danger btn-xs"
-                                               href="{{ url('#') }}" role="button" title="Xóa">
+                                            <a class="btn btn-danger btn-xs" onclick="return confirm('Bạn có chắc chắn không ?')"
+                                            href="{{ url('delete-test-subject/'.$show_test_subjec->id) }}" role="button" title="Xóa">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </td>
                                         <td data-label="Chọn">
                                             <a class="btn btn-success btn-xs"
-                                               href="{{ url('#') }}" role="button" title="Nhập câu hỏi vào đề">
+                                            href="{{ url('view-detail-test-subject/'.$show_test_subjec->id) }}" role="button" title="Xem chi tiết đề kiểm tra">
                                                 <i class="fa fa-eye"></i>
                                             </a>
                                         </td>
