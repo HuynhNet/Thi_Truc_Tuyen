@@ -20,13 +20,13 @@
                                 {{ session()->get('message') }}
                             </div>
                         @endif
-
                         <form action="{{ url('/post-check-account') }}" method="post">
                             @csrf
 
-                            @foreach($deKiemTra as $deKiemTra)
-                                <input type="hidden" name="deKiemTraId" value="{{ $deKiemTra->id }}">
-                            @endforeach
+                            <input type="hidden" name="deKiemTraId" value="{{ $deKiemTra }}">
+
+                            <input type="hidden" name="hs_id" value="{{ Auth::user()->id }}">
+
 
                             <div class="form-group">
                                 <label for=""></label>

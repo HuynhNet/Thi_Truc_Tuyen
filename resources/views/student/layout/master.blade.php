@@ -22,6 +22,7 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('public/student/img/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('public/student/css/student.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 
 <body>
