@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\CauHoi;
+use App\ChiTietCauHoi;
+use App\ChiTietDe;
 use App\DeKiemTra;
 use App\GiaoVien;
 use App\Http\Controllers\Controller;
@@ -331,11 +333,48 @@ class TeacherController extends Controller
         return view('teacher.page.test_subject',['show_test_subjecs'=>$show_test_subjecs]);
     }
 
+    //Xóa đề kiểm tra
+    protected function delete_test_subject($id_test)
+    {
+        DeKiemTra::destroy($id_test);
+        return redirect()->back()->with('success', 'Đã Xóa đề kiểm tra');
+    }
+
+    //Kích hoạt đề kiểm tra
+    protected function active_test_subject($id_test)
+    {
+        DeKiemTra::where('id', $id_test)->update(['trang_thai' => 1]);
+        return redirect()->back()->with('success', 'Đã Kích hoạt đề kiểm tra');
+    }
+
+    //Hủy Kích hoạt đề kiểm tra
+    protected function inactive_test_subject($id_test)
+    {
+        DeKiemTra::where('id', $id_test)->update(['trang_thai' => 0]);
+        return redirect()->back()->with('success', 'Đã Hủy kích hoạt đề kiểm tra');
+    }
+
+    //Xem chi tiết đề kiểm tra
+    protected function view_detail_test_subject($id_test)
+    {
+        $detail_tests = DeKiemTra::find($id_test);
+        $show_subject_tests = MonHoc::where('id',$detail_tests->mon_hoc)->first();
+        $show_questions = CauHoi::where('mon_hoc',$show_subject_tests->id)->paginate(20);
+        return view('teacher.page.view_detail_test_subject',
+        [
+            'detail_tests'=>$detail_tests,
+            'show_subject_tests'=>$show_subject_tests,
+            'show_questions'=>$show_questions
+        ]);
+    }
+
     //Thêm đề kiểm tra
     protected function post_add_test_subject(Request $request)
     {
         $add_test_subject = new DeKiemTra();
         $add_test_subject->ma_gv = Auth::id();
+        $add_test_subject->ten_de = $request->input('inputTestName');
+        $add_test_subject->mat_khau = $request->input('inputTestPassword');
         $add_test_subject->muc_kiem_tra = $request->input('inputLevelTestId');
         $add_test_subject->nam_hoc = $request->input('inputYearId');
         $add_test_subject->mon_hoc = $request->input('inputSubjectId');
@@ -345,6 +384,46 @@ class TeacherController extends Controller
         $add_test_subject->trang_thai = 0; //Chưa kích hoạt đề thi
         $add_test_subject->save();
 
+        //Lấy để kiểm tra mới lớn nhất vừa thêm
+        $test_latest = DB::table('de_kiem_tras')->latest()->first();
+
+
+        //Thêm dữ liệu các câu hỏi vào bảng chi tiết đề kiểm tra
+        $questions = DB::table('cau_hois')->get();
+
+        foreach ($questions as $key => $question){
+            $add_test_detail = new ChiTietDe();
+            $add_test_detail->cau_hoi = $question->id;
+            $add_test_detail->de_kiem_tra = $test_latest->id;
+            $add_test_detail->save();
+
+            //Lấy tất cả chi tiết đề
+            $detail_tests = DB::table('chi_tiet_des')->get();
+
+            //Tạo mới để ngoài vòng lặp nhé
+            $add_detail_question = new ChiTietCauHoi();
+
+            foreach ($detail_tests as $detail_test){
+                $get_questions = DB::table('cau_hois')->where('id', $detail_test->cau_hoi)->get();
+                foreach ($get_questions as $get_question){
+                    $add_detail_question->noi_dung = $get_question->noi_dung;
+                    $add_detail_question->a = $get_question->a;
+                    $add_detail_question->b = $get_question->b;
+                    $add_detail_question->c = $get_question->c;
+                    $add_detail_question->d = $get_question->d;
+                    $add_detail_question->dap_an = $get_question->dap_an_dung;
+                    $add_detail_question->chi_tiet_de = $detail_test->id;
+                    $add_detail_question->save();
+                }
+            }
+
+            $count_detail_test = DB::table('chi_tiet_des')->count();
+            if ($count_detail_test == $test_latest->so_cau) {
+                break;
+            }else{
+                continue;
+            }
+        }
         return redirect()->back()->with('success', 'Đã Thêm đề kiểm tra');
     }
     //=====================================================================

@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2020 at 05:43 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Dec 04, 2020 at 04:04 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -30,10 +31,20 @@ SET time_zone = "+00:00";
 CREATE TABLE `bai_lams` (
   `id` int(10) UNSIGNED NOT NULL,
   `ma_hs` int(11) DEFAULT NULL,
-  `da_chon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `ma_de` int(11) DEFAULT NULL,
+  `ma_mon` int(11) DEFAULT NULL,
+  `thoi_gian_bat_dau_lam` timestamp NULL DEFAULT NULL,
+  `thoi_gian_ket_thuc` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `bai_lams`
+--
+
+INSERT INTO `bai_lams` (`id`, `ma_hs`, `created_at`, `updated_at`, `ma_de`, `ma_mon`, `thoi_gian_bat_dau_lam`, `thoi_gian_ket_thuc`) VALUES
+(139, 5, '2020-12-02 10:59:30', '2020-12-02 10:59:30', 1, 1, '2020-12-02 10:59:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -44,7 +55,7 @@ CREATE TABLE `bai_lams` (
 CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `parent_id` int(10) UNSIGNED DEFAULT NULL,
-  `order` int(11) NOT NULL DEFAULT 1,
+  `order` int(11) NOT NULL DEFAULT '1',
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -67,14 +78,14 @@ INSERT INTO `categories` (`id`, `parent_id`, `order`, `name`, `slug`, `created_a
 
 CREATE TABLE `cau_hois` (
   `id` int(10) UNSIGNED NOT NULL,
-  `dap_an_dung` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dap_an_dung` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `mon_hoc` int(11) DEFAULT NULL,
-  `noi_dung` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `hinh_anh` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `a` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `b` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `c` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `d` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `noi_dung` mediumtext COLLATE utf8_unicode_ci,
+  `hinh_anh` mediumtext COLLATE utf8_unicode_ci,
+  `a` mediumtext COLLATE utf8_unicode_ci,
+  `b` mediumtext COLLATE utf8_unicode_ci,
+  `c` mediumtext COLLATE utf8_unicode_ci,
+  `d` mediumtext COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -84,8 +95,35 @@ CREATE TABLE `cau_hois` (
 --
 
 INSERT INTO `cau_hois` (`id`, `dap_an_dung`, `mon_hoc`, `noi_dung`, `hinh_anh`, `a`, `b`, `c`, `d`, `created_at`, `updated_at`) VALUES
-(24, 'A', 5, 'Giá cả sản xuất tư bản chủ nghĩa bao gồm những bộ phận nào?', NULL, 'Chi phí sản xuất cộng với lợi nhuận bình quân.  ', 'Toàn bộ chi phí bỏ ra trong quá trình sản xuất.', 'Giá cả thị trường trừ đi lợi nhuận của nhà tư bản công nghiệp.', 'Giá trị của hàng hoá cộng với lợi nhuận của nhà tư bản công nghiệp.  ', '2020-11-29 03:58:42', '2020-11-29 03:58:42'),
-(25, 'C', 5, 'Ý nghĩa của việc phân chia tư bản thành tư bản bất biến và tư bản khả biến?', '1606648673-logo-hoc-tap.jpg', 'Để cải tiến quản lý tư bản.', 'Để tăng cường bóc lột công nhân làm thuê.', 'Để xác định vai trò của mỗi loại tư bản đối với việc sản xuất ra giá trị thặng dư và phê phán quan điểm máy móc, tư bản tạo ra giá trị thặng dư cho chủ sở hữu nó', 'Để tìm ra cơ cấu của mỗi loại tư bản.', '2020-11-29 03:58:42', '2020-11-29 04:18:13');
+(1, 'A', 1, 'Giá cả sản xuất tư bản chủ nghĩa bao gồm những bộ phận nào?', NULL, 'Chi phí sản xuất cộng với lợi nhuận bình quân.', 'Toàn bộ chi phí bỏ ra trong quá trình sản xuất.', 'Giá cả thị trường trừ đi lợi nhuận của nhà tư bản công nghiệp.', 'Giá trị của hàng hoá cộng với lợi nhuận của nhà tư bản công nghiệp.', '2020-11-26 08:37:56', '2020-11-26 08:37:56'),
+(2, 'C', 1, 'Ý nghĩa của việc phân chia tư bản thành tư bản bất biến và tư bản khả biến?', NULL, 'Để cải tiến quản lý tư bản.', 'Để tăng cường bóc lột công nhân làm thuê.', 'Để xác định vai trò của mỗi loại tư bản đối với việc sản xuất ra giá trị thặng dư và phê phán quan điểm máy móc, tư bản tạo ra giá trị thặng dư cho chủ sở hữu nó.', 'Để tìm ra cơ cấu của mỗi loại tư bản.', '2020-11-26 08:38:32', '2020-11-26 08:38:32'),
+(3, 'C', 1, 'Vì sao sức lao động là hàng hoá đặc biệt?', NULL, 'Vì sức lao động là yếu tố quan trọng nhất của mọi nền sản xuất xã hội.', 'Vì sức lao động được mua bán trên thị trường đặc biệt, ở đó chỉ có người cần mua và người cần bán đến thội.', 'Vì khi sử dụng, sức lao động tạo ra một lượng giá trị mới lớn hơn giá trị chính bản thân nó', 'Vì giá trị hàng hoá sức lao động mang yếu tố tinh thần và lịch sử.', '2020-11-26 08:39:05', '2020-11-26 08:39:05'),
+(4, 'C', 1, 'Cạnh tranh giữa các ngành dẫn đến hình thành điều gì?', NULL, 'Giá cả thị trường.', 'Lợi nhuận siêu ngạch.', 'Tỷ suất lợi nhuận bình quân', 'Giá trị xã hội của hàng hoá.', '2020-11-26 08:39:56', '2020-11-26 08:39:56'),
+(5, 'C', 1, 'Mâu thuẫn kinh tế cơ bản của chủ nghĩa tư bản là gì?', NULL, 'Mâu thuẫn giữa lao động mang tính tư nhân và lao động mang tính xã hội.', 'Mâu thuẫn giữa lợi ích của giai cấp vô sản với lợi ích của giai cấp tư sản.', 'Mâu thuẫn giữa lực lượng sản xuất mang tính xã hội hoá cao với quan hệ sản xuất dựa trên chế độ chiếm hữu tư nhân tư bản chủ nghĩa về tư liệu sản xuất', 'Mâu thuẫn giữa giai cấp công nhân với giai cấp tư sản.', '2020-11-26 08:40:30', '2020-11-26 08:40:30');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chi_tiet_bai_lams`
+--
+
+CREATE TABLE `chi_tiet_bai_lams` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `bai_lam` int(11) DEFAULT NULL,
+  `chi_tiet_cau_hoi` int(11) DEFAULT NULL,
+  `dap_an_chon` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `chi_tiet_bai_lams`
+--
+
+INSERT INTO `chi_tiet_bai_lams` (`id`, `bai_lam`, `chi_tiet_cau_hoi`, `dap_an_chon`, `created_at`, `updated_at`) VALUES
+(3, 139, 1, 'B', NULL, NULL),
+(4, 139, 2, 'C', NULL, NULL),
+(5, 139, 3, 'B', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -95,15 +133,27 @@ INSERT INTO `cau_hois` (`id`, `dap_an_dung`, `mon_hoc`, `noi_dung`, `hinh_anh`, 
 
 CREATE TABLE `chi_tiet_cau_hois` (
   `id` int(10) UNSIGNED NOT NULL,
-  `a` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `b` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `c` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `d` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `dap_an` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `a` mediumtext COLLATE utf8_unicode_ci,
+  `b` mediumtext COLLATE utf8_unicode_ci,
+  `c` mediumtext COLLATE utf8_unicode_ci,
+  `d` mediumtext COLLATE utf8_unicode_ci,
+  `dap_an` mediumtext COLLATE utf8_unicode_ci,
   `chi_tiet_de` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `noi_dung` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `chi_tiet_cau_hois`
+--
+
+INSERT INTO `chi_tiet_cau_hois` (`id`, `a`, `b`, `c`, `d`, `dap_an`, `chi_tiet_de`, `created_at`, `updated_at`, `noi_dung`) VALUES
+(1, 'Chi phí sản xuất cộng với lợi nhuận bình quân.', 'Toàn bộ chi phí bỏ ra trong quá trình sản xuất.', 'Giá cả thị trường trừ đi lợi nhuận của nhà tư bản công nghiệp.', 'Giá trị của hàng hoá cộng với lợi nhuận của nhà tư bản công nghiệp.', 'A', 1, '2020-11-26 08:54:14', '2020-11-26 08:54:14', 'Giá cả sản xuất tư bản chủ nghĩa bao gồm những bộ phận nào?'),
+(2, 'Để cải tiến quản lý tư bản.', 'Để tăng cường bóc lột công nhân làm thuê.', 'Để xác định vai trò của mỗi loại tư bản đối với việc sản xuất ra giá trị thặng dư và phê phán quan điểm máy móc, tư bản tạo ra giá trị thặng dư cho chủ sở hữu nó.', 'Để tìm ra cơ cấu của mỗi loại tư bản.', 'C', 2, '2020-11-26 08:55:01', '2020-11-26 08:55:01', 'Ý nghĩa của việc phân chia tư bản thành tư bản bất biến và tư bản khả biến?'),
+(3, 'Vì sức lao động là yếu tố quan trọng nhất của mọi nền sản xuất xã hội.', 'Vì sức lao động được mua bán trên thị trường đặc biệt, ở đó chỉ có người cần mua và người cần bán đến thội.', 'Vì khi sử dụng, sức lao động tạo ra một lượng giá trị mới lớn hơn giá trị chính bản thân nó', 'Vì giá trị hàng hoá sức lao động mang yếu tố tinh thần và lịch sử.', 'C', 3, '2020-11-26 08:56:13', '2020-11-26 08:56:13', 'Vì sao sức lao động là hàng hoá đặc biệt?'),
+(4, 'Giá cả thị trường.', 'Lợi nhuận siêu ngạch.', 'Tỷ suất lợi nhuận bình quân', 'Giá trị xã hội của hàng hoá.', 'C', 4, '2020-11-26 08:56:47', '2020-11-26 08:56:47', 'Cạnh tranh giữa các ngành dẫn đến hình thành điều gì?'),
+(5, 'Mâu thuẫn giữa lao động mang tính tư nhân và lao động mang tính xã hội.', 'Mâu thuẫn giữa lợi ích của giai cấp vô sản với lợi ích của giai cấp tư sản.', 'Mâu thuẫn giữa lực lượng sản xuất mang tính xã hội hoá cao với quan hệ sản xuất dựa trên chế độ chiếm hữu tư nhân tư bản chủ nghĩa về tư liệu sản xuất', 'Mâu thuẫn giữa giai cấp công nhân với giai cấp tư sản.', 'C', 5, '2020-11-26 08:57:24', '2020-11-26 08:57:24', 'Mâu thuẫn kinh tế cơ bản của chủ nghĩa tư bản là gì?');
 
 -- --------------------------------------------------------
 
@@ -118,6 +168,17 @@ CREATE TABLE `chi_tiet_des` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `chi_tiet_des`
+--
+
+INSERT INTO `chi_tiet_des` (`id`, `cau_hoi`, `de_kiem_tra`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '2020-11-26 08:50:07', '2020-11-26 08:50:07'),
+(2, 2, 1, '2020-11-26 08:50:16', '2020-11-26 08:50:16'),
+(3, 3, 1, '2020-11-26 08:50:24', '2020-11-26 08:50:24'),
+(4, 4, 1, '2020-11-26 08:50:35', '2020-11-26 08:50:35'),
+(5, 5, 1, '2020-11-26 08:50:45', '2020-11-26 08:50:45');
 
 -- --------------------------------------------------------
 
@@ -145,14 +206,14 @@ CREATE TABLE `data_rows` (
   `field` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `display_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `required` tinyint(1) NOT NULL DEFAULT 0,
-  `browse` tinyint(1) NOT NULL DEFAULT 1,
-  `read` tinyint(1) NOT NULL DEFAULT 1,
-  `edit` tinyint(1) NOT NULL DEFAULT 1,
-  `add` tinyint(1) NOT NULL DEFAULT 1,
-  `delete` tinyint(1) NOT NULL DEFAULT 1,
-  `details` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `order` int(11) NOT NULL DEFAULT 1
+  `required` tinyint(1) NOT NULL DEFAULT '0',
+  `browse` tinyint(1) NOT NULL DEFAULT '1',
+  `read` tinyint(1) NOT NULL DEFAULT '1',
+  `edit` tinyint(1) NOT NULL DEFAULT '1',
+  `add` tinyint(1) NOT NULL DEFAULT '1',
+  `delete` tinyint(1) NOT NULL DEFAULT '1',
+  `details` text COLLATE utf8_unicode_ci,
+  `order` int(11) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -265,7 +326,6 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (109, 14, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 11),
 (110, 15, 'id', 'hidden', 'Id', 1, 1, 1, 1, 1, 1, '{}', 1),
 (111, 15, 'ma_hs', 'text', 'Ma Hs', 0, 1, 1, 1, 1, 1, '{}', 2),
-(112, 15, 'da_chon', 'text', 'Da Chon', 0, 1, 1, 1, 1, 1, '{}', 3),
 (113, 15, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 4),
 (114, 15, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 5),
 (115, 16, 'id', 'hidden', 'Id', 1, 1, 1, 1, 1, 1, '{}', 1),
@@ -304,9 +364,8 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (148, 22, 'ten_muc', 'text', 'Ten Muc', 0, 1, 1, 1, 1, 1, '{}', 2),
 (149, 22, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 3),
 (150, 22, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 4),
-(151, 15, 'bai_lam_belongsto_hoc_sinh_relationship', 'relationship', 'hoc_sinhs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\HocSinh\",\"table\":\"hoc_sinhs\",\"type\":\"belongsTo\",\"column\":\"ma_hs\",\"key\":\"id\",\"label\":\"ma_hs\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 6),
-(152, 20, 'cau_hoi_belongsto_dap_an_dung_relationship', 'relationship', 'dap_an_dungs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\DapAnDung\",\"table\":\"dap_an_dungs\",\"type\":\"belongsTo\",\"column\":\"dap_an_dung\",\"key\":\"id\",\"label\":\"dap_an\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 12),
-(153, 20, 'cau_hoi_belongsto_mon_hoc_relationship', 'relationship', 'mon_hocs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\MonHoc\",\"table\":\"mon_hocs\",\"type\":\"belongsTo\",\"column\":\"mon_hoc\",\"key\":\"id\",\"label\":\"ten_mon_hoc\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 13),
+(151, 15, 'bai_lam_belongsto_hoc_sinh_relationship', 'relationship', 'hoc_sinhs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\HocSinh\",\"table\":\"hoc_sinhs\",\"type\":\"belongsTo\",\"column\":\"ma_hs\",\"key\":\"id\",\"label\":\"ma_hs\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
+(153, 20, 'cau_hoi_belongsto_mon_hoc_relationship', 'relationship', 'mon_hocs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\MonHoc\",\"table\":\"mon_hocs\",\"type\":\"belongsTo\",\"column\":\"mon_hoc\",\"key\":\"id\",\"label\":\"ten_mon_hoc\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 13),
 (154, 19, 'chi_tiet_de_belongsto_cau_hoi_relationship', 'relationship', 'cau_hois', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\CauHoi\",\"table\":\"cau_hois\",\"type\":\"belongsTo\",\"column\":\"cau_hoi\",\"key\":\"id\",\"label\":\"noi_dung\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 6),
 (155, 19, 'chi_tiet_de_belongsto_de_kiem_tra_relationship', 'relationship', 'de_kiem_tras', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\DeKiemTra\",\"table\":\"de_kiem_tras\",\"type\":\"belongsTo\",\"column\":\"de_kiem_tra\",\"key\":\"id\",\"label\":\"ten_de\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
 (156, 21, 'dap_an_dung_belongsto_cau_hoi_relationship', 'relationship', 'cau_hois', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\CauHoi\",\"table\":\"cau_hois\",\"type\":\"belongsTo\",\"column\":\"cau_hoi\",\"key\":\"id\",\"label\":\"noi_dung\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 6),
@@ -315,14 +374,13 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (159, 14, 'de_kiem_tra_belongsto_nam_hoc_relationship', 'relationship', 'nam_hocs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\NamHoc\",\"table\":\"nam_hocs\",\"type\":\"belongsTo\",\"column\":\"nam_hoc\",\"key\":\"id\",\"label\":\"nam\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 14),
 (160, 14, 'de_kiem_tra_belongsto_mon_hoc_relationship', 'relationship', 'mon_hocs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\MonHoc\",\"table\":\"mon_hocs\",\"type\":\"belongsTo\",\"column\":\"mon_hoc\",\"key\":\"id\",\"label\":\"ten_mon_hoc\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 15),
 (161, 14, 'de_kiem_tra_belongsto_loai_kiem_tra_relationship', 'relationship', 'loai_kiem_tras', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\LoaiKiemTra\",\"table\":\"loai_kiem_tras\",\"type\":\"belongsTo\",\"column\":\"loai_kiem_tra\",\"key\":\"id\",\"label\":\"ten_loai\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 16),
-(162, 14, 'de_kiem_tra_belongsto_loai_kiem_tra_relationship_1', 'relationship', 'loai_kiem_tras', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\LoaiKiemTra\",\"table\":\"loai_kiem_tras\",\"type\":\"belongsTo\",\"column\":\"thoi_gian\",\"key\":\"id\",\"label\":\"thoi_gian\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 17),
 (163, 8, 'giao_vien_belongsto_user_relationship_1', 'relationship', 'users', 0, 1, 1, 1, 1, 1, '{\"model\":\"TCG\\\\Voyager\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"ma_gv\",\"key\":\"id\",\"label\":\"ma_gv\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 6),
 (164, 12, 'ket_qua_belongsto_de_kiem_tra_relationship', 'relationship', 'de_kiem_tras', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\DeKiemTra\",\"table\":\"de_kiem_tras\",\"type\":\"belongsTo\",\"column\":\"de_kiem_tra\",\"key\":\"id\",\"label\":\"ten_de\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (165, 12, 'de_kiem_tra', 'text', 'De Kiem Tra', 0, 1, 1, 1, 1, 1, '{}', 2),
 (166, 12, 'mon_hoc', 'text', 'Mon Hoc', 0, 1, 1, 1, 1, 1, '{}', 3),
 (167, 12, 'ket_qua_belongsto_mon_hoc_relationship', 'relationship', 'mon_hocs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\MonHoc\",\"table\":\"mon_hocs\",\"type\":\"belongsTo\",\"column\":\"mon_hoc\",\"key\":\"id\",\"label\":\"ten_mon_hoc\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 11),
 (168, 12, 'ket_qua_belongsto_hoc_sinh_relationship', 'relationship', 'hoc_sinhs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\HocSinh\",\"table\":\"hoc_sinhs\",\"type\":\"belongsTo\",\"column\":\"ma_hs\",\"key\":\"id\",\"label\":\"ma_hs\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 12),
-(169, 11, 'lop_belongsto_nam_hoc_relationship', 'relationship', 'nam_hocs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\NamHoc\",\"table\":\"nam_hocs\",\"type\":\"belongsTo\",\"column\":\"nam_hoc\",\"key\":\"id\",\"label\":\"nam\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 7),
+(169, 11, 'lop_belongsto_nam_hoc_relationship', 'relationship', 'nam_hocs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\NamHoc\",\"table\":\"nam_hocs\",\"type\":\"belongsTo\",\"column\":\"nam_hoc\",\"key\":\"id\",\"label\":\"nam\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
 (170, 23, 'id', 'hidden', 'Id', 1, 1, 1, 1, 1, 1, '{}', 1),
 (171, 23, 'mon_hoc', 'text', 'Mon Hoc', 0, 1, 1, 1, 1, 1, '{}', 2),
 (172, 23, 'lop', 'text', 'Lop', 0, 1, 1, 1, 1, 1, '{}', 3),
@@ -331,17 +389,33 @@ INSERT INTO `data_rows` (`id`, `data_type_id`, `field`, `type`, `display_name`, 
 (175, 23, 'lop_monhoc_belongsto_lop_relationship', 'relationship', 'lops', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\Lop\",\"table\":\"lops\",\"type\":\"belongsTo\",\"column\":\"lop\",\"key\":\"id\",\"label\":\"ten_lop\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 6),
 (176, 23, 'lop_monhoc_belongsto_mon_hoc_relationship', 'relationship', 'mon_hocs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\MonHoc\",\"table\":\"mon_hocs\",\"type\":\"belongsTo\",\"column\":\"mon_hoc\",\"key\":\"id\",\"label\":\"ten_mon_hoc\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 7),
 (177, 24, 'id', 'hidden', 'Id', 1, 1, 1, 1, 1, 1, '{}', 1),
-(178, 24, 'a', 'text', 'A', 0, 1, 1, 1, 1, 1, '{}', 2),
-(179, 24, 'b', 'text', 'B', 0, 1, 1, 1, 1, 1, '{}', 3),
-(180, 24, 'c', 'text', 'C', 0, 1, 1, 1, 1, 1, '{}', 4),
-(181, 24, 'd', 'text', 'D', 0, 1, 1, 1, 1, 1, '{}', 5),
+(178, 24, 'a', 'text_area', 'A', 0, 1, 1, 1, 1, 1, '{}', 2),
+(179, 24, 'b', 'text_area', 'B', 0, 1, 1, 1, 1, 1, '{}', 3),
+(180, 24, 'c', 'text_area', 'C', 0, 1, 1, 1, 1, 1, '{}', 4),
+(181, 24, 'd', 'text_area', 'D', 0, 1, 1, 1, 1, 1, '{}', 5),
 (182, 24, 'dap_an', 'text', 'Dap An', 0, 1, 1, 1, 1, 1, '{}', 6),
 (183, 24, 'chi_tiet_de', 'text', 'Chi Tiet De', 0, 1, 1, 1, 1, 1, '{}', 7),
 (184, 24, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 8),
 (185, 24, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 9),
-(186, 24, 'chi_tiet_cau_hoi_belongsto_chi_tiet_de_relationship', 'relationship', 'chi_tiet_des', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\ChiTietDe\",\"table\":\"chi_tiet_des\",\"type\":\"belongsTo\",\"column\":\"chi_tiet_de\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":null}', 10),
+(186, 24, 'chi_tiet_cau_hoi_belongsto_chi_tiet_de_relationship', 'relationship', 'chi_tiet_des', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\ChiTietDe\",\"table\":\"chi_tiet_des\",\"type\":\"belongsTo\",\"column\":\"chi_tiet_de\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
 (187, 14, 'ten_de', 'text', 'Ten De', 0, 1, 1, 1, 1, 1, '{}', 12),
-(188, 14, 'mat_khau', 'text', 'Mat Khau', 0, 1, 1, 1, 1, 1, '{}', 13);
+(188, 14, 'mat_khau', 'text', 'Mat Khau', 0, 1, 1, 1, 1, 1, '{}', 13),
+(189, 24, 'noi_dung', 'text_area', 'Noi Dung', 0, 1, 1, 1, 1, 1, '{}', 10),
+(190, 11, 'nam_hoc', 'text', 'Nam Hoc', 0, 1, 1, 1, 1, 1, '{}', 7),
+(192, 15, 'ma_de', 'text', 'Ma De', 0, 1, 1, 1, 1, 1, '{}', 6),
+(194, 15, 'ma_mon', 'text', 'Ma Mon', 0, 1, 1, 1, 1, 1, '{}', 8),
+(196, 15, 'bai_lam_belongsto_de_kiem_tra_relationship', 'relationship', 'de_kiem_tras', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\DeKiemTra\",\"table\":\"de_kiem_tras\",\"type\":\"belongsTo\",\"column\":\"ma_de\",\"key\":\"id\",\"label\":\"ten_de\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 10),
+(197, 15, 'bai_lam_belongsto_mon_hoc_relationship', 'relationship', 'mon_hocs', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\MonHoc\",\"table\":\"mon_hocs\",\"type\":\"belongsTo\",\"column\":\"ma_mon\",\"key\":\"id\",\"label\":\"ten_mon_hoc\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 11),
+(198, 15, 'thoi_gian_bat_dau_lam', 'timestamp', 'Thoi Gian Bat Dau Lam', 0, 1, 1, 1, 1, 1, '{}', 7),
+(199, 15, 'thoi_gian_ket_thuc', 'timestamp', 'Thoi Gian Ket Thuc', 0, 1, 1, 1, 1, 1, '{}', 8),
+(200, 25, 'id', 'hidden', 'Id', 1, 1, 1, 1, 1, 1, '{}', 1),
+(201, 25, 'bai_lam', 'text', 'Bai Lam', 0, 1, 1, 1, 1, 1, '{}', 2),
+(202, 25, 'chi_tiet_cau_hoi', 'text', 'Chi Tiet Cau Hoi', 0, 1, 1, 1, 1, 1, '{}', 3),
+(203, 25, 'dap_an_chon', 'text', 'Dap An Chon', 0, 1, 1, 1, 1, 1, '{}', 4),
+(204, 25, 'created_at', 'timestamp', 'Created At', 0, 1, 1, 1, 0, 1, '{}', 5),
+(205, 25, 'updated_at', 'timestamp', 'Updated At', 0, 0, 0, 0, 0, 0, '{}', 6),
+(206, 25, 'chi_tiet_bai_lam_belongsto_bai_lam_relationship', 'relationship', 'bai_lams', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\BaiLam\",\"table\":\"bai_lams\",\"type\":\"belongsTo\",\"column\":\"bai_lam\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 7),
+(207, 25, 'chi_tiet_bai_lam_belongsto_chi_tiet_cau_hoi_relationship', 'relationship', 'chi_tiet_cau_hois', 0, 1, 1, 1, 1, 1, '{\"model\":\"App\\\\ChiTietCauHoi\",\"table\":\"chi_tiet_cau_hois\",\"type\":\"belongsTo\",\"column\":\"chi_tiet_cau_hoi\",\"key\":\"id\",\"label\":\"id\",\"pivot_table\":\"bai_lams\",\"pivot\":\"0\",\"taggable\":\"0\"}', 8);
 
 -- --------------------------------------------------------
 
@@ -360,9 +434,9 @@ CREATE TABLE `data_types` (
   `policy_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `controller` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `generate_permissions` tinyint(1) NOT NULL DEFAULT 0,
-  `server_side` tinyint(4) NOT NULL DEFAULT 0,
-  `details` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `generate_permissions` tinyint(1) NOT NULL DEFAULT '0',
+  `server_side` tinyint(4) NOT NULL DEFAULT '0',
+  `details` text COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -381,18 +455,19 @@ INSERT INTO `data_types` (`id`, `name`, `slug`, `display_name_singular`, `displa
 (8, 'giao_viens', 'giao-viens', 'Giao Vien', 'Giao Viens', NULL, 'App\\GiaoVien', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-30 08:11:07', '2020-10-30 08:11:07'),
 (9, 'hoc_sinhs', 'hoc-sinhs', 'Hoc Sinh', 'Hoc Sinhs', NULL, 'App\\HocSinh', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-30 08:12:25', '2020-10-31 10:05:47'),
 (10, 'loai_kiem_tras', 'loai-kiem-tras', 'Loai Kiem Tra', 'Loai Kiem Tras', NULL, 'App\\LoaiKiemTra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-30 08:13:41', '2020-10-30 08:14:38'),
-(11, 'lops', 'lops', 'Lop', 'Lops', NULL, 'App\\Lop', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-30 08:17:26', '2020-10-30 08:17:26'),
+(11, 'lops', 'lops', 'Lop', 'Lops', NULL, 'App\\Lop', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-30 08:17:26', '2020-11-26 09:17:10'),
 (12, 'ket_quas', 'ket-quas', 'Ket Qua', 'Ket Quas', NULL, 'App\\KetQua', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-30 08:20:12', '2020-10-30 08:54:20'),
-(14, 'de_kiem_tras', 'de-kiem-tras', 'De Kiem Tra', 'De Kiem Tras', NULL, 'App\\DeKiemTra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-30 08:27:09', '2020-11-23 08:07:36'),
-(15, 'bai_lams', 'bai-lams', 'Bai Lam', 'Bai Lams', NULL, 'App\\BaiLam', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-30 08:28:21', '2020-10-30 08:28:21'),
+(14, 'de_kiem_tras', 'de-kiem-tras', 'De Kiem Tra', 'De Kiem Tras', NULL, 'App\\DeKiemTra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-30 08:27:09', '2020-11-26 08:48:07'),
+(15, 'bai_lams', 'bai-lams', 'Bai Lam', 'Bai Lams', NULL, 'App\\BaiLam', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-30 08:28:21', '2020-12-01 08:09:19'),
 (16, 'mon_hocs', 'mon-hocs', 'Mon Hoc', 'Mon Hocs', NULL, 'App\\MonHoc', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-30 08:29:48', '2020-10-30 08:29:48'),
 (18, 'nam_hocs', 'nam-hocs', 'Nam Hoc', 'Nam Hocs', NULL, 'App\\NamHoc', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-30 08:31:22', '2020-10-30 08:31:22'),
 (19, 'chi_tiet_des', 'chi-tiet-des', 'Chi Tiet De', 'Chi Tiet Des', NULL, 'App\\ChiTietDe', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-30 08:32:43', '2020-10-30 08:46:00'),
-(20, 'cau_hois', 'cau-hois', 'Cau Hoi', 'Cau Hois', NULL, 'App\\CauHoi', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-30 08:34:22', '2020-10-30 08:34:22'),
+(20, 'cau_hois', 'cau-hois', 'Cau Hoi', 'Cau Hois', NULL, 'App\\CauHoi', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-10-30 08:34:22', '2020-11-26 08:36:07'),
 (21, 'dap_an_dungs', 'dap-an-dungs', 'Dap An Dung', 'Dap An Dungs', NULL, 'App\\DapAnDung', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-30 08:35:19', '2020-10-30 08:35:19'),
 (22, 'muc_kiem_tras', 'muc-kiem-tras', 'Muc Kiem Tra', 'Muc Kiem Tras', NULL, 'App\\MucKiemTra', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-30 08:37:36', '2020-10-30 08:37:36'),
 (23, 'lop_monhocs', 'lop-monhocs', 'Lop Monhoc', 'Lop Monhocs', NULL, 'App\\LopMonhoc', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-10-31 09:34:25', '2020-10-31 09:34:25'),
-(24, 'chi_tiet_cau_hois', 'chi-tiet-cau-hois', 'Chi Tiet Cau Hoi', 'Chi Tiet Cau Hois', NULL, 'App\\ChiTietCauHoi', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}', '2020-11-03 09:41:49', '2020-11-03 09:41:49');
+(24, 'chi_tiet_cau_hois', 'chi-tiet-cau-hois', 'Chi Tiet Cau Hoi', 'Chi Tiet Cau Hois', NULL, 'App\\ChiTietCauHoi', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-11-03 09:41:49', '2020-12-01 06:07:19'),
+(25, 'chi_tiet_bai_lams', 'chi-tiet-bai-lams', 'Chi Tiet Bai Lam', 'Chi Tiet Bai Lams', NULL, 'App\\ChiTietBaiLam', NULL, NULL, NULL, 1, 0, '{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}', '2020-12-01 08:11:34', '2020-12-01 08:21:33');
 
 -- --------------------------------------------------------
 
@@ -412,7 +487,7 @@ CREATE TABLE `de_kiem_tras` (
   `trang_thai` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `ten_de` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ten_de` mediumtext COLLATE utf8_unicode_ci,
   `mat_khau` varchar(1000) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -421,8 +496,7 @@ CREATE TABLE `de_kiem_tras` (
 --
 
 INSERT INTO `de_kiem_tras` (`id`, `ma_gv`, `muc_kiem_tra`, `nam_hoc`, `mon_hoc`, `loai_kiem_tra`, `thoi_gian`, `so_cau`, `trang_thai`, `created_at`, `updated_at`, `ten_de`, `mat_khau`) VALUES
-(1, 9, 3, 2, 5, 3, 15, 30, 0, '2020-11-29 09:25:32', '2020-11-29 09:25:32', NULL, NULL),
-(2, 9, 4, 2, 5, 4, 60, 50, 0, '2020-11-29 09:40:08', '2020-11-29 09:40:08', NULL, NULL);
+(1, 1, 1, 1, 1, 1, 15, 5, 1, '2020-11-26 08:49:33', '2020-11-26 08:49:33', 'Kiểm tra Mac-Lenin', 'maclenin');
 
 -- --------------------------------------------------------
 
@@ -437,7 +511,7 @@ CREATE TABLE `failed_jobs` (
   `queue` text COLLATE utf8_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -482,7 +556,9 @@ CREATE TABLE `hoc_sinhs` (
 --
 
 INSERT INTO `hoc_sinhs` (`id`, `ma_hs`, `id_bai_lam`, `id_lop`, `id_ket_qua`, `created_at`, `updated_at`) VALUES
-(1, 'HS189734', NULL, NULL, NULL, '2020-11-09 09:06:17', '2020-11-09 09:06:17');
+(1, 'HS189734', NULL, 2, NULL, '2020-11-09 09:06:17', '2020-11-09 09:06:17'),
+(2, 'HS121126', NULL, 2, NULL, '2020-11-25 17:00:00', '2020-11-25 17:00:00'),
+(3, 'HS198004', NULL, 2, NULL, '2020-11-26 17:00:00', '2020-11-26 17:00:00');
 
 -- --------------------------------------------------------
 
@@ -495,7 +571,6 @@ CREATE TABLE `ket_quas` (
   `de_kiem_tra` int(11) DEFAULT NULL,
   `mon_hoc` int(11) DEFAULT NULL,
   `ma_hs` int(11) DEFAULT NULL,
-  `cau_dung` int(11) DEFAULT NULL,
   `diem` float DEFAULT NULL,
   `xep_loai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -511,18 +586,18 @@ CREATE TABLE `ket_quas` (
 CREATE TABLE `loai_kiem_tras` (
   `id` int(10) UNSIGNED NOT NULL,
   `ten_loai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `thoi_gian` int(20) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `thoi_gian` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `loai_kiem_tras`
 --
 
-INSERT INTO `loai_kiem_tras` (`id`, `ten_loai`, `thoi_gian`, `created_at`, `updated_at`) VALUES
-(3, 'Kiểm tra 15 phút', 15, '2020-11-29 05:16:10', '2020-11-29 05:16:10'),
-(4, 'Kiểm tra 1 tiết', 60, '2020-11-29 05:16:16', '2020-11-29 05:16:16');
+INSERT INTO `loai_kiem_tras` (`id`, `ten_loai`, `created_at`, `updated_at`, `thoi_gian`) VALUES
+(1, '15 phút', '2020-11-26 08:42:49', '2020-11-26 08:42:49', NULL),
+(2, '1 tiết', '2020-11-26 08:45:22', '2020-11-26 08:45:22', NULL);
 
 -- --------------------------------------------------------
 
@@ -540,6 +615,13 @@ CREATE TABLE `lops` (
   `nam_hoc` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+--
+-- Dumping data for table `lops`
+--
+
+INSERT INTO `lops` (`id`, `ten_lop`, `so_luong`, `trang_thai`, `created_at`, `updated_at`, `nam_hoc`) VALUES
+(2, 'Giáo Dục Quốc Phòng - An Ninh', 20, 1, '2020-11-26 09:17:27', '2020-11-26 09:17:27', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -553,6 +635,13 @@ CREATE TABLE `lop_monhocs` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `lop_monhocs`
+--
+
+INSERT INTO `lop_monhocs` (`id`, `mon_hoc`, `lop`, `created_at`, `updated_at`) VALUES
+(1, 1, 2, '2020-11-26 09:02:28', '2020-11-26 09:02:28');
 
 -- --------------------------------------------------------
 
@@ -593,7 +682,7 @@ CREATE TABLE `menu_items` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `route` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `parameters` text COLLATE utf8_unicode_ci DEFAULT NULL
+  `parameters` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -629,7 +718,8 @@ INSERT INTO `menu_items` (`id`, `menu_id`, `title`, `url`, `target`, `icon_class
 (29, 1, 'Dap An Dungs', '', '_self', NULL, NULL, NULL, 27, '2020-10-30 08:35:19', '2020-10-30 08:35:19', 'voyager.dap-an-dungs.index', NULL),
 (30, 1, 'Muc Kiem Tras', '', '_self', NULL, NULL, NULL, 28, '2020-10-30 08:37:37', '2020-10-30 08:37:37', 'voyager.muc-kiem-tras.index', NULL),
 (31, 1, 'Lop Monhocs', '', '_self', NULL, NULL, NULL, 29, '2020-10-31 09:34:26', '2020-10-31 09:34:26', 'voyager.lop-monhocs.index', NULL),
-(32, 1, 'Chi Tiet Cau Hois', '', '_self', NULL, NULL, NULL, 30, '2020-11-03 09:41:49', '2020-11-03 09:41:49', 'voyager.chi-tiet-cau-hois.index', NULL);
+(32, 1, 'Chi Tiet Cau Hois', '', '_self', NULL, NULL, NULL, 30, '2020-11-03 09:41:49', '2020-11-03 09:41:49', 'voyager.chi-tiet-cau-hois.index', NULL),
+(33, 1, 'Chi Tiet Bai Lams', '', '_self', NULL, NULL, NULL, 31, '2020-12-01 08:11:34', '2020-12-01 08:11:34', 'voyager.chi-tiet-bai-lams.index', NULL);
 
 -- --------------------------------------------------------
 
@@ -686,8 +776,8 @@ CREATE TABLE `mon_hocs` (
   `id` int(10) UNSIGNED NOT NULL,
   `ma_mon_hoc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten_mon_hoc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `hinh_anh` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `trang_thai` int(255) DEFAULT NULL,
+  `hinh_anh` mediumtext COLLATE utf8_unicode_ci,
+  `trang_thai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -697,7 +787,7 @@ CREATE TABLE `mon_hocs` (
 --
 
 INSERT INTO `mon_hocs` (`id`, `ma_mon_hoc`, `ten_mon_hoc`, `hinh_anh`, `trang_thai`, `created_at`, `updated_at`) VALUES
-(5, 'BP-030', 'Biên phòng đại cương 1', '1606573879-qpan.jpg', 0, '2020-11-25 06:31:28', '2020-11-29 04:24:15');
+(1, 'NH2020', 'Kinh tế Chính trị Mác - Lênin', NULL, NULL, '2020-11-06 10:12:14', '2020-11-06 10:12:14');
 
 -- --------------------------------------------------------
 
@@ -717,9 +807,9 @@ CREATE TABLE `muc_kiem_tras` (
 --
 
 INSERT INTO `muc_kiem_tras` (`id`, `ten_muc`, `created_at`, `updated_at`) VALUES
-(2, 'Mức độ khó', '2020-11-29 05:34:07', '2020-11-29 05:34:07'),
-(3, 'Mức độ dễ', '2020-11-29 05:34:16', '2020-11-29 05:34:16'),
-(4, 'Mức độ trung bình', '2020-11-29 05:34:27', '2020-11-29 05:34:27');
+(1, 'Dễ', '2020-11-26 08:41:41', '2020-11-26 08:41:41'),
+(2, 'Vừa', '2020-11-26 08:41:49', '2020-11-26 08:41:49'),
+(3, 'Khó', '2020-11-26 08:41:56', '2020-11-26 08:41:56');
 
 -- --------------------------------------------------------
 
@@ -739,8 +829,7 @@ CREATE TABLE `nam_hocs` (
 --
 
 INSERT INTO `nam_hocs` (`id`, `nam`, `created_at`, `updated_at`) VALUES
-(2, '2020 - 2021', '2020-11-29 05:50:48', '2020-11-29 05:50:48'),
-(3, '2021 - 2022', '2020-11-29 05:51:04', '2020-11-29 05:51:04');
+(1, '2020', '2020-11-26 08:46:05', '2020-11-26 08:46:05');
 
 -- --------------------------------------------------------
 
@@ -752,12 +841,12 @@ CREATE TABLE `pages` (
   `id` int(10) UNSIGNED NOT NULL,
   `author_id` int(11) NOT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `excerpt` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `body` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `excerpt` text COLLATE utf8_unicode_ci,
+  `body` text COLLATE utf8_unicode_ci,
   `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_keywords` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8_unicode_ci,
+  `meta_keywords` text COLLATE utf8_unicode_ci,
   `status` enum('ACTIVE','INACTIVE') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'INACTIVE',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -916,7 +1005,12 @@ INSERT INTO `permissions` (`id`, `key`, `table_name`, `created_at`, `updated_at`
 (128, 'read_chi_tiet_cau_hois', 'chi_tiet_cau_hois', '2020-11-03 09:41:49', '2020-11-03 09:41:49'),
 (129, 'edit_chi_tiet_cau_hois', 'chi_tiet_cau_hois', '2020-11-03 09:41:49', '2020-11-03 09:41:49'),
 (130, 'add_chi_tiet_cau_hois', 'chi_tiet_cau_hois', '2020-11-03 09:41:49', '2020-11-03 09:41:49'),
-(131, 'delete_chi_tiet_cau_hois', 'chi_tiet_cau_hois', '2020-11-03 09:41:49', '2020-11-03 09:41:49');
+(131, 'delete_chi_tiet_cau_hois', 'chi_tiet_cau_hois', '2020-11-03 09:41:49', '2020-11-03 09:41:49'),
+(132, 'browse_chi_tiet_bai_lams', 'chi_tiet_bai_lams', '2020-12-01 08:11:34', '2020-12-01 08:11:34'),
+(133, 'read_chi_tiet_bai_lams', 'chi_tiet_bai_lams', '2020-12-01 08:11:34', '2020-12-01 08:11:34'),
+(134, 'edit_chi_tiet_bai_lams', 'chi_tiet_bai_lams', '2020-12-01 08:11:34', '2020-12-01 08:11:34'),
+(135, 'add_chi_tiet_bai_lams', 'chi_tiet_bai_lams', '2020-12-01 08:11:34', '2020-12-01 08:11:34'),
+(136, 'delete_chi_tiet_bai_lams', 'chi_tiet_bai_lams', '2020-12-01 08:11:34', '2020-12-01 08:11:34');
 
 -- --------------------------------------------------------
 
@@ -1103,7 +1197,12 @@ INSERT INTO `permission_role` (`permission_id`, `role_id`) VALUES
 (130, 1),
 (130, 3),
 (131, 1),
-(131, 3);
+(131, 3),
+(132, 1),
+(133, 1),
+(134, 1),
+(135, 1),
+(136, 1);
 
 -- --------------------------------------------------------
 
@@ -1117,14 +1216,14 @@ CREATE TABLE `posts` (
   `category_id` int(11) DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `seo_title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `excerpt` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `excerpt` text COLLATE utf8_unicode_ci,
   `body` text COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `meta_description` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `meta_keywords` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `meta_description` text COLLATE utf8_unicode_ci,
+  `meta_keywords` text COLLATE utf8_unicode_ci,
   `status` enum('PUBLISHED','DRAFT','PENDING') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'DRAFT',
-  `featured` tinyint(1) NOT NULL DEFAULT 0,
+  `featured` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -1173,10 +1272,10 @@ CREATE TABLE `settings` (
   `id` int(10) UNSIGNED NOT NULL,
   `key` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `display_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `value` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `details` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `value` text COLLATE utf8_unicode_ci,
+  `details` text COLLATE utf8_unicode_ci,
   `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `order` int(11) NOT NULL DEFAULT 1,
+  `order` int(11) NOT NULL DEFAULT '1',
   `group` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1264,11 +1363,11 @@ CREATE TABLE `users` (
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `status` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `status` text COLLATE utf8_unicode_ci,
   `gioi_tinh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sdt` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngay_sinh` date DEFAULT NULL,
-  `dia_chi` mediumtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `dia_chi` mediumtext COLLATE utf8_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `ma_gv` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -1322,6 +1421,12 @@ ALTER TABLE `categories`
 -- Indexes for table `cau_hois`
 --
 ALTER TABLE `cau_hois`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chi_tiet_bai_lams`
+--
+ALTER TABLE `chi_tiet_bai_lams`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1524,7 +1629,7 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT for table `bai_lams`
 --
 ALTER TABLE `bai_lams`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=140;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -1536,19 +1641,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `cau_hois`
 --
 ALTER TABLE `cau_hois`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `chi_tiet_bai_lams`
+--
+ALTER TABLE `chi_tiet_bai_lams`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `chi_tiet_cau_hois`
 --
 ALTER TABLE `chi_tiet_cau_hois`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `chi_tiet_des`
 --
 ALTER TABLE `chi_tiet_des`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `dap_an_dungs`
@@ -1560,19 +1671,19 @@ ALTER TABLE `dap_an_dungs`
 -- AUTO_INCREMENT for table `data_rows`
 --
 ALTER TABLE `data_rows`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=189;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT for table `data_types`
 --
 ALTER TABLE `data_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `de_kiem_tras`
 --
 ALTER TABLE `de_kiem_tras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -1590,7 +1701,7 @@ ALTER TABLE `giao_viens`
 -- AUTO_INCREMENT for table `hoc_sinhs`
 --
 ALTER TABLE `hoc_sinhs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ket_quas`
@@ -1602,19 +1713,19 @@ ALTER TABLE `ket_quas`
 -- AUTO_INCREMENT for table `loai_kiem_tras`
 --
 ALTER TABLE `loai_kiem_tras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lops`
 --
 ALTER TABLE `lops`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lop_monhocs`
 --
 ALTER TABLE `lop_monhocs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `menus`
@@ -1626,7 +1737,7 @@ ALTER TABLE `menus`
 -- AUTO_INCREMENT for table `menu_items`
 --
 ALTER TABLE `menu_items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -1638,19 +1749,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `mon_hocs`
 --
 ALTER TABLE `mon_hocs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `muc_kiem_tras`
 --
 ALTER TABLE `muc_kiem_tras`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `nam_hocs`
 --
 ALTER TABLE `nam_hocs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pages`
@@ -1662,7 +1773,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT for table `posts`
