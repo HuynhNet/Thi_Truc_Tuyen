@@ -8,8 +8,6 @@ use App\Http\Middleware\CheckLogin;
 //Trang đăng nhập
 Route::get('/', [TeacherController::class, 'page_login']);
 
-Route::get('page-login', [TeacherController::class, 'page_login']);
-
 //Kiểm tra đăng nhập
 Route::post('check-login', [AdminController::class, 'checkLogin'])->name('checkLogin');
 
@@ -132,9 +130,11 @@ Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name
 
 Route::get('/get-question', [StudentController::class, 'getQuestion'])->name('getQuestion');
 
-
 Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
 
+Route::get('/update-answer', [StudentController::class, 'updateAnswer'])->name('updateAnswer');
+
+Route::get('/finish-testing/{deKiemTraId}/{hocSinhId}', [StudentController::class, 'finishTest']);
 
 
 //================================================================
