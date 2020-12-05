@@ -36,6 +36,7 @@
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/check_account.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/check_account.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/layout/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/layout/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/student/layout/master_test.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/layout/master_test.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/student/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/index_teacher.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/index_teacher.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/teacher/page/test_subject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/page/test_subject.blade.php" afterDir="false" />
