@@ -11,8 +11,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2295e35e-14d1-4659-b7df-072f84f87448" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/teacher/page/page_detail_result_test.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/teacher/page/page_result_test.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/index.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/login.blade.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ThucPhamChucNang/resources/views/home/register.blade.php" afterDir="false" />
@@ -26,25 +24,7 @@
       <change afterPath="$PROJECT_DIR$/../freshfoodshop/public/home/css/css/rating.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../freshfoodshop/resources/views/home/email.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/BaiLam.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/BaiLam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/DeKiemTra.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/DeKiemTra.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/HocSinh.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/HocSinh.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TeacherController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/CheckLogin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/CheckLogin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/KetQua.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/KetQua.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Lop.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Lop.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MonHoc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MonHoc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/NamHoc.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/NamHoc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/image_subject/1607094411-1606573879-qpan.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layout/layout_teacher.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/check_account.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/check_account.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/student/task.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/student/task.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/page/page_subject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/page/page_subject.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/teacher/page/view_detail_test_subject.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/teacher/page/view_detail_test_subject.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/tcg/voyager" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/tcg/voyager" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -335,9 +315,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1607154939103" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1606754978966">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1607181722326">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1606754978966" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1607181722326" />
   </component>
 </project>
