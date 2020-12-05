@@ -96,8 +96,20 @@ Route::middleware([CheckLogin::class])->group(function(){
     //Trang đề kiểm tra
     Route::get('page-test-subject', [TeacherController::class, 'page_test_subject']);
 
+    //Xóa đề kiểm tra
+    Route::get('delete-test-subject/{id_test}', [TeacherController::class, 'delete_test_subject']);
+
+    //Kích hoạt đề kiểm tra
+    Route::get('active-test-subject/{id_test}', [TeacherController::class, 'active_test_subject']);
+
+    //Hủy Kích hoạt đề kiểm tra
+    Route::get('inactive-test-subject/{id_test}', [TeacherController::class, 'inactive_test_subject']);
+
     //Thêm đề kiểm tra
     Route::post('post-add-test-subject', [TeacherController::class, 'post_add_test_subject']);
+
+    //Xem chi tiết đề kiểm tra
+    Route::get('view-detail-test-subject/{id_test}', [TeacherController::class, 'view_detail_test_subject']);
     //================================================================
 
 });

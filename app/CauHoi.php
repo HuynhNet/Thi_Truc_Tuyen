@@ -19,4 +19,10 @@ class CauHoi extends Model
     {
         return $this->belongsTo('App\MonHoc');
     }
+
+    //Câu hỏi có nhiều trong chi tiết đề kiểm tra
+    public function ChiTietDe()
+    {
+        return $this->hasMany('App\ChiTietDe');
+    }
 }
