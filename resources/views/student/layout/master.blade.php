@@ -88,6 +88,9 @@
                 $.ajax({
                     url: '{{ route('studentLogout') }}',
                     method: "get",
+                    success: function (res) {
+                        window.location=res.url;
+                    }
                 });
             }else{
                 e.preventDefault();
