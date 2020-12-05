@@ -43,7 +43,7 @@
                     <span style="color: red; font-weight: bold;" id="demo"><span id="minus"></span>:<span id="seconds"></span></span> phút</span>
                 <input type="hidden" name="time" id="time" value="{{ $thoiGian }}">
                 <input type="hidden" name="thoi_gian_bat_dau_lam" id="thoi_gian_bat_dau_lam"
-                       value="{{ $thoiGianBatDauLam[0]->thoi_gian_bat_dau_lam }}">
+                       value="{{ $thoiGianBatDauLam }}">
 
                 <input type="hidden" name="deKiemTraId" id="deKiemTraId" value="{{ $deKiemTraId }}">
                 <input type="hidden" name="monHocId" id="monHocId" value="{{ $maMon[0]->id }}">
