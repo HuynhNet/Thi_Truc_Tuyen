@@ -224,6 +224,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item has-treeview">
+                        <a href="{{ url('page-result-test/'.Auth::id()) }}" class="nav-link">
+                            <i class="nav-icon fa fa-list-ul"></i>
+                            <p>Kết quả kiểm tra</p>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

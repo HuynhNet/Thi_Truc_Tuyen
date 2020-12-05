@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\CheckLogin;
+use App\Http\Middleware\CheckLoginStudent;
 
 //Trang đăng nhập
 Route::get('/', [TeacherController::class, 'page_login']);
@@ -12,7 +13,7 @@ Route::get('/', [TeacherController::class, 'page_login']);
 Route::post('check-login', [AdminController::class, 'checkLogin'])->name('checkLogin');
 
 //Đăng xuất
-Route::get('logout', [TeacherController::class, 'studentLogout']);
+Route::get('logout', [TeacherController::class, 'logout']);
 
 Route::middleware([CheckLogin::class])->group(function(){
     //================================================================
@@ -110,35 +111,44 @@ Route::middleware([CheckLogin::class])->group(function(){
 
     //Xem chi tiết đề kiểm tra
     Route::get('view-detail-test-subject/{id_test}', [TeacherController::class, 'view_detail_test_subject']);
-    //================================================================
 
+    //Xem kết quả kiểm tra
+    Route::get('page-result-test/{id_user}', [TeacherController::class, 'page_result_test']);
+
+    //Xem chi tiết kết quả kiểm tra
+    Route::get('view-detail-result-test/{id_user}/{id_test}', [TeacherController::class, 'view_detail_result_test']);
+    //================================================================
+});
+
+
+
+
+Route::middleware([CheckLoginStudent::class])->group(function(){
+    //================================================================
+    //Trang chủ học sinh
+    Route::get('student', [StudentController::class, 'studentHome'])->name('homeStudent');
+
+    Route::get('/exam-online/{studentCode}', [StudentController::class, 'examOnline']);
+
+    Route::get('/check-account/{deKiemTraId}', [StudentController::class, 'checkAccount']);
+    Route::post('/post-check-account', [StudentController::class, 'postCheckAccount'])->name('postCheckAccount');
+
+    Route::get('/task', [StudentController::class, 'task'])->name('task');
+    Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
+
+    Route::get('/get-question', [StudentController::class, 'getQuestion'])->name('getQuestion');
+
+    Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
+
+    Route::get('/update-answer', [StudentController::class, 'updateAnswer'])->name('updateAnswer');
+
+    Route::get('/finish-testing/{deKiemTraId}/{hocSinhId}', [StudentController::class, 'finishTest']);
+    //================================================================
 });
 
 
 
 //================================================================
-//Trang chủ học sinh
-Route::get('student', [StudentController::class, 'studentHome'])->name('homeStudent');
-
-Route::get('/exam-online/{studentCode}', [StudentController::class, 'examOnline']);
-
-Route::get('/check-account/{deKiemTraId}', [StudentController::class, 'checkAccount']);
-Route::post('/post-check-account', [StudentController::class, 'postCheckAccount'])->name('postCheckAccount');
-
-Route::get('/task', [StudentController::class, 'task'])->name('task');
-Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
-
-Route::get('/get-question', [StudentController::class, 'getQuestion'])->name('getQuestion');
-
-Route::get('/student-logout', [StudentController::class, 'studentLogout'])->name('studentLogout');
-
-Route::get('/update-answer', [StudentController::class, 'updateAnswer'])->name('updateAnswer');
-
-Route::get('/finish-testing/{deKiemTraId}/{hocSinhId}', [StudentController::class, 'finishTest']);
-
-
-//================================================================
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 

@@ -19,4 +19,10 @@ class NamHoc extends Model
     {
         return $this->hasMany('App\DeKiemTra');
     }
+
+    //Năm học có nhiều lớp
+    public function Lop()
+    {
+        return $this->hasMany('App\Lop');
+    }
 }
