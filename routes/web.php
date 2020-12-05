@@ -12,7 +12,7 @@ Route::get('/', [TeacherController::class, 'page_login']);
 Route::post('check-login', [AdminController::class, 'checkLogin'])->name('checkLogin');
 
 //Đăng xuất
-Route::get('logout', [TeacherController::class, 'logout']);
+Route::get('logout', [TeacherController::class, 'studentLogout']);
 
 Route::middleware([CheckLogin::class])->group(function(){
     //================================================================

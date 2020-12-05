@@ -268,6 +268,6 @@ class StudentController extends Controller
 
     public function studentLogout(){
         Auth::logout();
-        return redirect()->route('homeStudent');
+        return response()->json(['url'=>url('/')]);
     }
 }
