@@ -9,12 +9,11 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use validate;
 use DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
-use function PHPUnit\Framework\isEmpty;
-
 class StudentController extends Controller
 {
 
@@ -50,6 +49,7 @@ class StudentController extends Controller
     public function postCheckAccount(Request $request){
         $deKiemTraId = $request->input('deKiemTraId');
         $hs_id = $request->input('hs_id');
+
         $ma_mon = DB::table('de_kiem_tras')
                     ->join('mon_hocs', 'mon_hocs.id', '=', 'de_kiem_tras.mon_hoc')
                     ->where('de_kiem_tras.id', $deKiemTraId)
@@ -62,19 +62,19 @@ class StudentController extends Controller
         if($pass == $passDe[0]->mat_khau){
 
             $getBaiLamId = DB::table('bai_lams')
-                        ->where('ma_hs', '=', $hs_id)
-                        ->where('ma_de', '=', $deKiemTraId)
-                        ->select('id')
-                        ->get();
+                        ->where('ma_hs', $hs_id)
+                        ->where('ma_de', $deKiemTraId)
+                        ->first();
 
-            if($getBaiLamId[0]->id == null){
+            if($getBaiLamId === null){
 
                 $baiLam = new BaiLam;
                 $baiLam->ma_hs = $hs_id;
                 $baiLam->ma_de = $deKiemTraId;
                 $baiLam->ma_mon = $ma_mon[0]->id;
-                $baiLam->thoi_gian_bat_dau_lam = Carbon::now();
+                $baiLam->thoi_gian_bat_dau_lam = Carbon::now('Asia/Ho_Chi_Minh');
                 $baiLam->save();
+
 
                 $chiTietBaiLams = DB::table('chi_tiet_bai_lams')
                     ->where('bai_lam', $baiLam->id)
@@ -83,23 +83,13 @@ class StudentController extends Controller
                 $baiLamId = $baiLam->id;
                 $thoiGianBatDauLam = $baiLam->thoi_gian_bat_dau_lam;
 
-            }else{
-                $chiTietBaiLams = DB::table('chi_tiet_bai_lams')
-                    ->where('bai_lam', $getBaiLamId[0]->id)
+                $cauHois = DB::table('chi_tiet_des')
+                    ->join('chi_tiet_cau_hois', 'chi_tiet_cau_hois.chi_tiet_de', '=', 'chi_tiet_des.id')
+                    ->where('chi_tiet_des.de_kiem_tra', $deKiemTraId)
+                    ->select('chi_tiet_cau_hois.*')
                     ->get();
 
-                $baiLamId = $getBaiLamId[0]->id;
-                $thoiGianBatDauLam = DB::table('bai_lams')->where('id', $getBaiLamId[0]->id)
-                                        ->select('thoi_gian_bat_dau_lam')->get();
-            }
-
-            $cauHois = DB::table('chi_tiet_des')
-                ->join('chi_tiet_cau_hois', 'chi_tiet_cau_hois.chi_tiet_de', '=', 'chi_tiet_des.id')
-                ->where('chi_tiet_des.de_kiem_tra', $deKiemTraId)
-                ->select('chi_tiet_cau_hois.*')
-                ->get();
-
-            return view('student.task')->with([
+                return view('student.task')->with([
                     'cauHois' => $cauHois,
                     'thoiGian' => $passDe[0]->thoi_gian,
                     'deKiemTraId' => $deKiemTraId,
@@ -110,6 +100,40 @@ class StudentController extends Controller
                     'maMon' => $ma_mon,
                     'hocSinhId' => $hs_id
                 ]);
+
+            }else{
+                $baiLamId = DB::table('bai_lams')
+                    ->where('ma_hs', $hs_id)
+                    ->where('ma_de', $deKiemTraId)
+                    ->select('id')
+                    ->get();
+
+                $chiTietBaiLams = DB::table('chi_tiet_bai_lams')
+                    ->where('bai_lam', $baiLamId[0]->id)
+                    ->get();
+
+                $thoiGianBatDauLam = DB::table('bai_lams')->where('id', $baiLamId[0]->id)
+                                        ->select('thoi_gian_bat_dau_lam')->get();
+
+                $cauHois = DB::table('chi_tiet_des')
+                    ->join('chi_tiet_cau_hois', 'chi_tiet_cau_hois.chi_tiet_de', '=', 'chi_tiet_des.id')
+                    ->where('chi_tiet_des.de_kiem_tra', $deKiemTraId)
+                    ->select('chi_tiet_cau_hois.*')
+                    ->get();
+
+                return view('student.task')->with([
+                    'cauHois' => $cauHois,
+                    'thoiGian' => $passDe[0]->thoi_gian,
+                    'deKiemTraId' => $deKiemTraId,
+                    'cauHois' => $cauHois,
+                    'chiTietBaiLam' => $chiTietBaiLams,
+                    'baiLamId' => $baiLamId,
+                    'thoiGianBatDauLam' => $thoiGianBatDauLam[0]->thoi_gian_bat_dau_lam,
+                    'maMon' => $ma_mon,
+                    'hocSinhId' => $hs_id
+                ]);
+            }
+
         }else{
             return redirect()->back()->with('message', 'Mật khẩu không chính xác');
         }
