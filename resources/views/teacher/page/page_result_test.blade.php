@@ -1,5 +1,5 @@
 @extends('layout.layout_teacher')
-@section('title', 'Trang môn học')
+@section('title', 'Trang kết quả kiểm tra')
 
 {{--=============================================================--}}
 {{--Phân cấp cha con--}}
@@ -12,7 +12,7 @@
                 <div class="col-sm-10">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Bảng điều khiển</a></li>
-                        <li class="breadcrumb-item active">Môn học</li>
+                        <li class="breadcrumb-item active">Kết quả kiểm tra</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -26,45 +26,19 @@
 {{--Nội dung chính--}}
 @section('content')
 
-    <style>
-        #text-danger:hover{
-            color: white;
-            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
-        }
-        #text-success:hover{
-            color: white;
-            text-shadow: 1px 1px 1px black, 0 0 25px blue, 0 0 5px darkblue;
-        }
-    </style>
-
     <section class="content">
         <div class="container-fluid">
             <!-- Main row -->
             <div class="row">
                 <section class="col-lg-12">
-
-                    <!-- Message -->
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>{{ $message }}</strong>
-                        </div>
-                    @endif
-                    <!-- /Message -->
-
-
                     <!-- card -->
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
                                 <i class="ion ion-clipboard mr-1"></i>
-                                <b>MÔN HỌC</b>
+                                <b>KẾT QUẢ KIỂM TRA</b>
                             </h3>
-                            <div class="card-tools">
-                                <a class="btn btn-primary btn-xs" href="#" role="button" data-toggle="modal" data-target="#modelId">
-                                    <i class="fa fa-plus"></i> Thêm mới
-                                </a>
-                            </div>
+                            <div class="card-tools"></div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-1">
@@ -72,64 +46,49 @@
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th scope="col" style="width:5%;">STT</th>
-                                        <th scope="col" style="width:10%;">Mã môn học</th>
-                                        <th scope="col" style="width:30%;">Tên môn học</th>
-                                        <th scope="col" style="width:25%;">Hình ảnh</th>
-                                        <th scope="col" style="width:15%;">Trạng thái</th>
-                                        <th scope="col" colspan="2" style="width:15%;">Chọn</th>
+                                        <th scope="col">STT</th>
+                                        <th scope="col">Tên đề</th>
+                                        <th scope="col">Môn học</th>
+                                        <th scope="col">Loại kiểm tra</th>
+                                        <th scope="col">Số câu hỏi</th>
+                                        <th scope="col">Số người làm bài</th>
+                                        <th scope="col">Chọn</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @forelse($show_subjects as $key => $show_subject)
+                                    @forelse($view_result_tests as $key => $show_test_subjec)
                                         <tr>
                                             <td data-label="STT"><b>{{ ++$key }}</b></td>
-                                            <td data-label="Mã môn học">
-                                                <b>{{ $show_subject->ma_mon_hoc }}</b>
+                                            <td data-label="Tên đề"><b>{{ $show_test_subjec->ten_de }}</b></td>
+                                            <td data-label="Môn học">
+                                                @php($subjects = DB::table('mon_hocs')->where('id',$show_test_subjec->mon_hoc)->get())
+                                                @foreach($subjects as $subject)
+                                                    <b>{{ $subject->ten_mon_hoc }}</b>
+                                                @endforeach
                                             </td>
-                                            <td data-label="Tên môn học">
-                                                <a href="{{ url('view-question-subject') }}">
-                                                    <b>{{ $show_subject->ten_mon_hoc }}</b>
-                                                </a>
+                                            <td data-label="Loại kiểm tra">
+                                                @php($type_tests = DB::table('loai_kiem_tras')->where('id',$show_test_subjec->loai_kiem_tra)->get())
+                                                @foreach($type_tests as $type_test)
+                                                    {{ $type_test->ten_loai }}
+                                                @endforeach
                                             </td>
-                                            <td data-label="Hình ảnh">
-                                                @if ($show_subject->hinh_anh != null)
-                                                    <a href="{{ url('public/image_subject/'.$show_subject->hinh_anh) }}">
-                                                        <img src="{{ url('public/image_subject/'.$show_subject->hinh_anh) }}" class="img-fluid rounded-top"
-                                                             style="max-width:100%;height:60px;">
-                                                    </a>
-                                                @else
-                                                    <b class="text-danger">Không có</b>
-                                                @endif
-
+                                            <td data-label="Số câu hỏi">
+                                                {{ $show_test_subjec->so_cau }} câu
                                             </td>
-                                            <td data-label="Trạng thái">
-                                                @if ($show_subject->trang_thai == 0 )
-                                                    <a href="{{ url('active-subject/'.$show_subject->id) }}" title="Nhấp để Kích hoạt">
-                                                        <b class="text-danger" id="text-danger">Chưa kích hoạt</b>
-                                                    </a>
-                                                @else
-                                                    <a href="{{ url('inactive-subject/'.$show_subject->id) }}" title="Nhấp để Hủy kích hoạt">
-                                                        <b class="text-success" id="text-success">Đã kích hoạt</b>
-                                                    </a>
-                                                @endif
-                                            </td>
-                                            <td data-label="Chọn">
-                                                <a class="btn btn-primary btn-xs"
-                                                href="{{ url('edit-subject/'.$show_subject->id) }}" role="button" title="Chỉnh sửa">
-                                                    <i class="fa fa-edit"></i> Sửa
-                                                </a>
+                                            <td data-label="Số người làm bài">
+                                                @php($count_persons = DB::table('ket_quas')->where('de_kiem_tra',$show_test_subjec->id)->count())
+                                                {{ $count_persons }}
                                             </td>
                                             <td data-label="Chọn">
                                                 <a class="btn btn-success btn-xs"
-                                                href="{{ url('view-question-subject/'.$show_subject->id) }}" role="button" title="Xem câu hỏi">
-                                                    <i class="fa fa-eye"></i> Xem
+                                                   href="{{ url('view-detail-result-test/'.$user_ids->id.'/'.$show_test_subjec->id) }}" role="button" title="Xem chi tiết đề kiểm tra">
+                                                    <i class="fa fa-eye"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="7">
+                                            <td colspan="11">
                                                 <b class="text-danger">Không có dữ liệu</b>
                                             </td>
                                         </tr>
@@ -153,7 +112,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form action="{{ url('post-add-subject') }}" class="needs-validation" novalidate name="myForm" method="POST"
-                enctype="multipart/form-data" onsubmit="return validateForm()">
+                      enctype="multipart/form-data" onsubmit="return validateForm()">
                     @csrf
                     <div class="modal-header">
                         <h6 class="modal-title"><b>THÊM MÔN HỌC</b></h6>

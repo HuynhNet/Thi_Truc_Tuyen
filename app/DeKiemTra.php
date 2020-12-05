@@ -49,4 +49,16 @@ class DeKiemTra extends Model
     {
         return $this->hasMany('App\ChiTietDe');
     }
+
+    //Đề kiểm tra có nhiều kết quả thi kiểm tra
+    public function KetQua()
+    {
+        return $this->hasMany('App\KetQua');
+    }
+
+    //Đề kiểm tra có nhiều bài làm
+    public function BaiLam()
+    {
+        return $this->hasMany('App\BaiLam');
+    }
 }

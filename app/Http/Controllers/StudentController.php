@@ -127,7 +127,7 @@ class StudentController extends Controller
                     'deKiemTraId' => $deKiemTraId,
                     'cauHois' => $cauHois,
                     'chiTietBaiLam' => $chiTietBaiLams,
-                    'baiLamId' => $baiLamId,
+                    'baiLamId' => $baiLamId[0]->id,
                     'thoiGianBatDauLam' => $thoiGianBatDauLam[0]->thoi_gian_bat_dau_lam,
                     'maMon' => $ma_mon,
                     'hocSinhId' => $hs_id

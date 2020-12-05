@@ -8,6 +8,7 @@ use App\ChiTietDe;
 use App\DeKiemTra;
 use App\GiaoVien;
 use App\Http\Controllers\Controller;
+use App\KetQua;
 use App\LoaiKiemTra;
 use App\Models\User;
 use App\MonHoc;
@@ -33,7 +34,7 @@ class TeacherController extends Controller
     protected function logout()
     {
         Auth::logout();
-        return redirect('page-login');
+        return redirect('/');
     }
 
     //Trang chủ giáo viên
@@ -42,7 +43,7 @@ class TeacherController extends Controller
         if (Auth::check() && Auth::user()->role_id == 3) {
             return view('teacher.index_teacher');
         }else{
-            return redirect('page-login');
+            return redirect('/');
         }
     }
 
@@ -354,17 +355,37 @@ class TeacherController extends Controller
         return redirect()->back()->with('success', 'Đã Hủy kích hoạt đề kiểm tra');
     }
 
+    //Xem kết quả kiểm tra
+    protected function page_result_test($id_user)
+    {
+        $user_ids = User::find($id_user);
+        $view_result_tests = DeKiemTra::where([['ma_gv','=',$id_user],['trang_thai','=',1]])->latest()->paginate(20);
+        return view('teacher.page.page_result_test',
+        ['user_ids'=>$user_ids, 'view_result_tests'=>$view_result_tests]);
+    }
+
+    //Xem chi tiết kết quả kiểm tra
+    protected function view_detail_result_test($id_user, $id_test)
+    {
+        $user_ids = User::find($id_user);
+        $test_ids = DeKiemTra::find($id_test);
+        $detail_result_tests = KetQua::where('de_kiem_tra',$id_test)->latest()->paginate(20);
+
+        return view('teacher.page.page_detail_result_test',
+        ['user_ids'=>$user_ids, 'test_ids'=>$test_ids, 'detail_result_tests'=>$detail_result_tests]);
+    }
+
     //Xem chi tiết đề kiểm tra
     protected function view_detail_test_subject($id_test)
     {
         $detail_tests = DeKiemTra::find($id_test);
         $show_subject_tests = MonHoc::where('id',$detail_tests->mon_hoc)->first();
-        $show_questions = CauHoi::where('mon_hoc',$show_subject_tests->id)->paginate(20);
+        $details = ChiTietDe::where('de_kiem_tra', $id_test)->paginate(20);
         return view('teacher.page.view_detail_test_subject',
         [
             'detail_tests'=>$detail_tests,
             'show_subject_tests'=>$show_subject_tests,
-            'show_questions'=>$show_questions
+            'details'=>$details
         ]);
     }
 

@@ -27,100 +27,18 @@
 {{--Nội dung chính--}}
 @section('content')
 
-    <!-- Modal Add Question-->
-    {{--<div class="modal fade" id="modelAddQuestion" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <form action="{{ url('post-add-question-subject/'.$view_subject->id) }}" enctype="multipart/form-data"
-                      class="needs-validation" novalidate method="POST">
-                    @csrf
-                    <div class="modal-header">
-                        <h6 class="modal-title"><b>THÊM CÂU HỎI MỚI</b></h6>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="">Nội dung</label>
-                            <textarea name="inputContent" rows="3" class="form-control" placeholder="Nhập nội dung câu hỏi" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Hình ảnh</label> <br>
-                            <input type="file" id="file" name="inputFileImage"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Đáp án A</label>
-                            <textarea name="inputA" rows="2" class="form-control" placeholder="Nhập nội dung đáp án" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Đáp án B</label>
-                            <textarea name="inputB" rows="2" class="form-control" placeholder="Nhập nội dung đáp án" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Đáp án C</label>
-                            <textarea name="inputC" rows="2" class="form-control" placeholder="Nhập nội dung đáp án" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Đáp án D</label>
-                            <textarea name="inputD" rows="2" class="form-control" placeholder="Nhập nội dung đáp án" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Chọn đáp án Đúng</label>
-                            <select name="inputCorrect" class="form-control">
-                                <option value="">- - Chọn Đáp án - -</option>
-                                <option value="A">Đáp án A</option>
-                                <option value="B">Đáp án B</option>
-                                <option value="C">Đáp án C</option>
-                                <option value="D">Đáp án D</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
-                            <i class="fa fa-close"></i> Đóng
-                        </button>
-                        <button type="submit" class="btn btn-primary btn-sm">Thêm</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>--}}
-    <!-- Modal Add Question-->
-
-
     <section class="content">
         <div class="container-fluid">
             <!-- Main row -->
             <div class="row">
                 <section class="col-lg-12">
-
-                    <!-- Message -->
-                    @if (count($errors) > 0)
-                        <div class="alert alert-danger" role="alert">
-                            <strong>{{ $errors->first('fileExcel') }}</strong>
-                        </div>
-                    @endif
-
-                    @if ($message = Session::get('success'))
-                        <div class="alert alert-success alert-block">
-                            <button type="button" class="close" data-dismiss="alert">×</button>
-                            <strong>{{ $message }}</strong>
-                        </div>
-                    @endif
-                    <!-- /Message -->
-
                     <!-- card -->
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">
                                 <b><i class="ion ion-clipboard mr-1"></i> CHI TIẾT ĐỀ KIỂM TRA</b>
                             </h3>
-                            <div class="card-tools">
-                                {{--<a class="btn btn-success btn-xs" href="#" role="button" data-toggle="modal" data-target="#modelId">
-                                    <i class="fa fa-file-excel"></i> Nhập tệp
-                                </a>
-                                <a class="btn btn-primary btn-xs" href="#" role="button" data-toggle="modal" data-target="#modelAddQuestion">
-                                    <i class="fa fa-plus"></i> Thêm mới
-                                </a>--}}
-                            </div>
+                            <div class="card-tools"></div>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body p-1">
@@ -188,66 +106,69 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @forelse($show_questions as $key => $show_question)
-                                        <tr>
-                                            <td data-label="STT"><b>{{ ++$key }}</b></td>
-                                            <td data-label="Nội dung:&ensp;" class="text-justify">
-                                                <b>{{ $show_question->noi_dung }}</b>
-                                            </td>
-                                            <td data-label="Hình ảnh:&ensp;">
-                                                @if($show_question->hinh_anh != null)
-                                                    <a href="{{ url('public/image_question_subject/'.$show_question->hinh_anh) }}">
-                                                        <img src="{{ url('public/image_question_subject/'.$show_question->hinh_anh) }}"
-                                                             style="max-width:100%;height:60px;border-radius:5px;box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
+                                    @foreach($details as $key => $detail)
+                                        @php($show_questions = DB::table('cau_hois')->where('id', $detail->cau_hoi)->get())
+                                        @forelse($show_questions as $show_question)
+                                            <tr>
+                                                <td data-label="STT"><b>{{ ++$key }}</b></td>
+                                                <td data-label="Nội dung:&ensp;" class="text-justify">
+                                                    <b>{{ $show_question->noi_dung }}</b>
+                                                </td>
+                                                <td data-label="Hình ảnh:&ensp;">
+                                                    @if($show_question->hinh_anh != null)
+                                                        <a href="{{ url('public/image_question_subject/'.$show_question->hinh_anh) }}">
+                                                            <img src="{{ url('public/image_question_subject/'.$show_question->hinh_anh) }}"
+                                                                 style="max-width:100%;height:60px;border-radius:5px;box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);">
+                                                        </a>
+                                                    @else
+                                                        <b class="text-danger">Không có</b>
+                                                    @endif
+                                                </td>
+                                                <td data-label="Đáp án A:&ensp;" class="text-justify">
+                                                    {{ $show_question->a }}
+                                                </td>
+                                                <td data-label="Đáp án B:&ensp;" class="text-justify">
+                                                    {{ $show_question->b }}
+                                                </td>
+                                                <td data-label="Đáp án C:&ensp;" class="text-justify">
+                                                    {{ $show_question->c }}
+                                                </td>
+                                                <td data-label="Đáp án D:&ensp;" class="text-justify">
+                                                    {{ $show_question->d }}
+                                                </td>
+                                                <td data-label="Đáp án đúng:&ensp;" class="text-center">
+                                                    <b class="text-success" style="text-transform: uppercase;">
+                                                        {{ $show_question->dap_an_dung }}
+                                                    </b>
+                                                </td>
+                                                <td data-label="Chọn:&ensp;">
+                                                    <a class="btn btn-primary btn-xs"
+                                                       href="{{ url('edit-question-subject/'.$show_subject_tests->id.'/'.$show_question->id) }}" role="button" title="Chỉnh sửa">
+                                                        <i class="fa fa-edit"></i>
                                                     </a>
-                                                @else
-                                                    <b class="text-danger">Không có</b>
-                                                @endif
-                                            </td>
-                                            <td data-label="Đáp án A:&ensp;" class="text-justify">
-                                                {{ $show_question->a }}
-                                            </td>
-                                            <td data-label="Đáp án B:&ensp;" class="text-justify">
-                                                {{ $show_question->b }}
-                                            </td>
-                                            <td data-label="Đáp án C:&ensp;" class="text-justify">
-                                                {{ $show_question->c }}
-                                            </td>
-                                            <td data-label="Đáp án D:&ensp;" class="text-justify">
-                                                {{ $show_question->d }}
-                                            </td>
-                                            <td data-label="Đáp án đúng:&ensp;" class="text-center">
-                                                <b class="text-success" style="text-transform: uppercase;">
-                                                    {{ $show_question->dap_an_dung }}
-                                                </b>
-                                            </td>
-                                            <td data-label="Chọn:&ensp;">
-                                                <a class="btn btn-primary btn-xs"
-                                                   href="{{ url('edit-question-subject/'.$show_subject_tests->id.'/'.$show_question->id) }}" role="button" title="Chỉnh sửa">
-                                                    <i class="fa fa-edit"></i>
-                                                </a>
-                                            </td>
-                                            <td data-label="Chọn:&ensp;">
-                                                <a class="btn btn-danger btn-xs" onclick="return confirm('Bạn có chắc chắn không ?');"
-                                                   href="{{ url('delete-question-subject/'.$show_question->id) }}" role="button" title="Xem câu hỏi">
-                                                    <i class="fa fa-trash-o"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @empty
-                                        <tr>
-                                            <td colspan="10">
-                                                <b class="text-danger">Không có dữ liệu</b>
-                                            </td>
-                                        </tr>
-                                    @endforelse
+                                                </td>
+                                                <td data-label="Chọn:&ensp;">
+                                                    <a class="btn btn-danger btn-xs" onclick="return confirm('Bạn có chắc chắn không ?');"
+                                                       href="{{ url('delete-question-subject/'.$show_question->id) }}" role="button" title="Xem câu hỏi">
+                                                        <i class="fa fa-trash-o"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="10">
+                                                    <b class="text-danger">Không có dữ liệu</b>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
 
                             <!-- pagination -->
                             <ul class="pagination justify-content-center pagination-sm" style="margin:20px 0">
-                                {{ $show_questions->links() }}
+                                {{ $details->links() }}
                             </ul>
                             <!-- /pagination -->
 

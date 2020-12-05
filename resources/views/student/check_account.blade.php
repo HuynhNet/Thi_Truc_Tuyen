@@ -20,6 +20,7 @@
                                 {{ session()->get('message') }}
                             </div>
                         @endif
+
                         <form action="{{ url('/post-check-account') }}" method="post">
                             @csrf
 

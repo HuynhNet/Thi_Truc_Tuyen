@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2020 at 04:04 PM
+-- Generation Time: Dec 05, 2020 at 05:43 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -44,7 +44,7 @@ CREATE TABLE `bai_lams` (
 --
 
 INSERT INTO `bai_lams` (`id`, `ma_hs`, `created_at`, `updated_at`, `ma_de`, `ma_mon`, `thoi_gian_bat_dau_lam`, `thoi_gian_ket_thuc`) VALUES
-(139, 5, '2020-12-02 10:59:30', '2020-12-02 10:59:30', 1, 1, '2020-12-02 10:59:30', NULL);
+(139, 5, '2020-12-02 10:59:30', '2020-12-02 10:59:30', 1, 1, '2020-12-05 03:54:30', NULL);
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,9 @@ CREATE TABLE `chi_tiet_bai_lams` (
 INSERT INTO `chi_tiet_bai_lams` (`id`, `bai_lam`, `chi_tiet_cau_hoi`, `dap_an_chon`, `created_at`, `updated_at`) VALUES
 (3, 139, 1, 'B', NULL, NULL),
 (4, 139, 2, 'C', NULL, NULL),
-(5, 139, 3, 'B', NULL, NULL);
+(5, 139, 3, 'C', NULL, NULL),
+(6, 139, 4, 'C', NULL, NULL),
+(7, 139, 5, 'C', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -570,12 +572,19 @@ CREATE TABLE `ket_quas` (
   `id` int(10) UNSIGNED NOT NULL,
   `de_kiem_tra` int(11) DEFAULT NULL,
   `mon_hoc` int(11) DEFAULT NULL,
-  `ma_hs` int(11) DEFAULT NULL,
+  `ma_hs` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `diem` float DEFAULT NULL,
   `xep_loai` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `ket_quas`
+--
+
+INSERT INTO `ket_quas` (`id`, `de_kiem_tra`, `mon_hoc`, `ma_hs`, `diem`, `xep_loai`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'HS198004', 8, 'Giỏi', '2020-12-04 19:26:23', '2020-12-04 19:26:23');
 
 -- --------------------------------------------------------
 
@@ -1647,7 +1656,7 @@ ALTER TABLE `cau_hois`
 -- AUTO_INCREMENT for table `chi_tiet_bai_lams`
 --
 ALTER TABLE `chi_tiet_bai_lams`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `chi_tiet_cau_hois`
@@ -1707,7 +1716,7 @@ ALTER TABLE `hoc_sinhs`
 -- AUTO_INCREMENT for table `ket_quas`
 --
 ALTER TABLE `ket_quas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `loai_kiem_tras`
